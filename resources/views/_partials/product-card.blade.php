@@ -12,9 +12,14 @@
            {{ $product->description }}
         </p>
     </div>
-    <div>
+    <div class="d-flex justify-content-between">
         <span class="product-price text-white font-weight-bold">
              {{ $product->price }} сом
         </span>
+        <div class="d-flex text-light ml-auto ml-md-0 justify-content-between align-items-center" style="width: 100px;">
+            <span class="pointer cart-btn rounded shadow-sm p-2 remove_book d-flex justify-content-center align-items-center" data-id="{{ 1 }}">-</span>
+            <span class="mx-2 grey darken-4 d-flex justify-content-center align-items-center rounded p-2" style="width: 30px; height: 30px;">{{ 1 }}</span>
+            <span class="pointer cart-btn rounded shadow-sm buy_book p-2 d-flex justify-content-center align-items-center" data-id="{{ 1 }}">+</span>
+        </div>
     </div>
 </div>

@@ -1,0 +1,18 @@
+.pointer
+{
+    cursor: pointer;
+}
+.cart-btn {
+    color: #fff;
+    background-color: #2F2F2F;
+    width: 30px;
+    height: 30px;
+}
+.cart-btn:hover {
+    color: #fff;
+    background-color: #E41F26;
+}
+
+.cart-btn:active {
+    background-color: rgba(228, 31, 38, 0.66);
+}
