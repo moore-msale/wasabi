@@ -11,10 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'HomeController@welcome');
+
+Route::get('/catalog','ProductController@index')->name('catalog');
+Route::get('/about_us','HomeController@about_us')->name('about_us');
+
+Route::get('/cart', function () {
+    return view('pages.cart');
 });
 
+Route::get('/order', function () {
+    return view('pages.order');
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

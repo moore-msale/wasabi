@@ -1,0 +1,238 @@
+.menu-phone
+{
+    font-size: 18px;
+    line-height: 21px;
+    color:#fefefe;
+    border-bottom: 1px solid #fefefe;
+}
+.point
+{
+    font-size: 13px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+.adder
+{
+    background-size:100% 100%;
+    background-repeat: no-repeat;
+    height: 100%;
+    border-radius:2px;
+}
+.adder-header
+{
+    font-size: 17px;
+    line-height: 140%;
+}
+.adder-text
+{
+    font-size: 12px;
+    line-height: 140%;
+}
+.content-scroll
+{
+    height:90vh;
+    overflow-y: auto;
+}
+.sidebar
+{
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    height:80vh;
+    overflow-y: auto;
+}
+.sidebar::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #303030;
+}
+
+.sidebar::-webkit-scrollbar
+{
+    width: 3px;
+    background-color: #F5F5F5;
+}
+
+.sidebar::-webkit-scrollbar-thumb
+{
+    background-color: #000000;
+}
+.content-scroll::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #303030;
+}
+
+.content-scroll::-webkit-scrollbar
+{
+    width: 3px;
+    background-color: #F5F5F5;
+}
+
+.content-scroll::-webkit-scrollbar-thumb
+{
+    background-color: #000000;
+}
+.catalog-header
+{
+    font-size: 25px;
+    line-height: 29px;
+}
+.catalog-option
+{
+    font-size: 13px;
+    line-height: 15px;
+}
+.product-card
+{
+    cursor:pointer;
+    background-color:#292929;
+    border: 1px solid #363636;
+    box-sizing: border-box;
+}
+.product-header
+{
+    font-size: 13px;
+    line-height: 15px;
+}
+.product-text
+{
+    font-size: 12px;
+    line-height: 14px;
+}
+.product-price
+{
+    font-size: 18px;
+    line-height: 21px;
+}
+.product-img
+{
+    background-size: cover;
+    background-position: center;
+    height:225px;
+}
+.basket-image
+{
+    background-size: cover;
+    background-position: center;
+    height:100px;
+}
+.product-modal-header
+{
+    font-size: 25px;
+    line-height: 29px;
+}
+.product-modal-text
+{
+    font-size: 15px;
+    line-height: 18px;
+}
+.product-modal-price
+{
+    font-size: 30px;
+    line-height: 35px;
+}
+.product-modal-props
+{
+    font-size: 12px;
+    padding: 4px 16px;
+    border: 1px solid #44474a;
+    color: #888;
+    margin-left: 5px;
+}
+.nav-link.active
+{
+    background-color: #ff3547!important;
+}
+.owl-one .owl-nav.disabled
+{
+    display: block!important;
+    pointer-events: auto!important;
+}
+.owl-one .owl-nav .owl-prev
+{
+    position: absolute;
+    top:-21%;
+    right:8%;
+    background-image: url('/images/left.png')!important;
+    width:20px;
+    height:20px;
+    outline: none;
+    z-index: 999;
+    transition: 0.5s;
+}
+.owl-one .owl-nav .owl-prev:hover
+{
+    transform: scale(1.1);
+}
+.owl-one .owl-nav .owl-next
+{
+    position: absolute;
+    top:-21%;
+    right:5%;
+    background-image: url('/images/right.png')!important;
+    width:20px;
+    height:20px;
+    outline: none;
+    z-index: 999;
+    transition: 0.5s;
+}
+.owl-one .owl-nav .owl-next:hover
+{
+    transform: scale(1.1);
+}
+.sidenav {
+    height: 100%;
+    width: 380px;
+    position: fixed;
+    z-index: 100000;
+    top: 0;
+    right: -380px;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 120px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    color:white;
+    font-size: 20px;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+@media screen and (max-width: 700px) {
+    .owl-one .owl-nav .owl-prev
+    {
+        position: absolute;
+        top:-21%;
+        right:15%;
+        background-image: url('/images/left.png')!important;
+        width:20px;
+        height:20px;
+        outline: none;
+        z-index: 999;
+        transition: 0.5s;
+    }
+    .product-img
+    {
+        background-size: cover;
+        background-position: center;
+        height:130px;
+    }
+}
+
+
