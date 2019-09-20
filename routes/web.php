@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@welcome');
+Route::get('/', 'HomeController@index');
 
 Route::get('/catalog','ProductController@index')->name('catalog');
 Route::get('/about_us','HomeController@about_us')->name('about_us');
@@ -25,7 +25,7 @@ Route::get('/order', function () {
 });
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@welcome')->name('home');
 
 
 Route::group(['prefix' => 'admin'], function () {
