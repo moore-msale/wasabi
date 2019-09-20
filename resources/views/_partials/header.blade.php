@@ -60,6 +60,10 @@
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item cart-info">
+                    <span>1</span>
+                    <span>1000 сом</span>
+                </li>
                 <li class="nav-item dropdown d-flex mx-2 ">
                     <a class="nav-link text-light align-self-center dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
