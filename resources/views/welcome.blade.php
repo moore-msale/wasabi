@@ -10,20 +10,20 @@
 @endpush
 @section('content')
         <div class="container-fluid">
-                <div class="row">
+                <div class="row justify-content-between">
                         @if(!$agent->isPhone())
                         @include('_partials.sidebar')
                         @endif
-                        <div class="col-lg-9 col-12 px-0 main-adder content-scroll pb-4">
+                        <div class="col-lg-10 col-12 px-0 main-adder content-scroll pb-4">
                                  <div class="container-fluid">
                                         <div class="row">
                                                 <div class="col-lg-4 col-12 p-3">
                                                         <div class="adder p-4 text-center" style="background-image: url({{asset('images/first-ad.png')}})">
-                                                                <p class="font-weight-bold text-white text-uppercase adder-header">
+                                                                <p class="font-weight-bold text-white text-uppercase adder-header mb-5">
                                                                         Ролл «Яки унаги рору» в подарок
                                                                 </p>
-                                                                <img class="img-fluid pt-2 pb-3" src="{{ asset('images/adder.png') }}" alt="">
-                                                                <p class="adder-text text-white px-5">с 3 по 9 июня самым активным участникам проекта «Активный гражданин»</p>
+                                                                <img class="w-50 py-3" src="{{ asset('images/adder.png') }}" alt="">
+                                                                <p class="adder-text text-white px-5 mt-5">с 3 по 9 июня самым активным участникам проекта «Активный гражданин»</p>
                                                         </div>
                                                 </div>
                                                 <div class="col-lg-4 col-12 p-3">
@@ -63,14 +63,15 @@
                                                         </div>
                                                 </div>
                                                 <div class="col-12">
-                                                        <p class="point pt-4 px-5">
+                                                        <p class="catalog-header text-light font-weight-bold pt-4 px-5">
                                                                 Меню
                                                         </p>
                                                         <div class="owl-one owl-carousel">
-                                                                @for($i = 0; $i < 15; $i++)
-                                                                <div class="item p-4">
-                                                                                <p class="pl-4 point">РОЛЛЫ</p>
-                                                                        <img class="img-fluid" style="width:70px;" src="{{ asset('images/category.png') }}" alt="">
+                                                                @for($i = 0; $i < 10; $i++)
+                                                                <div class="item grey darken-4 text-center p-4">
+                                                                                <p class="point">РОЛЛЫ</p>
+                                                                        @php($rand = rand(1, 3))
+                                                                        <img class="img-fluid" src="{{ asset('images/category'.$rand.'.png') }}" alt="">
                                                                 </div>
                                                                 @endfor
                                                         </div>

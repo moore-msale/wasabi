@@ -14,20 +14,18 @@
 }
 .adder
 {
-    background-size:100% 100%;
+    background-size:cover;
     background-repeat: no-repeat;
     height: 100%;
     border-radius:2px;
+    background-position: center center;
 }
 .adder-header
 {
     font-size: 17px;
-    line-height: 140%;
 }
 .adder-text
 {
-    font-size: 12px;
-    line-height: 140%;
 }
 .content-scroll
 {

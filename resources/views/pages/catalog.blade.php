@@ -1,12 +1,14 @@
 @extends('layouts.app')
 @push('styles')
-    <style>
-        body
-        {
-            background-color: #000000;
-            background-size:cover;
-        }
-    </style>
+    @push('styles')
+        <style>
+            body
+            {
+                background-image: url({{ asset('images/mainbg.png') }});
+                background-size:cover;
+            }
+        </style>
+    @endpush
 @endpush
 @section('content')
     <?php
