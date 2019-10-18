@@ -23,10 +23,28 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap-material-datetimepicker.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+    <style>
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            /*background-color:grey;*/
+            background-image: url({{ asset('images/mainbg.png') }});
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: #FFF;
+            background-position: center;
+        }
+    </style>
     @stack('styles')
 </head>
 <body>
-
+<div class="preloader">
+    <img style="position: absolute; top:50%; left:50%; transform: translate(-50%, -50%);" class="img-fluid" src="{{ 'images/logo.png' }}" alt="">
+</div>
 @include('_partials.header')
 
     <div id="app">
@@ -40,6 +58,11 @@
 <script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
 <script type="text/javascript" src="{{ asset('js/bootstrap-material-datetimepicker.js') }}"></script>
 @stack('scripts')
+<script>
+    $(document).ready(function() {
+        $('.preloader').fadeOut('slow').delay(500);
+    });
+</script>
 <script>
     $('.empty-like').on('click', function (e) {
         e.preventDefault();
@@ -109,19 +132,36 @@
 <script>
     $('.close-nav').click( function () {
         document.getElementById("mySidenav").style.left = "-16.6%";
-        $('.close-nav').hide(100);
-        $('.open-nav').show(100);
-        document.getElementById("content-blog").style.width = "98%";
-        $('.collona-product').addClass('full');
-        $('.collona-product').removeClass('short');
+        setTimeout(function () {
+            document.getElementById("content-blog").style.width = "98%";
+            $('.collona-product').addClass('full');
+            $('.collona-product').removeClass('short');
+        },300);
+        $('#content-blog').addClass('fader');
+            setTimeout(function() {
+                $('.close-nav').hide(100);
+                $('.open-nav').show(100);
+
+                $('#content-blog').removeClass("fader");
+            }, 600);
+            // $('#content-blog').removeClass('fader');
+
     });
     $('.open-nav').click( function () {
         document.getElementById("mySidenav").style.left = "0%";
-        $('.close-nav').show(100);
-        $('.open-nav').hide(100);
-        document.getElementById("content-blog").style.width = "82.3%";
-        $('.collona-product').addClass('short');
-        $('.collona-product').removeClass('full');
+        setTimeout(function () {
+            document.getElementById("content-blog").style.width = "82.3%";
+            $('.collona-product').addClass('short');
+            $('.collona-product').removeClass('full');
+        },300);
+        $('#content-blog').addClass('fader');
+        setTimeout(function () {
+            $('.close-nav').show(100);
+            $('.open-nav').hide(100);
+
+            $('#content-blog').removeClass("fader");
+        },600);
+
 
     });
 

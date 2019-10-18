@@ -1,7 +1,7 @@
 <div class="collona-product product-card p-lg-4 p-2" id="collona-product">
     <div class="product-img" style="background-image: url({{ asset('storage/'.str_replace('\\', '/', $product->image)) }})"  data-toggle="modal" data-target="#productModal-{{ $product->id }}">
     </div>
-    <div class="pt-3 pb-3 ">
+    <div class="pt-3 pb-3   ">
         <div class="d-flex">
             <div class="w-50">
         <p class="product-header text-white font-weight-bold"  data-toggle="modal" data-target="#productModal-{{$product->id}}">

@@ -22,6 +22,10 @@
     color:red;
     transform: scale(1.2);
 }
+.fader
+{
+    opacity: 0;
+}
 .point
 {
     font-size: 13px;
@@ -172,12 +176,12 @@
 }
 .collona-product
 {
-    transition: 0.5s;
+    transition: 0.3s;
     width:33.3%;
 }
 .content-blog
 {
-    transition: 0.5s;
+    transition: 0.3s;
     width:82.3%;
 }
 .sidebar-blog

@@ -30,9 +30,14 @@ class ProductController extends Controller
 
     public function filter(Request $request)
     {
-//        dd($request->all());
-        $count = count($request->all()) - 3;
-//        dd($count);
+        if (isset($request->sort))
+        {
+            $count = count($request->all()) - 3;
+        }
+        else
+        {
+            $count = count($request->all()) - 2;
+        }
         if(isset($request->category))
         {
             $category = Category::find($request->category);
