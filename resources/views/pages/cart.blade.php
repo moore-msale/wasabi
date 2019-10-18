@@ -1,63 +1,100 @@
-@extends('layouts.app')
-@push('styles')
-    <style>
-        body
-        {
-            background-color: #000000;
-            background-size:cover;
-        }
-    </style>
-@endpush
-@section('content')
+{{--@dd($total)--}}
     <?php
     $agent = New \Jenssegers\Agent\Agent();
     ?>
 
     <div class="container-fluid">
-        <div class="row">
+        @if(count($cartItems))
+        <div class="row justify-content-end">
     @if(!$agent->isPhone())
         @include('_partials.sidebar')
     @endif
-            <div class="col-lg-7 col-12">
+            <div class="p-5 content-blog" id="content-blog">
                 <div class="py-4 px-lg-5 px-2">
                     <div class="px-0 mb-3">
                         <h2 class="catalog-header text-white font-weight-bold text-uppercase pb-4">Корзина заказа</h2>
-                            <div class="row p-1 bg-dark">
+                        @foreach($cartItems as $item)
+                            {{--@dd($item->attributes[0])--}}
+                            <div class="row p-1 bg-dark mt-1">
                                 <div class="col-lg-2 col-4">
-                                    <div class="basket-image w-100" style="background-image: url({{ asset('images/product.png') }})">
+                                    <div class="basket-image w-100" style="background-image: url({{ asset('storage/'.str_replace('\\', '/', $item->attributes[0])) }})">
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-3 d-flex align-items-center">
+                                <div class="col-lg-3 col-3 d-flex align-items-center">
                                     <span class="product-header text-white font-weight-bold">
-                                        Гинза маки
+                                        {{ $item->name }}
                                     </span>
                                 </div>
+                                <div class="col-lg-2 col-md-3 col-6 my-3 my-md-0">
+                                    <div class="d-flex ml-auto ml-md-0 justify-content-between align-items-center h-100">
+                                        <span class="pointer cart-btn rounded-circle shadow p-2 remove_book d-flex justify-content-center align-items-center" data-id="{{ $item->id }}">-</span>
+                                        <span class="mx-2 text-white">{{ $item->quantity }}</span>
+                                        <span class="pointer cart-btn rounded-circle shadow buy_book p-2 d-flex justify-content-center align-items-center" data-id="{{ $item->id }}">+</span>
+                                    </div>
+                                </div>
                                 <div class="col-2 d-lg-block d-none"></div>
-                                <div class="col-lg-3 col-2 d-flex align-items-center">
+                                <div class="col-lg-2 col-2 d-flex align-items-center">
                                     <span class="product-price text-white font-weight-bold">
-                                        365 сом
+                                        {{ $item->price }} сом
                                     </span>
                                 </div>
                                 <div class="col-1 d-flex align-items-center">
-                                    <span class="product-price text-white font-weight-bold">
+                                    <span class="product-price text-white font-weight-bold delete_book" data-id="{{ $item->id }}" style="cursor: pointer;">
                                         <i class="fas fa-times"></i>
                                     </span>
                                 </div>
                             </div>
+                            @endforeach
                     </div>
-                    <span>
-                        <img src="{{ asset('images/add.svg') }}" alt=""><span class="product-header text-white ml-2 font-weight-bold">Добавить</span>
-                    </span>
-                    <span class="product-header text-white float-right font-weight-bold">
-                        Итого: <span class="ml-2"> 1268</span>
-                    </span>
-                    <div class="mt-4">
+
+                    <p class="product-header text-white float-right font-weight-bold">
+                        Итого: <span class="ml-2"> {{ $total }} сом</span>
+                    </p>
+                    <div class="mt-5 pt-5">
+                        <a href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid(), 'continue' => true]) }}">
                         <button class="btn btn-danger text-white float-right">
                             Оформить заказ <i class="fas fa-long-arrow-alt-right ml-2"></i>
                         </button>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+        @else
+            @if(!$agent->isPhone())
+                @include('_partials.sidebar')
+            @endif
+            <div class="row justify-content-center align-items-center" style="height:80vh;">
+                <div class="text-center">
+                <p class="h3 text-white">Корзина пуста!</p>
+                <div class="col-12"></div>
+                <a href="{{ route('catalog',array('category' => 1)) }}">
+                <button class="btn btn-danger text-white float-right mt-4">
+                    Перейти в корзину <i class="fas fa-long-arrow-alt-right ml-2"></i>
+                </button>
+                </a>
+                </div>
+            </div>
+        @endif
     </div>
-@endsection
+
+<script>
+    $('.close-nav').click( function () {
+        document.getElementById("mySidenav").style.left = "-16.6%";
+        $('.close-nav').hide(100);
+        $('.open-nav').show(100);
+        document.getElementById("content-blog").style.width = "98%";
+        $('.collona-product').addClass('full');
+        $('.collona-product').removeClass('short');
+    });
+    $('.open-nav').click( function () {
+        document.getElementById("mySidenav").style.left = "0%";
+        $('.close-nav').show(100);
+        $('.open-nav').hide(100);
+        document.getElementById("content-blog").style.width = "82.3%";
+        $('.collona-product').addClass('short');
+        $('.collona-product').removeClass('full');
+
+    });
+
+</script>

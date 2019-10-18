@@ -10,11 +10,11 @@
 @endpush
 @section('content')
         <div class="container-fluid">
-                <div class="row justify-content-between">
+                <div class="row justify-content-end">
                         @if(!$agent->isPhone())
                         @include('_partials.sidebar')
                         @endif
-                        <div class="col-lg-10 col-12 px-0 main-adder content-scroll pb-4">
+                        <div class="px-0 main-adder content-scroll pb-4 content-blog" id="content-blog">
                                  <div class="container-fluid">
                                         <div class="row">
                                                 <div class="col-lg-4 col-12 p-3">
@@ -67,13 +67,16 @@
                                                                 Меню
                                                         </p>
                                                         <div class="owl-one owl-carousel">
-                                                                @for($i = 0; $i < 10; $i++)
+                                                                @foreach(\App\Category::all() as $category)
+                                                                        @if(count($category->products))
                                                                 <div class="item grey darken-4 text-center p-4">
-                                                                                <p class="point">РОЛЛЫ</p>
-                                                                        @php($rand = rand(1, 3))
-                                                                        <img class="img-fluid" src="{{ asset('images/category'.$rand.'.png') }}" alt="">
+                                                                        <a href="{{ route('catalog',array('category' => $category->id)) }}">
+                                                                                <p class="point" style="height:20px;">{{ $category->name }}</p>
+                                                                        <img class="img-fluid" src="{{ asset('storage/'.$category->image) }}" alt="">
+                                                                        </a>
                                                                 </div>
-                                                                @endfor
+                                                                        @endif
+                                                                @endforeach
                                                         </div>
                                                 </div>
                                         </div>

@@ -3,7 +3,24 @@
     font-size: 18px;
     line-height: 21px;
     color:#fefefe;
-    border-bottom: 1px solid #fefefe;
+}
+.btn-filter
+{
+    padding:5px;
+}
+.empty-like
+{
+    color:white;
+    transition: 0.5s;
+}
+.empty-like:hover
+{
+    transform: scale(1.2);
+}
+.like
+{
+    color:red;
+    transform: scale(1.2);
 }
 .point
 {
@@ -11,6 +28,11 @@
     line-height: 15px;
     text-transform: uppercase;
     color: #FFFFFF;
+    transition: 0.3s;
+}
+.point:hover
+{
+    color:#cccc28;
 }
 .adder
 {
@@ -31,6 +53,10 @@
 {
     height:90vh;
     overflow-y: auto;
+}
+#dtime
+{
+    display:none;
 }
 .sidebar
 {
@@ -109,6 +135,12 @@
     background-position: center;
     height:225px;
 }
+.product-img-mobile
+{
+    background-size: cover;
+    background-position: center;
+    height:100px;
+}
 .basket-image
 {
     background-size: cover;
@@ -137,6 +169,47 @@
     border: 1px solid #44474a;
     color: #888;
     margin-left: 5px;
+}
+.collona-product
+{
+    transition: 0.5s;
+    width:33.3%;
+}
+.content-blog
+{
+    transition: 0.5s;
+    width:82.3%;
+}
+.sidebar-blog
+{
+    transition: 0.5s;
+    position: absolute;
+    top:0%;
+    left:0%;
+}
+.open-nav
+{
+    display:none;
+}
+.nav-pointer
+{
+    position: absolute;
+    width:30px;
+    height:46.4px;
+    top:0%;
+    background-color:#212121;
+    right:-30px;
+    z-index: 999;
+    border-radius: 0px 25px 25px 0px;
+    padding-top:12.4px;
+}
+.full
+{
+    width:25%;
+}
+.short
+{
+    width:33.3%;
 }
 .nav-link.active
 {
@@ -212,6 +285,20 @@
     font-size: 36px;
     margin-left: 50px;
 }
+.choice
+{
+    color:#cccc28;
+}
+.mobile-bar
+{
+    background-color: #292929;
+    height: 40px;
+}
+.cat-points
+{
+    border-left: 1px solid white;
+    padding: 0px 10px;
+}
 @media screen and (max-width: 700px) {
     .owl-one .owl-nav .owl-prev
     {
@@ -230,6 +317,11 @@
         background-size: cover;
         background-position: center;
         height:130px;
+    }
+    .content-blog
+    {
+        width:100%;
+        padding-left:5%;
     }
 }
 

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md black shadow-sm">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url('/') }}">
+        <a class="navbar-brand" href="{{ url('/home') }}">
             <img class="img-fluid" src="{{ asset('images/logo.png') }}" alt="">
         </a>
         {{--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">--}}
@@ -31,7 +31,7 @@
                 </li>
                 @guest
                     <li class="mx-3">
-                       <a class="point" href="{{ route('login') }}"> <img class="pr-2" src="{{ asset('images/login.svg') }}" alt="">{{ __('ВХОД') }}</a>
+                       <a class="point" href="{{ route('login') }}"> <i class="fas fa-user pr-2"></i>{{ __('ВХОД') }}</a>
                     </li>
                     {{--@if (Route::has('register'))--}}
                         {{--<li class="nav-item">--}}
@@ -41,10 +41,13 @@
                 @else
                     <li class="nav-item dropdown mx-3">
                         <a id="navbarDropdown" class="point dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                            <i class="fas fa-user pr-2"></i>{{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('profile') }}">
+                                {{ __('Личный кабинет') }}
+                            </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -60,9 +63,17 @@
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item cart-info">
-                    <span>1</span>
-                    <span>1000 сом</span>
+                <li class="nav-item px-3 mr-4 pt-1 position-relative mx-2">
+                    <a href="{{ route('cart.checkout') }}" class="text-fut-book cart d-flex align-items-center" style="text-decoration: none; color: #444444;">
+                        {{--<div class="badge badge-danger rounded-circle small shadow position-absolute cart-count justify-content-center align-items-center" style="width: 21px; height: 21px;top: -7px; right: 5px;"></div>--}}
+                        {{--<i style="color: #444;" class="fas carts fa-cart-plus fa-lg icon-flip"></i>--}}
+                        <img class="icon-flip" style="color: white; height:28px; width: 28px; margin-top:-5px;" src="{{ asset('images/cart.svg') }}" alt="">
+                        <div class="bg-danger py-2 px-3 ml-3 text-white cart-count" style="border-radius: 2px 0px 0px 2px;">
+
+                        </div>
+                        <div class="bg-dark py-2 px-3 text-white cart-total" style="border-radius: 0px 2px 2px 0px;">
+                        </div>
+                    </a>
                 </li>
                 <li class="nav-item dropdown d-flex mx-2 ">
                     <a class="nav-link text-light align-self-center dropdown-toggle" href="#" id="navbarDropdownMenuLink"
@@ -100,18 +111,22 @@
                 <div class="sidebar">
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="category" role="tabpanel" aria-labelledby="home-tab">
-                            @for($i = 0; $i < 9; $i++)
-                                <div class="p-3">
-                                    <img class="img-fluid" style="width:70px;" src="{{ asset('images/category.png') }}" alt=""><span class="pl-4 point">РОЛЛЫ</span>
-                                </div>
-                            @endfor
+                            @foreach(\App\Category::all() as $category)
+                                <a href="{{ route('catalog',array('category' => $category->id)) }}">
+                                    <div class="p-3 my-1" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
+                                        <img class="img-fluid" style="width:70px;" src="{{ asset('storage/'.$category->image) }}" alt=""><span class="pl-4 point">{{ $category->name }}</span>
+                                    </div>
+                                </a>
+                            @endforeach
                         </div>
                         <div class="tab-pane fade" id="ingredient" role="tabpanel" aria-labelledby="profile-tab">
-                            @for($i = 0; $i < 9; $i++)
-                                <div class="p-3">
-                                    <img class="img-fluid" style="width:70px;" src="{{ asset('images/ingredient.png') }}" alt=""><span class="pl-4 point">ХРЕНЬ</span>
-                                </div>
-                            @endfor
+                            @foreach(\App\Type::all() as $type)
+                                <a href="{{ route('catalog',array('type' => $type->id)) }}">
+                                    <div class="p-3 my-1" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
+                                        <img class="img-fluid" style="width:70px;" src="{{ asset('storage/'.$type->image) }}" alt=""><span class="pl-4 point">{{ $type->name }}</span>
+                                    </div>
+                                </a>
+                            @endforeach
                         </div>
                     </div>
             </div>

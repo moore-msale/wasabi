@@ -6,6 +6,7 @@ use App\Category;
 use App\Product;
 use App\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -37,5 +38,13 @@ class HomeController extends Controller
     public function about_us()
     {
         return view('pages.about_us');
+    }
+
+    public function profile()
+    {
+        $user = Auth::user();
+
+
+        return view('pages.profile',['user' => $user]);
     }
 }
