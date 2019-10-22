@@ -46,7 +46,8 @@
                         <div class="card card-body mb-3 bg-transparent d-flex px-0">
                             <form action="{{ route('catalog_filter', array_merge(request()->query())) }}" method="POST">
                                 @csrf
-                                <div class="d-flex">
+                                <div style="max-width:none!important; width:100%; overflow-x: auto;">
+                                <div class="d-flex" style="width:max-content;">
                                 @foreach(\App\Type::all() as $type)
                                     @if(count($type->products))
                                         <div class="custom-control custom-checkbox pr-3">
@@ -56,6 +57,7 @@
                                     @endif
                                 @endforeach
                                     {{--<input type="" name="type" value="{{ request()->query() }}">--}}
+                                </div>
                                 </div>
                                 <div class="pt-3">
                                 <button class="btn btn-danger btn-filter m-0" type="submit">Применить</button>
@@ -90,4 +92,21 @@
     @include('modals.product')
     @endforeach
 @endsection
+@push('scripts')
+    <script>
+        $(document).ready( function () {
+            let id = {{$product->id}}
+            console.log($('.counter-' + id).html());
+            if(parseInt($('.counter-' + id).html()) >= 0)
+            {
+
+            }
+            else
+            {
+                $('.counter-' + id).html(0);
+            }
+            console.log({{$product->id}});
+        })
+    </script>
+@endpush
 

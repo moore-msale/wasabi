@@ -11,7 +11,7 @@ class Cart extends Model
     protected $table = 'carts';
 
     protected $casts = [
-        'cart',
+        'cart' => 'collection',
     ];
 
     public static function add(Product $product, $count = 1, $token)

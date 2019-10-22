@@ -16,6 +16,9 @@ Route::get('/', 'HomeController@index');
 Route::get('/catalog','ProductController@index')->name('catalog');
 Route::post('/catalog_filter','ProductController@filter')->name('catalog_filter');
 Route::get('/about_us','HomeController@about_us')->name('about_us');
+Route::get('/stock', 'HomeController@stock')->name('stock');
+Route::get('/delivery','HomeController@delivery')->name('delivery');
+Route::get('/rule', 'HomeController@rule')->name('rule');
 
 Route::get('/carter', function () {
     return view('pages.cart');
@@ -40,7 +43,7 @@ Route::group(['prefix' => 'admin'], function () {
 Route::post('/liked', 'ProductController@liked')->name('liked');
 Route::post('/unliked', 'ProductController@unliked')->name('unliked');
 
-
+Route::post('get_count', 'ProductController@get_count')->name('get_count');
 
 Route::get('/cart', 'Api\CartController@index')->name('cart.index');
 Route::get('/cart/checkout', 'Api\CartController@checkout')->name('cart.checkout');

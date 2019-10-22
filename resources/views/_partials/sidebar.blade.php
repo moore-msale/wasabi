@@ -2,8 +2,11 @@
     <div class="close-nav nav-pointer text-center">
         <i class="fas fa-times fa-lg text-white"></i>
     </div>
-    <div class="open-nav nav-pointer text-center">
-        <i class="fas fa-chevron-right fa-lg text-white"></i>
+    <div class="open-nav nav-pointer-full text-center">
+        <i class="fas fa-chevron-right fa-lg text-white pt-3"></i>
+        <div class="d-flex align-items-center position-relative" style="height:82vh;">
+            <div class="font-weight-bold text-uppercase" style="transform: rotate(-90deg) translate(0px,-53px); color: #fefefe; font-size:16px; white-space: nowrap;">Меню доставки</div>
+        </div>
     </div>
     <ul class="nav nav-tabs picker" id="myTab" role="tablist">
         <li class="nav-item bg-dark w-50 text-center">
@@ -20,7 +23,7 @@
                     {{--@dd($category->products)--}}
                     @if(count($category->products))
                     <a href="{{ route('catalog',array('category' => $category->id)) }}">
-                    <div class="p-3 my-1" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
+                    <div class="p-3 my-1 cat" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
                         <img class="img-fluid" style="width:70px;" src="{{ asset('storage/'.$category->image) }}" alt=""><span class="pl-4 point {{ request()->query('category') == $category->id ? 'choice' : ''}}">{{ $category->name }}</span>
                     </div>
                     </a>
@@ -31,7 +34,7 @@
                 @foreach(\App\Type::all() as $type)
                     @if(count($type->products))
                     <a href="{{ route('catalog',array('type' => $type->id)) }}">
-                    <div class="p-3 my-1" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
+                    <div class="p-3 my-1 cat" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
                         <img class="img-fluid" style="width:70px;" src="{{ asset('storage/'.$type->image) }}" alt=""><span class="pl-4 point {{ request()->query('type') == $type->id ? 'choice' : ''}}">{{ $type->name }}</span>
                     </div>
                     </a>

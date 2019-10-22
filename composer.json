@@ -14,6 +14,7 @@
         "jenssegers/agent": "^2.6",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
+        "odannyc/laravel-alertify": "^1.0",
         "tcg/voyager": "^1.2"
     },
     "require-dev": {

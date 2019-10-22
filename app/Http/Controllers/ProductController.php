@@ -108,4 +108,9 @@ class ProductController extends Controller
 
         return back();
     }
+
+    public function get_count(Request $request)
+    {
+
+    }
 }

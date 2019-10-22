@@ -32,16 +32,17 @@
             height: 100%;
             z-index: 9999;
             /*background-color:grey;*/
-            background-image: url({{ asset('images/mainbg.png') }});
+            background-color: #000000 ;
             background-repeat: no-repeat;
             background-size: cover;
-            background-color: #FFF;
+            /*background-color: #FFF;*/
             background-position: center;
         }
     </style>
     @stack('styles')
 </head>
 <body>
+@include('alertify::alertify')
 <div class="preloader">
     <img style="position: absolute; top:50%; left:50%; transform: translate(-50%, -50%);" class="img-fluid" src="{{ 'images/logo.png' }}" alt="">
 </div>
@@ -57,6 +58,7 @@
 <script src="{{ asset('js/owl.carousel.js') }}"></script>
 <script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
 <script type="text/javascript" src="{{ asset('js/bootstrap-material-datetimepicker.js') }}"></script>
+<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
 @stack('scripts')
 <script>
     $(document).ready(function() {
@@ -83,7 +85,7 @@
                     console.log("like");
                 },
                 error: () => {
-                    console.log(" fucking shit!");
+                    console.log("");
                 }
             })
         }
@@ -102,7 +104,7 @@
             console.log("like");
             },
             error: () => {
-            console.log(" fucking shit!");
+            console.log("");
             }
             })
 
@@ -133,14 +135,15 @@
     $('.close-nav').click( function () {
         document.getElementById("mySidenav").style.left = "-16.6%";
         setTimeout(function () {
+            $('.close-nav').hide(100);
+            $('.open-nav').show(100);
             document.getElementById("content-blog").style.width = "98%";
             $('.collona-product').addClass('full');
             $('.collona-product').removeClass('short');
         },300);
         $('#content-blog').addClass('fader');
             setTimeout(function() {
-                $('.close-nav').hide(100);
-                $('.open-nav').show(100);
+
 
                 $('#content-blog').removeClass("fader");
             }, 600);
@@ -149,6 +152,8 @@
     });
     $('.open-nav').click( function () {
         document.getElementById("mySidenav").style.left = "0%";
+        $('.close-nav').show(100);
+        $('.open-nav').hide(100);
         setTimeout(function () {
             document.getElementById("content-blog").style.width = "82.3%";
             $('.collona-product').addClass('short');
@@ -156,8 +161,7 @@
         },300);
         $('#content-blog').addClass('fader');
         setTimeout(function () {
-            $('.close-nav').show(100);
-            $('.open-nav').hide(100);
+
 
             $('#content-blog').removeClass("fader");
         },600);
@@ -208,6 +212,8 @@
             let id = btn.data('id');
             let cart = null;
 
+            // console.log(parseInt(count) + 1);
+
             $.ajax({
                 url: '{{ route('cart.add') }}',
                 data: {
@@ -216,9 +222,11 @@
                     token: token
                 },
                 success: data => {
-                    btn.addClass('btn-success').delay(2000).queue(function(){
-                        btn.removeClass("btn-success").dequeue();
-                    });
+                    // btn.addClass('btn-success').delay(2000).queue(function(){
+                    //     btn.removeClass("btn-success").dequeue();
+                    // });
+                    let count = $('.counter-' + btn.data('id')).html();
+                    $('.counter-' + btn.data('id')).html(parseInt(count) + 1);
                     $('.carts').addClass('btn-success');
                     doBounce($('.cart-count'), 3, '5px', 90);
                     cart = fetchCart();
@@ -253,6 +261,12 @@
                     token: token
                 },
                 success: data => {
+                    let count = $('.counter-' + btn.data('id')).html();
+                    if(parseInt(count) != 0)
+                    {
+                        $('.counter-' + btn.data('id')).html(parseInt(count) - 1);
+                        console.log(parseInt(count) + 1);
+                    }
                     cart = fetchCart();
                 },
                 error: () => {
@@ -330,7 +344,7 @@
                 items: 2
             },
             700: {
-                items: 8
+                items: 7
             }
         }
     })
@@ -344,5 +358,25 @@
         document.getElementById("mySidenav").style.right = "-380px";
     }
 </script>
+{{--<script>--}}
+    {{--$('.buy_book').on('click', function (e) {--}}
+        {{--let btn = $(e.currentTarget);--}}
+        {{--let count = $('.counter-' + btn.data('id')).html();--}}
+        {{--$('.counter-' + btn.data('id')).html(parseInt(count) + 1);--}}
+        {{--console.log(parseInt(count) + 1);--}}
+    {{--})--}}
+{{--</script>--}}
+{{--<script>--}}
+    {{--$('.remove_book').on('click', function (e) {--}}
+        {{--let btn = $(e.currentTarget);--}}
+        {{--let count = $('.counter-' + btn.data('id')).html();--}}
+        {{--if(parseInt(count) != 0)--}}
+        {{--{--}}
+            {{--$('.counter-' + btn.data('id')).html(parseInt(count) - 1);--}}
+            {{--console.log(parseInt(count) + 1);--}}
+        {{--}--}}
+
+    {{--})--}}
+{{--</script>--}}
 </body>
 </html>

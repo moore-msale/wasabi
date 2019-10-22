@@ -26,6 +26,14 @@
 {
     opacity: 0;
 }
+.menu-phone
+{
+    transition: 0.3s;
+}
+.menu-phone:hover
+{
+    color:#cccc28;
+}
 .point
 {
     font-size: 13px;
@@ -38,11 +46,21 @@
 {
     color:#cccc28;
 }
+.footer-point
+{
+    font-size: 14px;
+    line-height: 15px;
+    color:#FFFFFF;
+    transition: 0.3s;
+}
+.footer-point:hover
+{
+    color:#cccc28;
+}
 .adder
 {
     background-size:cover;
     background-repeat: no-repeat;
-    height: 100%;
     border-radius:2px;
     background-position: center center;
 }
@@ -66,7 +84,7 @@
 {
     border-right: 1px solid black;
     border-bottom: 1px solid black;
-    height:80vh;
+    height:82vh;
     overflow-y: auto;
 }
 .sidebar::-webkit-scrollbar-track
@@ -114,13 +132,13 @@
 .product-card
 {
     cursor:pointer;
-    background-color:#292929;
+    /*background-color:#292929;*/
     border: 1px solid #363636;
     box-sizing: border-box;
 }
 .product-header
 {
-    font-size: 13px;
+    font-size: 15px;
     line-height: 15px;
 }
 .product-text
@@ -137,7 +155,7 @@
 {
     background-size: cover;
     background-position: center;
-    height:225px;
+    height:285px;
 }
 .product-img-mobile
 {
@@ -153,7 +171,7 @@
 }
 .product-modal-header
 {
-    font-size: 25px;
+    font-size: 30px;
     line-height: 29px;
 }
 .product-modal-text
@@ -163,7 +181,7 @@
 }
 .product-modal-price
 {
-    font-size: 30px;
+    font-size: 25px;
     line-height: 35px;
 }
 .product-modal-props
@@ -206,6 +224,16 @@
     z-index: 999;
     border-radius: 0px 25px 25px 0px;
     padding-top:12.4px;
+}
+.nav-pointer-full
+{
+    position: absolute;
+    top:0%;
+    right:-30px;
+    width:30px;
+    height:100%;
+    background-color:red;
+    z-index:999;
 }
 .full
 {
@@ -266,7 +294,7 @@
     background-color: #111;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 120px;
+    padding-top: 60px;
 }
 
 .sidenav a {
@@ -284,7 +312,7 @@
 
 .sidenav .closebtn {
     position: absolute;
-    top: 0;
+    top: -10px;
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
@@ -303,6 +331,24 @@
     border-left: 1px solid white;
     padding: 0px 10px;
 }
+.stock-img
+{
+    height:250px;
+    background-position: center;
+    background-size:cover;
+}
+.cat
+{
+    transition: 0.5s;
+}
+.cat:hover
+{
+    transform: scale(1.05);
+}
+.cat:hover .point
+{
+    color:#cccc28;
+}
 @media screen and (max-width: 700px) {
     .owl-one .owl-nav .owl-prev
     {
@@ -320,12 +366,20 @@
     {
         background-size: cover;
         background-position: center;
-        height:130px;
+        height:180px;
     }
     .content-blog
     {
         width:100%;
         padding-left:5%;
+    }
+    .product-modal-props
+    {
+        font-size: 12px;
+        padding: 4px 11px;
+        border: 1px solid #44474a;
+        color: #888;
+        margin-left: 2px;
     }
 }
 

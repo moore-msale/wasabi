@@ -10,12 +10,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <div class="navbar-nav mr-auto d-lg-block d-none">
-                <img class="img-fluid mr-2 ml-5" src="{{ asset('images/phone.svg') }}" alt=""><span class="menu-phone">+996 (772) 123 456</span>
+                <a href="tel:996 0505 41 07 07">
+                <img class="img-fluid mr-2 ml-5" src="{{ asset('images/phone.svg') }}" alt=""><span class="menu-phone">+996 (0505) 410 707</span>
+                </a>
             </div>
 
             <ul class="navbar-nav mx-auto">
                 <li class="mx-3">
-                    <a class="point" href="">
+                    <a class="point" href="/stock">
                     Акции
                     </a>
                 </li>
@@ -25,7 +27,7 @@
                     </a>
                 </li>
                 <li class="mx-3">
-                    <a class="point" href="">
+                    <a class="point" href="/delivery">
                     Доставка
                     </a>
                 </li>
@@ -93,6 +95,49 @@
             </ul>
         </div>
         @if($agent->isPhone())
+            @guest
+                <li class="mx-1">
+                    <a class="point" href="{{ route('login') }}"> <i class="fas fa-user pr-2"></i>{{ __('ВХОД') }}</a>
+                </li>
+                {{--@if (Route::has('register'))--}}
+                {{--<li class="nav-item">--}}
+                {{--<a class="nav-link" href="{{ route('register') }}">{{ __('РЕГИСТРАЦИЯ') }}</a>--}}
+                {{--</li>--}}
+                {{--@endif--}}
+            @else
+                <li class="nav-item dropdown mx-1">
+                    <a id="navbarDropdown" class="point dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <i class="fas fa-user pr-2"></i>{{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('profile') }}">
+                            {{ __('Личный кабинет') }}
+                        </a>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Выйти') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            @endguest
+                <li class="position-relative mx-2">
+                    <a href="{{ route('cart.checkout') }}" class="text-fut-book cart d-flex align-items-center" style="text-decoration: none; color: #444444;">
+                        <div class="badge badge-danger rounded-circle small shadow position-absolute cart-count justify-content-center align-items-center" style="width: 21px; height: 21px;top: -7px; right: -12px;"></div>
+                        {{--<i style="color: #444;" class="fas carts fa-cart-plus fa-lg icon-flip"></i>--}}
+                        <img class="icon-flip" style="color: white; height:22px; width: 22px; margin-top:-17px;" src="{{ asset('images/cart.svg') }}" alt="">
+                        {{--<div class="bg-danger py-2 px-3 ml-3 text-white cart-count" style="border-radius: 2px 0px 0px 2px;">--}}
+
+                        {{--</div>--}}
+                        {{--<div class="bg-dark py-2 px-3 text-white cart-total" style="border-radius: 0px 2px 2px 0px;">--}}
+                        {{--</div>--}}
+                    </a>
+                </li>
         <button class="hamburger" onclick="openNav()" type="button">
   <span class="hamburger-box">
     <span class="hamburger-inner"></span>
@@ -112,20 +157,24 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="category" role="tabpanel" aria-labelledby="home-tab">
                             @foreach(\App\Category::all() as $category)
+                                @if(count($category->products))
                                 <a href="{{ route('catalog',array('category' => $category->id)) }}">
                                     <div class="p-3 my-1" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
                                         <img class="img-fluid" style="width:70px;" src="{{ asset('storage/'.$category->image) }}" alt=""><span class="pl-4 point">{{ $category->name }}</span>
                                     </div>
                                 </a>
+                                @endif
                             @endforeach
                         </div>
                         <div class="tab-pane fade" id="ingredient" role="tabpanel" aria-labelledby="profile-tab">
                             @foreach(\App\Type::all() as $type)
+                                @if(count($type->products))
                                 <a href="{{ route('catalog',array('type' => $type->id)) }}">
                                     <div class="p-3 my-1" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
                                         <img class="img-fluid" style="width:70px;" src="{{ asset('storage/'.$type->image) }}" alt=""><span class="pl-4 point">{{ $type->name }}</span>
                                     </div>
                                 </a>
+                                @endif
                             @endforeach
                         </div>
                     </div>

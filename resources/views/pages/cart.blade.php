@@ -9,12 +9,13 @@
     @if(!$agent->isPhone())
         @include('_partials.sidebar')
     @endif
-            <div class="p-5 content-blog" id="content-blog">
+            <div class="p-lg-5 p-0 content-blog" id="content-blog">
                 <div class="py-4 px-lg-5 px-2">
                     <div class="px-0 mb-3">
                         <h2 class="catalog-header text-white font-weight-bold text-uppercase pb-4">Корзина заказа</h2>
                         @foreach($cartItems as $item)
                             {{--@dd($item->attributes[0])--}}
+                        @if(!$agent->isPhone())
                             <div class="row p-1 bg-dark mt-1">
                                 <div class="col-lg-2 col-4">
                                     <div class="basket-image w-100" style="background-image: url({{ asset('storage/'.str_replace('\\', '/', $item->attributes[0])) }})">
@@ -44,6 +45,9 @@
                                     </span>
                                 </div>
                             </div>
+                            @else
+                                @include('_partials.mobile_cart')
+                            @endif
                             @endforeach
                     </div>
 

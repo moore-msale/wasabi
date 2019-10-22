@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Code;
 use App\Mail\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -41,36 +42,62 @@ class CartController extends Controller
 
     public function store(Request $request)
     {
-
+//        dd($request->all());
         $token = $request->token ? $request->token : Session::has('token') ? Session::get('token') : uniqid();
 
         TokenResolve::resolve($token);
         $cart = CartFacade::session($token);
         $newCart = new Cart();
         $newCart->cart = $cart->getContent();
-        $newCart->total = $cart->getTotal();
-        if(Auth::user())
-        {
-        $newCart->user_id = Auth::id();
+        if(Auth::user()) {
+            $newCart->user_id = Auth::id();
+            if (Auth::user()->stock != 1) {
+                $user = Auth::user();
+                $user->stock = 1;
+                $user->save();
+                $newCart->discount = 20;
+                $newCart->total = $cart->getTotal() - (($cart->getTotal() / 100) * 20);
+            }
         }
-        $newCart->comment = $request->message;
-        $newCart->name = $request->name;
-        $newCart->email = $request->email;
-        $newCart->phone = $request->phone;
-        $newCart->address = $request->address;
-        if ($request->need == 'on') {
-            $newCart->need = 'да';
+        if (isset($request->promo)) {
+                $promos = Code::all();
+                foreach ($promos as $promo) {
+                    if ($request->promo == $promo->name) {
+                        $newCart->promo = $request->promo;
+                        $newCart->total = $cart->getTotal() - (($cart->getTotal() / 100) * $promo->discount);
+                        $newCart->discount = $promo->discount;
+                    }
+                }
+                if (!$newCart->promo)
+                {
+                    $newCart->total = $cart->getTotal();
+                }
+            } else {
+                $newCart->total = $cart->getTotal();
+            }
+        if($request->type == 1) {
+            $newCart->type = 1;
+            $newCart->comment = $request->message;
+            $newCart->name = $request->name;
+            $newCart->email = $request->email;
+            $newCart->phone = $request->phone;
+            $newCart->address = $request->address;
+            if ($request->need == 'on') {
+                $newCart->need = 'да';
+            } else {
+                $newCart->need = 'нет';
+            }
+            if ($request->time == 'on') {
+                $newCart->date = $request->dtime;
+            } else {
+                $newCart->date = 'нет';
+            }
         }
         else{
-            $newCart->need = 'нет';
-        }
-        if($request->time == 'on')
-        {
+            $newCart->name = $request->name;
+            $newCart->email = $request->email;
+            $newCart->phone = $request->phone;
             $newCart->date = $request->dtime;
-        }
-        else
-        {
-            $newCart->date = 'нет';
         }
         $newCart->save();
 
@@ -126,6 +153,8 @@ class CartController extends Controller
         if (preg_match('/checkout/', $request->server->get('HTTP_REFERER'))) {
             Session::flash('cart_checkout', true);
         }
+
+
 
         return response()->json([
             'status' => 'success',

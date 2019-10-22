@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Product;
+use App\Stock;
 use App\Type;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -46,5 +48,19 @@ class HomeController extends Controller
 
 
         return view('pages.profile',['user' => $user]);
+    }
+
+    public function rule()
+    {
+        return view('pages.rule');
+    }
+    public function delivery()
+    {
+        return view('pages.delivery');
+    }
+    public function stock()
+    {
+        $stocks = Stock::where('end_date','>=', Carbon::now())->get();
+        return view('pages.stock',['stocks' => $stocks]);
     }
 }
