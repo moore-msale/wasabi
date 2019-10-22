@@ -22,33 +22,50 @@
                                                 ?>
                                                 @foreach(\App\Stock::all() as $stock)
                                                         @if($i == 1)
-                                                <div class="col-lg-4 col-12 p-3 d-flex align-items-center">
+                                                <div class="col-lg-4 col-12 p-3">
+                                                        <div class="d-flex align-items-center">
                                                         <div class="adder p-4 text-center">
                                                                 <p class="font-weight-bold text-white text-uppercase adder-header mb-4">
                                                                         {{ $stock->name }}
                                                                 </p>
-                                                                <img class="py-3" style="max-height: 280px;" src="{{ asset('storage/'.str_replace('\\', '/', $stock->image)) }}" alt="">
+                                                                @if(!$agent->isPhone())
+                                                                        <img class="py-3" style="max-height: 280px;" src="{{ asset('storage/'.str_replace('\\', '/', $stock->image)) }}" alt="">
+                                                                @else
+                                                                        <img class="py-3 w-100" src="{{ asset('storage/'.str_replace('\\', '/', $stock->image)) }}" alt="">
+                                                                @endif
                                                                 <p class="adder-text text-white px-5 mt-4">{{ $stock->description }}</p>
-                                                        </div>
+                                                        </div></div>
                                                 </div>
                                                                 @elseif($i == 2)
-                                                        <div class="col-lg-4 col-12 p-3 d-flex align-items-center">
+                                                        <div class="col-lg-4 col-12 p-3">
+                                                                <div class="d-flex align-items-center">
                                                                 <div class="adder p-4 text-center">
+                                                                        @if(!$agent->isPhone())
                                                                         <img class="py-3" style="max-height: 280px;" src="{{ asset('storage/'.str_replace('\\', '/', $stock->image)) }}" alt="">
-                                                                        <p class="font-weight-bold text-white text-uppercase adder-header mb-3">
+                                                                        @else
+                                                                                <img class="py-3 w-100" src="{{ asset('storage/'.str_replace('\\', '/', $stock->image)) }}" alt="">
+                                                                        @endif
+                                                                                <p class="font-weight-bold text-white text-uppercase adder-header mb-3">
                                                                                 {{ $stock->name }}
                                                                         </p>
                                                                         <p class="adder-text text-white mt-4">{{ $stock->description }}</p>
                                                                 </div>
+                                                                </div>
                                                         </div>
                                                                 @elseif($i == 3)
-                                                                        <div class="col-lg-4 col-12 p-3 d-flex align-items-center">
+                                                                        <div class="col-lg-4 col-12 p-3">
+                                                                                <div class=" d-flex align-items-center">
                                                                                 <div class="adder p-4 text-center">
-                                                                                        <img class="py-3" style="max-height: 280px;" src="{{ asset('storage/'.str_replace('\\', '/', $stock->image)) }}" alt="">
+                                                                                        @if(!$agent->isPhone())
+                                                                                                <img class="py-3" style="max-height: 280px;" src="{{ asset('storage/'.str_replace('\\', '/', $stock->image)) }}" alt="">
+                                                                                        @else
+                                                                                                <img class="py-3 w-100" src="{{ asset('storage/'.str_replace('\\', '/', $stock->image)) }}" alt="">
+                                                                                        @endif
                                                                                         <p class="font-weight-bold text-white text-uppercase adder-header mb-3">
                                                                                                 {{ $stock->name }}
                                                                                         </p>
                                                                                         <p class="adder-text text-white mt-4">{{ $stock->description }}</p>
+                                                                                </div>
                                                                                 </div>
                                                                         </div>
                                                                 @endif
