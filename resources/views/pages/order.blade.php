@@ -192,25 +192,45 @@
                     <div class="px-0 mb-3">
                         <h2 class="catalog-header text-white font-weight-bold text-uppercase pb-4">Корзина заказа</h2>
                         <div class="p-4 bg-dark">
+                            <div class="row pb-3">
+                                <div class="col-4" style=" line-height: 60%;">
+                                    <span class="text-white" style="font-size: 11px;">Название</span>
+                                </div>
+                                <div class="col-2" style=" line-height: 60%;">
+                                    <span class="text-white" style="font-size: 11px;">Кол-во</span>
+                                </div>
+                                <div class="col-3" style=" line-height: 60%;">
+                                    <span class="text-white" style="font-size: 11px">Цена</span>
+                                </div>
+                                <div class="col-3" style=" line-height: 60%;">
+                                    <span class="text-white" style="font-size: 11px">Общая цена</span>
+                                </div>
+                            </div>
                             @foreach($cartItems as $item)
-                            <div class="row">
-                                <div class="col-6">
+                            <div class="row pb-1">
+                                <div class="col-4">
                                     <span class="text-white">{{ $item->name }}</span>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-2">
                                     <span class="text-white">{{ $item->quantity }}</span>
                                 </div>
                                 <div class="col-3">
                                     <span class="text-white">{{ $item->price }} сом</span>
                                 </div>
+                                <div class="col-3">
+                                    <span class="text-white">{{ $item->price * $item->quantity }} сом</span>
+                                </div>
                             </div>
                             @endforeach
                         </div>
                         @if($total > 200 && $total < 700)
-                        <p class="product-header text-white float-right font-weight-bold mt-3 p-3">
+                        <p class="product-header delivery text-white float-right font-weight-bold mt-3 p-3" style="display:block;">
                                 <span class="text-white mr-4">Доставка: 50 сом</span>
                             Итого: <span class="ml-2"> {{ $total + 50 }} сом</span>
                         </p>
+                            <p class="product-header delivery-self text-white float-right font-weight-bold mt-3 p-3" style="display:none;">
+                                Итого: <span class="ml-2"> {{ $total }} сом</span>
+                            </p>
                             @else
                             <p class="product-header text-white float-right font-weight-bold mt-3 p-3">
                                 Итого: <span class="ml-2"> {{ $total }} сом</span>
@@ -231,5 +251,15 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/localization/messages_ru.js">
     </script>
 
+    <script>
+        $('#take-out').on('click', function () {
+            $('.delivery').hide();
+            $('.delivery-self').show();
+        });
 
+        $('#delivery').on('click', function () {
+            $('.delivery').show();
+            $('.delivery-self').hide();
+        });
+    </script>
 @endpush

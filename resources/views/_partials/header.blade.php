@@ -1,10 +1,8 @@
 <nav class="navbar navbar-expand-md black shadow-sm" id="menu">
     <div class="container-fluid">
-        <button class="hamburger mr-4 d-lg-none d-block" onclick="openNav()" type="button">
-  <span class="hamburger-box">
-    <span class="hamburger-inner"></span>
-  </span>
-        </button>
+        <span class="mr-4 d-lg-none d-block" onclick="openNav()">
+  <img src="{{ asset('images/burger.png') }}" alt="">
+        </span>
         <a class="navbar-brand d-lg-block d-none" href="{{ url('/home') }}">
             <img class="img-fluid" src="{{ asset('images/logo.png') }}" alt="">
         </a>
@@ -106,7 +104,7 @@
 
             @guest
                 <span class="mx-1">
-                    <a class="point" href="{{ route('login') }}"> <i class="fas fa-user pr-2"></i>{{ __('ВХОД') }}</a>
+                    <a class="point" style="" href="{{ route('login') }}"> <i class="fas fa-user fa-lg pr-2"></i></a>
                 </span>
                 {{--@if (Route::has('register'))--}}
                 {{--<li class="nav-item">--}}
@@ -116,7 +114,7 @@
             @else
                 <span class="nav-item dropdown mx-1">
                     <a id="navbarDropdown" class="point dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        <i class="fas fa-user pr-2"></i>{{ Auth::user()->name }} <span class="caret"></span>
+                        <i class="fas fa-user fa-lg pr-2"></i><span class="caret"></span>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -135,11 +133,12 @@
                     </div>
                 </span>
             @endguest
-                <li class="position-relative mx-2">
+                <li class="position-relative mx-1">
                     <a href="{{ route('cart.checkout') }}" class="text-fut-book cart d-flex align-items-center" style="text-decoration: none; color: #444444;">
+                        <div class="text-white cart-total pr-1" style="font-size: 13px; transform: translateY(-10px)"></div>
                         <div class="badge badge-danger rounded-circle small shadow position-absolute cart-count justify-content-center align-items-center" style="width: 21px; height: 21px;top: -7px; right: -12px;"></div>
                         {{--<i style="color: #444;" class="fas carts fa-cart-plus fa-lg icon-flip"></i>--}}
-                        <img class="icon-flip" style="color: white; height:22px; width: 22px; margin-top:-17px;" src="{{ asset('images/cart.svg') }}" alt="">
+                        <img class="icon-flip" style="color: white; height:22px; width: 22px; margin-top:-20px;" src="{{ asset('images/cart.svg') }}" alt="">
                         {{--<div class="bg-danger py-2 px-3 ml-3 text-white cart-count" style="border-radius: 2px 0px 0px 2px;">--}}
 
                         {{--</div>--}}

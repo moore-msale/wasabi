@@ -136,6 +136,11 @@
     /*background-color:#292929;*/
     border: 1px solid #363636;
     box-sizing: border-box;
+    transition: 0.4s;
+}
+.product-card:hover
+{
+    border: 1px solid #cccc28;
 }
 .product-header
 {

@@ -96,7 +96,7 @@ class CartController extends Controller
 
                 }
             } else {
-            if($cart->getTotal() > 200 && $cart->getTotal() < 700)
+            if($cart->getTotal() > 200 && $cart->getTotal() < 700 && $request->type == 1)
             {
                 $newCart->total = $cart->getTotal() + 50;
             }
