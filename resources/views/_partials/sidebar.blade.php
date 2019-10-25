@@ -21,24 +21,34 @@
             <div class="tab-pane fade {{ request()->query('type') == null ? 'show active' : '' }}" id="category" role="tabpanel" aria-labelledby="home-tab">
                 @foreach(\App\Category::all() as $category)
                     {{--@dd($category->products)--}}
-                    @if(count($category->products))
+                    {{--@if(count($category->products))--}}
                     <a href="{{ route('catalog',array('category' => $category->id)) }}">
-                    <div class="p-3 my-1 cat" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
-                        <img class="img-fluid" style="width:70px;" src="{{ asset('storage/'.$category->image) }}" alt=""><span class="pl-4 point {{ request()->query('category') == $category->id ? 'choice' : ''}}">{{ $category->name }}</span>
+                    <div class="p-3 my-1 d-flex" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
+                       <div style="width: 30%;">
+                           <img class="img-fluid w-100" src="{{ asset('storage/'.$category->image) }}" alt="">
+                       </div>
+                        <div class="pl-4 ">
+                            <span class="point {{ request()->query('category') == $category->id ? 'choice' : ''}}">{{ $category->name }}</span>
+                        </div>
                     </div>
                     </a>
-                    @endif
+                    {{--@endif--}}
                 @endforeach
             </div>
             <div class="tab-pane fade {{ request()->query('type') != null ? 'show active' : '' }}" id="ingredient" role="tabpanel" aria-labelledby="profile-tab">
                 @foreach(\App\Type::all() as $type)
-                    @if(count($type->products))
+{{--                    @if(count($type->products))--}}
                     <a href="{{ route('catalog',array('type' => $type->id)) }}">
-                    <div class="p-3 my-1 cat" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
-                        <img class="img-fluid" style="width:70px;" src="{{ asset('storage/'.$type->image) }}" alt=""><span class="pl-4 point {{ request()->query('type') == $type->id ? 'choice' : ''}}">{{ $type->name }}</span>
+                    <div class="p-3 my-1 d-flex" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
+                        <div style="width: 30%;">
+                        <img class="img-fluid w-100" src="{{ asset('storage/'.$type->image) }}" alt="">
+                        </div>
+                        <div class="pl-4">
+                        <span class="point {{ request()->query('type') == $type->id ? 'choice' : ''}}">{{ $type->name }}</span>
+                        </div>
                     </div>
                     </a>
-                    @endif
+                    {{--@endif--}}
                 @endforeach
             </div>
         </div>

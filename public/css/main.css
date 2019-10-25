@@ -1,6 +1,6 @@
 .menu-phone
 {
-    font-size: 18px;
+    font-size: 14px;
     line-height: 21px;
     color:#fefefe;
 }
@@ -36,10 +36,10 @@
 }
 .point
 {
-    font-size: 13px;
+    font-size: 12px;
     line-height: 15px;
     text-transform: uppercase;
-    color: #FFFFFF;
+    color: #e1e1e1;
     transition: 0.3s;
 }
 .point:hover
@@ -61,6 +61,7 @@
 {
     background-size:cover;
     background-repeat: no-repeat;
+    height: 100%;
     border-radius:2px;
     background-position: center center;
 }
@@ -153,9 +154,16 @@
 }
 .product-img
 {
+    position:relative;
     background-size: cover;
     background-position: center;
+    height:225px;
+}
+.product-img-modal
+{
     height:285px;
+    background-size: cover;
+    background-position: center;
 }
 .product-img-mobile
 {
@@ -195,7 +203,7 @@
 .collona-product
 {
     transition: 0.3s;
-    width:33.3%;
+    width:25%;
 }
 .content-blog
 {
@@ -237,11 +245,11 @@
 }
 .full
 {
-    width:25%;
+    width:20%;
 }
 .short
 {
-    width:33.3%;
+    width:25%;
 }
 .nav-link.active
 {
@@ -290,7 +298,7 @@
     position: fixed;
     z-index: 100000;
     top: 0;
-    right: -380px;
+    left: -380px;
     background-color: #111;
     overflow-x: hidden;
     transition: 0.5s;
@@ -313,13 +321,15 @@
 .sidenav .closebtn {
     position: absolute;
     top: -10px;
-    right: 25px;
+    left: -50px;
     font-size: 36px;
     margin-left: 50px;
 }
 .choice
 {
-    color:#cccc28;
+    color:#fefefe;
+    font-size: 13px;
+    font-weight: bold;
 }
 .mobile-bar
 {
@@ -328,7 +338,6 @@
 }
 .cat-points
 {
-    border-left: 1px solid white;
     padding: 0px 10px;
 }
 .stock-img
@@ -349,6 +358,10 @@
 {
     color:#cccc28;
 }
+.h-100-desk
+{
+    height:100%!important;
+}
 @media screen and (max-width: 700px) {
     .owl-one .owl-nav .owl-prev
     {
@@ -362,6 +375,10 @@
         z-index: 999;
         transition: 0.5s;
     }
+    .h-100-desk
+    {
+        height:auto!important;
+    }
     .product-img
     {
         background-size: cover;
@@ -371,7 +388,16 @@
     .content-blog
     {
         width:100%;
-        padding-left:5%;
+        /*padding-left:5%;*/
+        overflow-y: hidden;
+        height:auto!important;
+    }
+    #menu
+    {
+        width:100%;
+        position: fixed;
+        top:0%;
+        z-index:9999;
     }
     .product-modal-props
     {
@@ -380,6 +406,15 @@
         border: 1px solid #44474a;
         color: #888;
         margin-left: 2px;
+    }
+    .adder
+    {
+        height:430px;
+    }
+    .md-form
+    {
+        margin-bottom: 0px;
+        margin-top:0px;
     }
 }
 

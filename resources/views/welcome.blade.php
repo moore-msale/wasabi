@@ -14,78 +14,129 @@
                         @if(!$agent->isPhone())
                         @include('_partials.sidebar')
                         @endif
-                        <div class="px-0 main-adder content-scroll content-blog" id="content-blog">
+                                <div class="px-0 main-adder content-scroll pb-4 content-blog" id="content-blog">
                                  <div class="container-fluid">
+                                         <div class="owl-two owl-carousel d-lg-none d-block">
+                                             <?php
+                                             $i = 1;
+                                             ?>
+                                                 @foreach(\App\Stock::all() as $stock)
+                                                         @if($i == 1)
+                                                                 <div class="col-lg-4 col-12 p-3">
+                                                                         <div class="adder p-4 text-center"
+                                                                              style="background-image: url({{asset('images/first-ad.png')}})">
+                                                                                 <p class="font-weight-bold text-white text-uppercase adder-header mb-5">
+                                                                                         {{ $stock->name }}
+                                                                                         <img class="w-50 py-3 mx-auto"
+                                                                                              src="{{ asset('images/adder.png') }}"
+                                                                                              alt="">
+                                                                                 <p class="adder-text text-white px-5 mt-5">{{ $stock->description }}</p>
+
+                                                                         </div>
+                                                                 </div>
+                                                         @elseif($i == 2)
+                                                                 <div class="col-lg-4 col-12 p-3">
+                                                                         <div class="adder p-4 my-lg-0"
+                                                                              style="background-image: url({{ asset('images/adder2.png') }})">
+                                                                                 <p class="font-weight-bold text-white text-uppercase adder-header">
+                                                                                         {{ $stock->name }}
+                                                                                 </p>
+                                                                                 <p class="adder-text text-white">{{ $stock->description }}</p>
+
+                                                                         </div>
+                                                                 </div>
+                                                         @elseif($i == 3)
+                                                                 <div class="col-lg-4 col-12 p-3">
+                                                                         <div class="adder p-4 my-lg-0 text-center d-flex align-items-center"
+                                                                              style="background-image: url({{asset('images/adder3.png')}})">
+                                                                                 <p class="font-weight-bold text-white text-uppercase adder-text w-50">
+                                                                                         {{ $stock->description }}
+                                                                                 </p>
+                                                                                 {{--<img class="img-fluid pt-2 pb-3" src="{{ asset('images/adder.png') }}" alt="">--}}
+
+                                                                         </div>
+                                                                 </div>
+                                                         @endif
+                                                 <?php
+                                                 $i = $i + 1;
+                                                 if($i == 4)
+                                                 {
+                                                     $i = 1;
+                                                 }
+                                                 ?>
+                                                 @endforeach
+                                         </div>
+                                     <div class="d-lg-block d-none">
+                                     <div class="row">
+                                         <?php
+                                         $i = 1;
+                                         ?>
+                                         @foreach(\App\Stock::all() as $stock)
+                                             @if($i == 1)
+                                                 <div class="col-lg-4 col-12 p-3">
+                                                     <div class="adder p-4 text-center"
+                                                          style="background-image: url({{asset('images/first-ad.png')}})">
+                                                         <p class="font-weight-bold text-white text-uppercase adder-header mb-5">
+                                                             {{ $stock->name }}
+                                                             <img class="w-50 py-3 mx-auto"
+                                                                  src="{{ asset('images/adder.png') }}"
+                                                                  alt="">
+                                                         <p class="adder-text text-white px-5 mt-5">{{ $stock->description }}</p>
+
+                                                     </div>
+                                                 </div>
+                                             @elseif($i == 2)
+                                                 <div class="col-lg-4 col-12 p-3">
+                                                     <div class="adder p-4 my-lg-0"
+                                                          style="background-image: url({{ asset('images/adder2.png') }})">
+                                                         <p class="font-weight-bold text-white text-uppercase adder-header">
+                                                             {{ $stock->name }}
+                                                         </p>
+                                                         <p class="adder-text text-white">{{ $stock->description }}</p>
+
+                                                     </div>
+                                                 </div>
+                                             @elseif($i == 3)
+                                                 <div class="col-lg-4 col-12 p-3">
+                                                     <div class="adder p-4 my-lg-0 text-center d-flex align-items-center"
+                                                          style="background-image: url({{asset('images/adder3.png')}})">
+                                                         <p class="font-weight-bold text-white text-uppercase adder-text w-50">
+                                                             {{ $stock->description }}
+                                                         </p>
+                                                         {{--<img class="img-fluid pt-2 pb-3" src="{{ asset('images/adder.png') }}" alt="">--}}
+
+                                                     </div>
+                                                 </div>
+                                             @endif
+                                             <?php
+                                             $i = $i + 1;
+                                             if($i == 4)
+                                             {
+                                                 $i = 1;
+                                             }
+                                             ?>
+                                         @endforeach
+                                     </div>
+                                     </div>
                                         <div class="row">
-                                                <?php
-                                                        $i = 1;
-                                                ?>
-                                                @foreach(\App\Stock::all() as $stock)
-                                                        @if($i == 1)
-                                                <div class="col-lg-4 col-12 p-3 d-flex align-items-center">
-                                                        <div class="adder p-4 text-center">
-                                                                <p class="font-weight-bold text-white text-uppercase adder-header mb-4">
-                                                                        {{ $stock->name }}
-                                                                </p>
-                                                                @if(!$agent->isPhone())
-                                                                        <img class="py-3" style="max-height: 280px;" src="{{ asset('storage/'.str_replace('\\', '/', $stock->image)) }}" alt="">
-                                                                @else
-                                                                        <img class="py-3 w-100" src="{{ asset('storage/'.str_replace('\\', '/', $stock->image)) }}" alt="">
-                                                                @endif
-                                                                <p class="adder-text text-white px-5 mt-4">{{ $stock->description }}</p>
-                                                        </div>
-                                                </div>
-                                                                @elseif($i == 2)
-                                                        <div class="col-lg-4 col-12 p-3 d-flex align-items-center">
-                                                                <div class="adder p-4 text-center">
-                                                                        @if(!$agent->isPhone())
-                                                                        <img class="py-3" style="max-height: 280px;" src="{{ asset('storage/'.str_replace('\\', '/', $stock->image)) }}" alt="">
-                                                                        @else
-                                                                                <img class="py-3 w-100" src="{{ asset('storage/'.str_replace('\\', '/', $stock->image)) }}" alt="">
-                                                                        @endif
-                                                                                <p class="font-weight-bold text-white text-uppercase adder-header mb-3">
-                                                                                {{ $stock->name }}
-                                                                        </p>
-                                                                        <p class="adder-text text-white mt-4">{{ $stock->description }}</p>
-                                                                </div>
-                                                        </div>
-                                                                @elseif($i == 3)
-                                                                        <div class="col-lg-4 col-12 p-3 d-flex align-items-center">
-                                                                                <div class="adder p-4 text-center">
-                                                                                        @if(!$agent->isPhone())
-                                                                                                <img class="py-3" style="max-height: 280px;" src="{{ asset('storage/'.str_replace('\\', '/', $stock->image)) }}" alt="">
-                                                                                        @else
-                                                                                                <img class="py-3 w-100" src="{{ asset('storage/'.str_replace('\\', '/', $stock->image)) }}" alt="">
-                                                                                        @endif
-                                                                                        <p class="font-weight-bold text-white text-uppercase adder-header mb-3">
-                                                                                                {{ $stock->name }}
-                                                                                        </p>
-                                                                                        <p class="adder-text text-white mt-4">{{ $stock->description }}</p>
-                                                                                </div>
-                                                                        </div>
-                                                                @endif
-                                                        <?php
-                                                                $i = $i + 1;
-                                                                if($i == 4)
-                                                                    {
-                                                                        $i = 1;
-                                                                    }
-                                                        ?>
-                                                @endforeach
-                                                <div class="col-12">
+
+                                                <div class="col-12 d-lg-block d-none">
                                                         <p class="catalog-header text-light font-weight-bold pt-4 px-5">
                                                                 Меню
                                                         </p>
                                                         <div class="owl-one owl-carousel">
                                                                 @foreach(\App\Category::all() as $category)
-                                                                        @if(count($category->products))
-                                                                <div class="item grey darken-4 text-center p-4">
-                                                                        <a href="{{ route('catalog',array('category' => $category->id)) }}">
-                                                                                <p class="point" style="height:20px;">{{ $category->name }}</p>
-                                                                        <img class="img-fluid" src="{{ asset('storage/'.$category->image) }}" alt="">
-                                                                        </a>
-                                                                </div>
-                                                                        @endif
+                                                                        {{--@if(count($category->products))--}}
+                                                                                <div class="item grey darken-4 text-center p-4 cat">
+                                                                                        <a href="{{ route('catalog',array('category' => $category->id)) }}">
+                                                                                                <p class="point"
+                                                                                                   style="height:20px;">{{ $category->name }}</p>
+                                                                                                <img class="img-fluid"
+                                                                                                     src="{{ asset('storage/'.$category->image) }}"
+                                                                                                     alt="">
+                                                                                        </a>
+                                                                                </div>
+                                                                        {{--@endif--}}
                                                                 @endforeach
                                                         </div>
                                                 </div>

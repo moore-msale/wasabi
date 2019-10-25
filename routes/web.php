@@ -19,7 +19,8 @@ Route::get('/about_us','HomeController@about_us')->name('about_us');
 Route::get('/stock', 'HomeController@stock')->name('stock');
 Route::get('/delivery','HomeController@delivery')->name('delivery');
 Route::get('/rule', 'HomeController@rule')->name('rule');
-
+Route::get('/catalog_m', 'ProductController@mobile_catalog')->name('catalog_m');
+Route::post('/catalog_m_filter', 'ProductController@mobile_filter')->name('catalog_m_filter');
 Route::get('/carter', function () {
     return view('pages.cart');
 });

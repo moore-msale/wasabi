@@ -6,12 +6,34 @@
             background-image: url({{ asset('images/mainbg.png') }});
             background-size:cover;
         }
+        .content-blog
+        {
+            width:100%;
+        }
+        .sidebar-blog
+        {
+            left:-16.6%;
+        }
+        .open-nav
+        {
+            display:block;
+        }
+        .close-nav
+        {
+            display: none;
+        }
     </style>
 @endpush
 @section('content')
-    <div class="container" style="height: 90vh;">
-        <div class="row align-items-center h-100">
-            <div class="col-12 text-white">
+    <div class="container-fluid">
+        <div class="row justify-content-end">
+    @if(!$agent->isPhone())
+        @include('_partials.sidebar')
+    @endif
+    <div class="content-blog content-scroll" id="content-blog">
+        <div class="container h-100-desk">
+        <div class="row align-items-center justify-content-end h-100-desk">
+            <div class="col-12 text-white ">
                 <h2 class="pb-3">
                     Бренд суши маркета «Васаби» основан в Бишкеке в 2018 году друзьями Баймырза и Бакыт
                 </h2>
@@ -25,6 +47,10 @@
 
             </div>
         </div>
+        </div>
+        @include('_partials.footer')
     </div>
-    @include('_partials.footer')
+
+    </div>
+    </div>
 @endsection

@@ -28,8 +28,25 @@ class ProductController extends Controller
         return view('pages.catalog',['products' => $products]);
     }
 
+    public function mobile_catalog(Request $request)
+    {
+//        dd($request->all());
+        if($request->type == 'category')
+        {
+            $categories = Category::all();
+            return view('pages.catalog_m',['items' => $categories, 'type' => $request->type, 'pos' => $request->pos, 'tipers' => []]);
+        }
+        else
+        {
+            $types = Type::all();
+            return view('pages.catalog_m',['items' => $types, 'type' => $request->type, 'pos' => $request->pos, 'tipers' => []]);
+        }
+
+//        return view('pages.catalog_m',['categories' => $categories]);
+    }
     public function filter(Request $request)
     {
+//        dd($request->all());
         if (isset($request->sort))
         {
             $count = count($request->all()) - 3;
@@ -77,7 +94,68 @@ class ProductController extends Controller
         return view('pages.catalog', ['products' => $products]);
         }
     }
+    public function mobile_filter(Request $request)
+    {
+//        dd($request->all());
+        $tipers = collect();
+        if($request->type == 'category')
+        {
+            $items = Category::all();
 
+            foreach (Type::all() as $type)
+            {
+                if($request[$type->id])
+                {
+                    $tipers->push($type);
+                }
+            }
+            $tt = collect();
+            foreach($items as $item)
+            {
+                foreach($tipers as $tiper)
+                {
+                    foreach($tiper->products as $product)
+                    {
+                        if($item->products->contains($product->id))
+                        {
+                            $tt->push($item);
+                        }
+                    }
+                }
+            }
+            $items = $tt->unique();
+        }
+        else
+        {
+            $items = Type::all();
+
+            foreach (Category::all() as $category)
+            {
+                if($request[$category->id])
+                {
+                    $tipers->push($category);
+                }
+            }
+            $tt = collect();
+            foreach($items as $item)
+            {
+                foreach($tipers as $tiper)
+                {
+                    foreach($tiper->products as $product)
+                    {
+                        if($item->products->contains($product->id))
+                        {
+                            $tt->push($item);
+
+                        }
+                    }
+                }
+            }
+            $items = $tt->unique();
+        }
+//        dd($items);
+            return view('pages.catalog_m', ['items' => $items, 'tipers' => $tipers]);
+    }
 
 
     public function liked(Request $request)

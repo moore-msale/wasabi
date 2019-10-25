@@ -6,9 +6,31 @@
             background-image: url({{ asset('images/mainbg.png') }});
             background-size:cover;
         }
+        .content-blog
+        {
+            width:100%;
+        }
+        .sidebar-blog
+        {
+            left:-16.6%;
+        }
+        .open-nav
+        {
+            display:block;
+        }
+        .close-nav
+        {
+            display: none;
+        }
     </style>
 @endpush
 @section('content')
+    <div class="container-fluid">
+        <div class="row justify-content-end">
+            @if(!$agent->isPhone())
+                @include('_partials.sidebar')
+            @endif
+            <div class="content-blog content-scroll" id="content-blog" style="height: 90vh;">
     <div class="container" style="height: 90vh;">
         <div class="row align-items-center justify-content-center h-100">
             <div class="col-10 text-white">
@@ -35,4 +57,8 @@
         </div>
     </div>
     @include('_partials.footer')
+            </div>
+        </div>
+    </div>
+
 @endsection

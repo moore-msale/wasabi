@@ -80,28 +80,51 @@
                                                 </div>
                                             </div>
                                             <input type="hidden" name="type" value="1">
-                                            <div class="d-flex justify-content-end">
-                                                <button class="btn btn-danger text-white" type="submit">
-                                                    Отправить <i class="fas fa-long-arrow-alt-right ml-2"></i>
-                                                </button>
-                                            </div>
+
                                         </div>
-                                        <div class="col-12">
+                                        <div class="col-12 pb-2" style="border: 1px solid #ff3547;">
                                             <p class="text-white pt-3">
                                                 Условия доставки:
                                             </p>
-                                            <p class="text-white">
+                                            <div>
+                                            <img class="mr-3" style="width:30px; height:30px;" src="{{ asset('images/take-away.svg') }}" alt="">
+                                            <span class="text-white">
                                                 Стоимость доставки – 50 сом. При заказе на сумму свыше 700 сом, доставка бесплатная.
-                                            </p>
-                                            <p class="text-white">
+                                            </span>
+                                            </div>
+                                            <div class="pt-3">
+                                            <img class="mr-3" style="width:30px; height:30px;" src="{{ asset('images/clock.svg') }}" alt="">
+                                            <span class="text-white">
                                                 Время доставки в течении 1 часа. В часы пик доставка может быть дольше.
-                                            </p>
-                                            <p class="text-white">
+                                            </span>
+                                            </div>
+                                            <div class="pt-3">
+                                                <img class="mr-3" style="width:30px; height:30px;" src="{{ asset('images/sushi.svg') }}" alt="">
+                                            <span class="text-white">
                                                 Минимальный заказ – 200 сом. О доставке в отдаленные районы уточняйте у оператора.
-                                            </p>
-                                            <p class="text-white">
-                                                При первой покупке покупке после регистрации на сайте скидка 20%, скидка не складывается со скидкой от промокода или других акций.
-                                            </p>
+                                            </span>
+                                            </div>
+                                            <div class="pt-3">
+                                                <img class="mr-3" style="width:30px; height:30px;" src="{{ asset('images/sushi.svg') }}" alt="">
+                                            <span class="text-white">
+                                                При первой покупке после регистрации на сайте скидка 20%, скидка не складывается со скидкой от промокода или других акций.
+                                            </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 px-0 mt-3">
+                                            @if($total < 200)
+
+                                            <button class="btn btn-danger text-white float-right" disabled type="submit">
+                                                Отправить <i class="fas fa-long-arrow-alt-right ml-2"></i>
+                                            </button>
+                                                <span class="float-right text-white mt-3 mr-3">
+                                                Доставка при заказе от - 200 сом
+                                                    </span>
+                                                @else
+                                                <button class="btn btn-danger text-white float-right" type="submit">
+                                                    Отправить <i class="fas fa-long-arrow-alt-right ml-2"></i>
+                                                </button>
+                                            @endif
                                         </div>
                                     </div>
                                 </form></div>
@@ -129,25 +152,32 @@
                                                 <input placeholder="Заказ на время*" type="text" name="dtime" id="dtime" class="form-control date-format text-white d-block" required>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 p-2">
+
+                                        <div class="col-12 pb-2" style="border: 1px solid #ff3547;">
+                                            <p class="text-white pt-3">
+                                                Акция:
+                                            </p>
+                                            <div>
+                                            <img class="mr-3" style="width:30px; height:30px;" src="{{ asset('images/take-away.svg') }}" alt="">
+                                            <span class="text-white">
+                                                Забери свой заказ сам и получи 10% (действует до 31-декабря)
+                                            </span>
+                                            </div>
+                                            <div class="pt-2">
+                                                <img class="mr-3" style="width:30px; height:30px;" src="{{ asset('images/sushi.svg') }}" alt="">
+                                            <span class="text-white">
+                                                При первой покупке после регистрации на сайте скидка 20%, скидка не складывается со скидкой от промокода или других акций.
+                                            </span>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-lg-12 px-0 p-2">
                                             <input type="hidden" name="type" value="2">
                                             <div class="d-flex justify-content-end">
                                                 <button class="btn btn-danger text-white" type="submit">
                                                     Отправить <i class="fas fa-long-arrow-alt-right ml-2"></i>
                                                 </button>
                                             </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <p class="text-white pt-3">
-                                                Акция:
-                                            </p>
-                                            <p class="text-white">
-                                                Забери свой заказ сам и получи 10% (действует до 31-декабря)
-                                            </p>
-                                            <p class="text-white">
-                                                При первой покупке после регистрации на сайте скидка 20%, скидка не складывается со скидкой от промокода или других акций.
-                                            </p>
-
                                         </div>
                                     </div>
                                 </form>
@@ -176,9 +206,16 @@
                             </div>
                             @endforeach
                         </div>
+                        @if($total > 200 && $total < 700)
                         <p class="product-header text-white float-right font-weight-bold mt-3 p-3">
-                            Итого: <span class="ml-2"> {{ $total }} сом</span>
+                                <span class="text-white mr-4">Доставка: 50 сом</span>
+                            Итого: <span class="ml-2"> {{ $total + 50 }} сом</span>
                         </p>
+                            @else
+                            <p class="product-header text-white float-right font-weight-bold mt-3 p-3">
+                                Итого: <span class="ml-2"> {{ $total }} сом</span>
+                            </p>
+                        @endif
                     </div>
                 </div>
             </div>

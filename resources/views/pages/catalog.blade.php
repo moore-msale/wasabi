@@ -21,6 +21,7 @@
                 @include('_partials.sidebar')
             @endif
             <div class="content-scroll position-relative content-blog" id="content-blog">
+                @if(count($products))
                 <div class="row py-4 px-lg-5 pl-2 w-100">
                     <div class="col-12 px-0 mb-4">
                         <h2 class="catalog-header text-white font-weight-bold">Роллы</h2>
@@ -68,9 +69,9 @@
                     <div class="mobile-bar d-md-none d-block" style="max-width: none!important; overflow-x: auto; width:100%;">
                         <div class="text-white mt-2 pl-2" style="width:max-content;">
                         @foreach(\App\Category::all() as $category)
-                                @if(count($category->products))
+                                {{--@if(count($category->products))--}}
                                 <a href="{{ route('catalog',array('category' => $category->id)) }}" class="cat-points point {{ request()->query('category') == $category->id ? 'choice' : ''}}">{{ $category->name }}</a>
-                                @endif
+                                {{--@endif--}}
                         @endforeach
                         </div>
                     </div>
@@ -84,29 +85,37 @@
                         @endforeach
                     @endif
                 </div>
+                    @else
+                    <div class="row py-4 justify-content-center w-100 h-100 align-items-center">
+                        <p class="h3 text-white">Товаров в данной категории нет!</p>
+                    </div>
+                    @endif
+                @include('_partials.footer')
             </div>
         </div>
     </div>
 
+    @if(count($products))
     @foreach($products as $product)
     @include('modals.product')
     @endforeach
+    @endif
 @endsection
-@push('scripts')
-    <script>
-        $(document).ready( function () {
-            let id = {{$product->id}}
-            console.log($('.counter-' + id).html());
-            if(parseInt($('.counter-' + id).html()) >= 0)
-            {
+{{--@push('scripts')--}}
+    {{--<script>--}}
+        {{--$(document).ready( function () {--}}
+            {{--let id = {{$product->id}}--}}
+            {{--console.log($('.counter-' + id).html());--}}
+            {{--if(parseInt($('.counter-' + id).html()) >= 0)--}}
+            {{--{--}}
 
-            }
-            else
-            {
-                $('.counter-' + id).html(0);
-            }
-            console.log({{$product->id}});
-        })
-    </script>
-@endpush
+            {{--}--}}
+            {{--else--}}
+            {{--{--}}
+                {{--$('.counter-' + id).html(0);--}}
+            {{--}--}}
+            {{--console.log({{$product->id}});--}}
+        {{--})--}}
+    {{--</script>--}}
+{{--@endpush--}}
 

@@ -33,7 +33,7 @@
                 </p>
                 @endif
             </div>
-            <div class="col-lg-8 col-12 bg-dark p-4">
+            <div class="col-lg-8 col-12 bg-dark py-4 px-0">
                 <ul class="nav nav-tabs border-0" id="myTab" role="tablist">
 
                     <li class="nav-item mr-2 border-0 ml-auto">
@@ -48,7 +48,7 @@
                         <div class="row">
                         @foreach(\Illuminate\Support\Facades\Auth::user()->products as $product)
                             @if(!$agent->isPhone())
-                                @include('_partials.product-card')
+                                @include('_partials.product-profile')
                             @else
                                 @include('_partials.product_card_mobile')
                             @endif

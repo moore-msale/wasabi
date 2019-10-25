@@ -5,7 +5,7 @@
             <img src="{{ asset('images/logo.png') }}" alt="">
             </a>
         </div>
-        <div class="col-lg-3 col-12 p-3 mt-lg-5 mt-4 text-white text-lg-left text-center">
+        <div class="col-lg-3 col-12 p-3 mt-lg-3 mt-1 text-white text-lg-left text-center">
             <h3 class="pb-1">Главное</h3>
             <a href="/delivery">
             <p class="footer-point">
@@ -23,7 +23,7 @@
             </p>
             </a>
         </div>
-        <div class="col-lg-3 col-12 p-3 mt-lg-5 mt-4 text-white text-lg-left text-center">
+        <div class="col-lg-3 col-12 p-3 mt-lg-3 mt-1 text-white text-lg-left text-center">
             <h3 class="pb-1">Контакты</h3>
             <a href="https://2gis.kg/bishkek/search/wasabi/firm/70000001036850277?floor=0&m=74.615528%2C42.869249%2F17.57">
             <p class="footer-point">
@@ -41,7 +41,7 @@
             </p>
             </a>
         </div>
-        <div class="col-lg-3 col-12 p-3 mt-lg-5 mt-4 text-white text-lg-left text-center">
+        <div class="col-lg-3 col-12 p-3 mt-lg-3 mt-1 text-white text-lg-left text-center">
             <h3 class="pb-1">Мы в соц.сетях</h3>
             <a href="https://www.instagram.com/wasabi_kg/">
             <p class="d-flex align-items-center footer-point justify-content-lg-start justify-content-center">

@@ -9,7 +9,7 @@
     @if(!$agent->isPhone())
         @include('_partials.sidebar')
     @endif
-            <div class="p-lg-5 p-0 content-blog" id="content-blog">
+            <div class="p-lg-5 p-0 content-blog pb-lg-0 pb-5" id="content-blog">
                 <div class="py-4 px-lg-5 px-2">
                     <div class="px-0 mb-3">
                         <h2 class="catalog-header text-white font-weight-bold text-uppercase pb-4">Корзина заказа</h2>
@@ -71,13 +71,23 @@
             <div class="row justify-content-center align-items-center" style="height:80vh;">
                 <div class="text-center">
                 <p class="h3 text-white">Корзина пуста!</p>
+                    @if(!$agent->isPhone())
                 <div class="col-12"></div>
                 <a href="{{ route('catalog',array('category' => 1)) }}">
                 <button class="btn btn-danger text-white float-right mt-4">
                     Перейти в корзину <i class="fas fa-long-arrow-alt-right ml-2"></i>
                 </button>
                 </a>
+                        @else
+                        <div class="col-12"></div>
+                        <a href="{{ route('catalog_m',array('pos' => 0, 'type' => 'category')) }}">
+                            <button class="btn btn-danger text-white float-right mt-4">
+                                Перейти в корзину <i class="fas fa-long-arrow-alt-right ml-2"></i>
+                            </button>
+                        </a>
+                    @endif
                 </div>
+
             </div>
         @endif
     </div>

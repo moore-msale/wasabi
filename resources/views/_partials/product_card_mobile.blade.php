@@ -1,25 +1,52 @@
 <?php
-$cart = \Darryldecode\Cart\Facades\CartFacade::session(csrf_token());
+$token = csrf_token() ? csrf_token() : \Illuminate\Support\Facades\Session::has('token') ? \Illuminate\Support\Facades\Session::get('token') : uniqid();
+\App\TokenResolve::resolve($token);
+$cart = \Darryldecode\Cart\Facades\CartFacade::session($token);
 $cart = $cart->getContent();
 ?>
 <div class="col-lg-4 col-12 product-card p-lg-4 p-2 mt-1">
+    <div class="container-fluid">
     <div class="row">
         <div class="col-4">
-            <div class="product-img-mobile" style="background-image: url({{ asset('storage/'.str_replace('\\', '/', $product->image)) }})"  data-toggle="modal" data-target="#productModal-{{ $product->id }}"></div>
+            <div class="product-img-mobile" style="background-image: url({{ asset('storage/'.str_replace('\\', '/', $product->image)) }})"  data-toggle="modal" data-target="#productModal-{{ $product->id }}">
+                @if($product->hit == 1)
+                    <p style="position: absolute; padding:0px 10px; border-radius: 5px; top:0%; right:0%;" class="bg-danger text-white font-weight-bold">
+                        Хит
+                    </p>
+                @elseif($product->new == 1)
+                    <p style="position: absolute; padding:0px 10px; border-radius: 5px; top:0%; right:0%;" class="bg-danger text-white font-weight-bold">
+                        Новинка
+                    </p>
+                @elseif($product->types->contains(1))
+                    <p style="position: absolute; padding:0px 10px; border-radius: 5px; top:0%; right:0%;" class="bg-danger text-white font-weight-bold">
+                        Острое
+                    </p>
+                @elseif($product->categories->contains(9))
+                    <p style="position: absolute; padding:0px 10px; border-radius: 5px; top:0%; right:0%;" class="bg-danger text-white font-weight-bold">
+                        Горячее
+                    </p>
+                @endif
+            </div>
         </div>
         <div class="col-4 pl-0">
             <p class="product-header text-white font-weight-bold"  data-toggle="modal" data-target="#productModal-{{$product->id}}">
                 {{ $product->name }}
             </p>
-            <p class="product-text text-white">
+            <p class="mb-2 product-text text-white">
                 {{--{{ $product->description }}--}}
                 {{ \Illuminate\Support\Str::limit($product->description, $limit = 60, $end = '...') }}
             </p>
+            @auth()
+                <div class="w-50">
+                    <i class="fas fa-heart fa-lg empty-like {{$product->users->contains(\Illuminate\Support\Facades\Auth::id()) == true ? 'like' : ''}}" data-id="{{ $product->id }}"></i>
+                </div>
+            @endauth
         </div>
         <div class="col-4 px-0">
-            <p class="product-price text-center text-white font-weight-bold">
+            <p class=" product-price text-center text-white font-weight-bold">
              {{ $product->price }} сом
             </p>
+
             <div class="d-flex align-items-end h-50">
                 <div class="d-flex text-light mr-auto ml-md-0 justify-content-between align-items-center" style="width: 100px;">
                     <span class="pointer cart-btn rounded shadow-sm p-2 remove_book d-flex justify-content-center align-items-center " data-id="{{ $product->id }}">-</span>
@@ -36,13 +63,14 @@ $cart = $cart->getContent();
         </div>
 
     </div>
+    </div>
 </div>
 
 @push('scripts')
     <script>
         $(document).ready( function () {
-            let id = {{$product->id}}
-            console.log($('.counter-' + id).html());
+            let id = {{$product->id}};
+            // console.log($('.counter-' + id).html());
             if(parseInt($('.counter-' + id).html()) >= 0)
             {
 
@@ -51,7 +79,7 @@ $cart = $cart->getContent();
             {
                 $('.counter-' + id).html(0);
             }
-            console.log({{$product->id}});
+{{--            console.log({{$product->id}});--}}
         })
     </script>
 @endpush

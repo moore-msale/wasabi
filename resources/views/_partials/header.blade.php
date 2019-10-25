@@ -1,7 +1,15 @@
-<nav class="navbar navbar-expand-md black shadow-sm">
+<nav class="navbar navbar-expand-md black shadow-sm" id="menu">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url('/home') }}">
+        <button class="hamburger mr-4 d-lg-none d-block" onclick="openNav()" type="button">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+        </button>
+        <a class="navbar-brand d-lg-block d-none" href="{{ url('/home') }}">
             <img class="img-fluid" src="{{ asset('images/logo.png') }}" alt="">
+        </a>
+        <a class="w-auto d-lg-none d-block" href="{{ url('/home') }}">
+            <img class="w-75" src="{{ asset('images/logo.png') }}" alt="">
         </a>
         {{--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">--}}
             {{--<span class="navbar-toggler-icon"></span>--}}
@@ -77,7 +85,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="nav-item dropdown d-flex mx-2 ">
+                <li class="nav-item dropdown d-none mx-2 ">
                     <a class="nav-link text-light align-self-center dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{strtoupper(App::getLocale())}}
@@ -95,17 +103,18 @@
             </ul>
         </div>
         @if($agent->isPhone())
+
             @guest
-                <li class="mx-1">
+                <span class="mx-1">
                     <a class="point" href="{{ route('login') }}"> <i class="fas fa-user pr-2"></i>{{ __('ВХОД') }}</a>
-                </li>
+                </span>
                 {{--@if (Route::has('register'))--}}
                 {{--<li class="nav-item">--}}
                 {{--<a class="nav-link" href="{{ route('register') }}">{{ __('РЕГИСТРАЦИЯ') }}</a>--}}
                 {{--</li>--}}
                 {{--@endif--}}
             @else
-                <li class="nav-item dropdown mx-1">
+                <span class="nav-item dropdown mx-1">
                     <a id="navbarDropdown" class="point dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         <i class="fas fa-user pr-2"></i>{{ Auth::user()->name }} <span class="caret"></span>
                     </a>
@@ -124,7 +133,7 @@
                             @csrf
                         </form>
                     </div>
-                </li>
+                </span>
             @endguest
                 <li class="position-relative mx-2">
                     <a href="{{ route('cart.checkout') }}" class="text-fut-book cart d-flex align-items-center" style="text-decoration: none; color: #444444;">
@@ -138,11 +147,7 @@
                         {{--</div>--}}
                     </a>
                 </li>
-        <button class="hamburger" onclick="openNav()" type="button">
-  <span class="hamburger-box">
-    <span class="hamburger-inner"></span>
-  </span>
-        </button>
+
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <ul class="nav nav-tabs picker" id="myTab" role="tablist">
@@ -157,24 +162,24 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="category" role="tabpanel" aria-labelledby="home-tab">
                             @foreach(\App\Category::all() as $category)
-                                @if(count($category->products))
-                                <a href="{{ route('catalog',array('category' => $category->id)) }}">
+                                {{--@if(count($category->products))--}}
+                                <a href="{{ route('catalog_m',array('pos' => $loop->index, 'type' => 'category')) }}">
                                     <div class="p-3 my-1" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
                                         <img class="img-fluid" style="width:70px;" src="{{ asset('storage/'.$category->image) }}" alt=""><span class="pl-4 point">{{ $category->name }}</span>
                                     </div>
                                 </a>
-                                @endif
+                                {{--@endif--}}
                             @endforeach
                         </div>
                         <div class="tab-pane fade" id="ingredient" role="tabpanel" aria-labelledby="profile-tab">
                             @foreach(\App\Type::all() as $type)
-                                @if(count($type->products))
-                                <a href="{{ route('catalog',array('type' => $type->id)) }}">
+{{--                                @if(count($type->products))--}}
+                                <a href="{{ route('catalog_m',array('pos' => $loop->index, 'type' => 'type')) }}">
                                     <div class="p-3 my-1" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
                                         <img class="img-fluid" style="width:70px;" src="{{ asset('storage/'.$type->image) }}" alt=""><span class="pl-4 point">{{ $type->name }}</span>
                                     </div>
                                 </a>
-                                @endif
+                                {{--@endif--}}
                             @endforeach
                         </div>
                     </div>

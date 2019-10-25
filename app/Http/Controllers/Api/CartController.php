@@ -56,7 +56,14 @@ class CartController extends Controller
                 $user->stock = 1;
                 $user->save();
                 $newCart->discount = 20;
-                $newCart->total = $cart->getTotal() - (($cart->getTotal() / 100) * 20);
+                if($cart->getTotal() > 200 && $cart->getTotal() < 700)
+                {
+                $newCart->total = ($cart->getTotal() + 50) - (($cart->getTotal() / 100) * 20);
+                }
+                else
+                {
+                    $newCart->total = $cart->getTotal() - (($cart->getTotal() / 100) * 20);
+                }
             }
         }
         if (isset($request->promo)) {
@@ -64,16 +71,39 @@ class CartController extends Controller
                 foreach ($promos as $promo) {
                     if ($request->promo == $promo->name) {
                         $newCart->promo = $request->promo;
-                        $newCart->total = $cart->getTotal() - (($cart->getTotal() / 100) * $promo->discount);
+                        if($cart->getTotal() > 200 && $cart->getTotal() < 700)
+                        {
+                            $newCart->total = ($cart->getTotal() + 50) - (($cart->getTotal() / 100) * $promo->discount);
+                        }
+                        else
+                        {
+                            $newCart->total = $cart->getTotal() - (($cart->getTotal() / 100) * $promo->discount);
+                        }
+
                         $newCart->discount = $promo->discount;
                     }
                 }
                 if (!$newCart->promo)
                 {
-                    $newCart->total = $cart->getTotal();
+                    if($cart->getTotal() > 200 && $cart->getTotal() < 700)
+                    {
+                        $newCart->total = $cart->getTotal() + 50;
+                    }
+                    else
+                    {
+                        $newCart->total = $cart->getTotal();
+                    }
+
                 }
             } else {
+            if($cart->getTotal() > 200 && $cart->getTotal() < 700)
+            {
+                $newCart->total = $cart->getTotal() + 50;
+            }
+            else
+            {
                 $newCart->total = $cart->getTotal();
+            }
             }
         if($request->type == 1) {
             $newCart->type = 1;

@@ -49,7 +49,7 @@
 @include('_partials.header')
 
     <div id="app">
-        <main class="py-0 position-relative">
+        <main class="py-0 position-relative pt-lg-0 pt-5">
             @yield('content')
         </main>
     </div>
@@ -226,9 +226,10 @@
                     //     btn.removeClass("btn-success").dequeue();
                     // });
                     let count = $('.counter-' + btn.data('id')).html();
+
                     $('.counter-' + btn.data('id')).html(parseInt(count) + 1);
-                    $('.carts').addClass('btn-success');
-                    doBounce($('.cart-count'), 3, '5px', 90);
+                    // $('.carts').addClass('btn-success');
+                    // doBounce($('.cart-count'), 3, '5px', 90);
                     cart = fetchCart();
                 },
                 error: () => {
@@ -350,15 +351,42 @@
     })
 </script>
 <script>
+    var owl = $('.owl-two');
+    owl.owlCarousel({
+        margin: 10,
+        loop: true,
+        autoplay:true,
+        autoplayTimeout:5000,
+        // autoplaySpeed: 1500,
+        // autoplayHoverPause:true,
+        responsive: {
+            0: {
+                items: 1
+            }
+        }
+    })
+</script>
+<script>
     function openNav() {
-        document.getElementById("mySidenav").style.right = "0px";
+        document.getElementById("mySidenav").style.left = "0px";
     }
 
     function closeNav() {
-        document.getElementById("mySidenav").style.right = "-380px";
+        document.getElementById("mySidenav").style.left = "-380px";
     }
 </script>
-{{--<script>--}}
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#pick").on("click","a", function (event) {
+            event.preventDefault();
+            var id  = $(this).attr('href'),
+                top = $(id).offset().top;
+            $('body,html').animate({scrollTop: top}, 500);
+        });
+    });
+</script>{{--<script>--}}
     {{--$('.buy_book').on('click', function (e) {--}}
         {{--let btn = $(e.currentTarget);--}}
         {{--let count = $('.counter-' + btn.data('id')).html();--}}
