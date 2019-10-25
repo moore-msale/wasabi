@@ -10,21 +10,15 @@ $cart = $cart->getContent();
         <div class="col-4">
             <div class="product-img-mobile" style="background-image: url({{ asset('storage/'.str_replace('\\', '/', $product->image)) }})"  data-toggle="modal" data-target="#productModal-{{ $product->id }}">
                 @if($product->hit == 1)
-                    <p style="position: absolute; padding:0px 10px; border-radius: 5px; top:0%; right:0%;" class="bg-danger text-white font-weight-bold">
-                        Хит
-                    </p>
+                    <img style="width:50px; height:50px; position: absolute; padding:0px 10px; border-radius: 5px; top:0%; right:0%;" src="{{ asset('images/gold-medal.svg') }}" alt="">
                 @elseif($product->new == 1)
-                    <p style="position: absolute; padding:0px 10px; border-radius: 5px; top:0%; right:0%;" class="bg-danger text-white font-weight-bold">
-                        Новинка
-                    </p>
+                    <img style="width:50px; height:50px; position: absolute; padding:0px 10px; border-radius: 5px; top:0%; right:0%;" src="{{ asset('images/new.svg') }}" alt="">
                 @elseif($product->types->contains(1))
-                    <p style="position: absolute; padding:0px 10px; border-radius: 5px; top:0%; right:0%;" class="bg-danger text-white font-weight-bold">
-                        Острое
-                    </p>
+                    <img style=" width:50px; height:50px; position: absolute; padding:0px 10px; top:0%; right:0%;" src="{{ asset('images/rhcp.svg') }}" alt="">
+
                 @elseif($product->categories->contains(9))
-                    <p style="position: absolute; padding:0px 10px; border-radius: 5px; top:0%; right:0%;" class="bg-danger text-white font-weight-bold">
-                        Горячее
-                    </p>
+                    <img style=" width:50px; height:50px; position: absolute; padding:0px 10px; border-radius: 5px; top:0%; right:0%;" src="{{ asset('images/flame.svg') }}" alt="">
+
                 @endif
             </div>
         </div>
