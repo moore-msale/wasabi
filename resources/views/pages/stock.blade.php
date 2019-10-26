@@ -40,7 +40,7 @@
                     <h3 class="py-3 text-white text-center">
                         {{ $stock->name }}
                     </h3>
-                    <p class="text-white">
+                    <p class="text-white text-about">
                         {{ $stock->description }}
                     </p>
                 </div>

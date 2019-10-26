@@ -30,7 +30,7 @@
                                                                                          <img class="w-50 py-3 mx-auto"
                                                                                               src="{{ asset('images/adder.png') }}"
                                                                                               alt="">
-                                                                                 <p class="adder-text text-white px-5 mt-5">{{ $stock->description }}</p>
+                                                                                 <p class="adder-text text-white px-5 mt-5 text-about">{{ $stock->description }}</p>
 
                                                                          </div>
                                                                  </div>
@@ -41,7 +41,7 @@
                                                                                  <p class="font-weight-bold text-white text-uppercase adder-header">
                                                                                          {{ $stock->name }}
                                                                                  </p>
-                                                                                 <p class="adder-text text-white">{{ $stock->description }}</p>
+                                                                                 <p class="adder-text text-white text-about">{{ $stock->description }}</p>
 
                                                                          </div>
                                                                  </div>
@@ -49,7 +49,7 @@
                                                                  <div class="col-lg-4 col-12 p-3">
                                                                          <div class="adder p-4 my-lg-0 text-center d-flex align-items-center"
                                                                               style="background-image: url({{asset('images/adder3.png')}})">
-                                                                                 <p class="font-weight-bold text-white text-uppercase adder-text w-50">
+                                                                                 <p class="text-white text-about adder-text w-50">
                                                                                          {{ $stock->description }}
                                                                                  </p>
                                                                                  {{--<img class="img-fluid pt-2 pb-3" src="{{ asset('images/adder.png') }}" alt="">--}}
@@ -81,7 +81,7 @@
                                                              <img class="w-50 py-3 mx-auto"
                                                                   src="{{ asset('images/adder.png') }}"
                                                                   alt="">
-                                                         <p class="adder-text text-white px-5 mt-5">{{ $stock->description }}</p>
+                                                         <p class="adder-text text-white px-5 mt-5 text-about">{{ $stock->description }}</p>
 
                                                      </div>
                                                  </div>
@@ -92,7 +92,7 @@
                                                          <p class="font-weight-bold text-white text-uppercase adder-header">
                                                              {{ $stock->name }}
                                                          </p>
-                                                         <p class="adder-text text-white">{{ $stock->description }}</p>
+                                                         <p class="adder-text text-white text-about">{{ $stock->description }}</p>
 
                                                      </div>
                                                  </div>
@@ -100,7 +100,7 @@
                                                  <div class="col-lg-4 col-12 p-3">
                                                      <div class="adder p-4 my-lg-0 text-center d-flex align-items-center"
                                                           style="background-image: url({{asset('images/adder3.png')}})">
-                                                         <p class="font-weight-bold text-white text-uppercase adder-text w-50">
+                                                         <p class="text-white text-about adder-text w-50 pr-5">
                                                              {{ $stock->description }}
                                                          </p>
                                                          {{--<img class="img-fluid pt-2 pb-3" src="{{ asset('images/adder.png') }}" alt="">--}}

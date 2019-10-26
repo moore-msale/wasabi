@@ -367,6 +367,10 @@
 {
     height:100%!important;
 }
+.text-about
+{
+    font-size: 16px;
+}
 @media screen and (max-width: 700px) {
     .owl-one .owl-nav .owl-prev
     {
@@ -420,6 +424,10 @@
     {
         margin-bottom: 0px;
         margin-top:0px;
+    }
+    .mobile-avatar::after
+    {
+        display:none;
     }
 }
 

@@ -113,7 +113,7 @@
                 {{--@endif--}}
             @else
                 <span class="nav-item dropdown mx-1">
-                    <a id="navbarDropdown" class="point dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <a id="navbarDropdown" class="point dropdown-toggle mobile-avatar" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         <i class="fas fa-user fa-lg pr-2"></i><span class="caret"></span>
                     </a>
 
@@ -138,7 +138,7 @@
                         <div class="text-white cart-total pr-1" style="font-size: 13px; transform: translateY(-10px)"></div>
                         <div class="badge badge-danger rounded-circle small shadow position-absolute cart-count justify-content-center align-items-center" style="width: 21px; height: 21px;top: -7px; right: -12px;"></div>
                         {{--<i style="color: #444;" class="fas carts fa-cart-plus fa-lg icon-flip"></i>--}}
-                        <img class="icon-flip" style="color: white; height:22px; width: 22px; margin-top:-20px;" src="{{ asset('images/cart.svg') }}" alt="">
+                        <img class="icon-flip" style="color: white; height:22px; width: 22px; margin-top:-23px;" src="{{ asset('images/cart.svg') }}" alt="">
                         {{--<div class="bg-danger py-2 px-3 ml-3 text-white cart-count" style="border-radius: 2px 0px 0px 2px;">--}}
 
                         {{--</div>--}}
