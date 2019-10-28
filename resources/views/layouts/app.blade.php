@@ -4,10 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title></title>
     <!-- Scripts -->
 
 
@@ -24,6 +25,10 @@
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
     <style>
+        body
+        {
+            background-color:black;
+        }
         .preloader {
             position: fixed;
             top: 0;
@@ -131,6 +136,7 @@
         $('.date-format').bootstrapMaterialDatePicker({minDate : new Date(), format : 'dddd DD MMMM YYYY - HH:mm' });
     });
 </script>
+
 <script>
     $('.close-nav').click( function () {
         document.getElementById("mySidenav").style.left = "-16.6%";
@@ -369,10 +375,14 @@
 <script>
     function openNav() {
         document.getElementById("mySidenav").style.left = "0px";
+        $('.open-sidebar').hide();
+        $('.close-sidebar').show();
     }
 
     function closeNav() {
         document.getElementById("mySidenav").style.left = "-380px";
+        $('.open-sidebar').show();
+        $('.close-sidebar').hide();
     }
 </script>
 

@@ -1,15 +1,13 @@
 <div class="collona-product product-card p-lg-4 p-2" id="collona-product">
     <div class="product-img" style="background-image: url({{ asset('storage/'.str_replace('\\', '/', $product->image)) }})"  data-toggle="modal" data-target="#productModal-{{ $product->id }}">
         @if($product->hit == 1)
-                <img style="width:50px; height:50px; position: absolute; padding:0px 10px; border-radius: 5px; top:0%; right:0%;" src="{{ asset('images/gold-medal.svg') }}" alt="">
+                <div class="cat-frame">Хит</div>
         @elseif($product->new == 1)
-            <img style="width:50px; height:50px; position: absolute; padding:0px 10px; border-radius: 5px; top:0%; right:0%;" src="{{ asset('images/new.svg') }}" alt="">
+            <div class="cat-frame">Новинка</div>
         @elseif($product->types->contains(1))
-            <img style=" width:50px; height:50px; position: absolute; padding:0px 10px; top:0%; right:0%;" src="{{ asset('images/rhcp.svg') }}" alt="">
-
+            <div class="cat-frame">Острое</div>
         @elseif($product->categories->contains(9))
-            <img style=" width:50px; height:50px; position: absolute; padding:0px 10px; border-radius: 5px; top:0%; right:0%;" src="{{ asset('images/flame.svg') }}" alt="">
-
+            <div class="cat-frame">Горячее</div>
         @endif
     </div>
     <div class="pt-3 pb-3">

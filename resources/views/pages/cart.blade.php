@@ -55,11 +55,19 @@
                         Итого: <span class="ml-2"> {{ $total }} сом</span>
                     </p>
                     <div class="mt-5 pt-5">
-                        <a href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid(), 'continue' => true]) }}">
-                        <button class="btn btn-danger text-white float-right">
-                            Оформить заказ <i class="fas fa-long-arrow-alt-right ml-2"></i>
-                        </button>
-                        </a>
+                        @if(!$agent->isPhone())
+                            <a href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid(), 'continue' => true]) }}">
+                                <button class="btn btn-danger text-white float-right">
+                                    Оформить заказ <i class="fas fa-long-arrow-alt-right ml-2"></i>
+                                </button>
+                            </a>
+                        @else
+                            <a class="w-100" href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid(), 'continue' => true]) }}">
+                                <button class="btn btn-danger text-white float-right w-100 mx-auto">
+                                    Оформить заказ <i class="fas fa-long-arrow-alt-right ml-2"></i>
+                                </button>
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>

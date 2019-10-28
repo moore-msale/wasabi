@@ -1,13 +1,14 @@
 <nav class="navbar navbar-expand-md black shadow-sm" id="menu">
     <div class="container-fluid">
-        <span class="mr-4 d-lg-none d-block" onclick="openNav()">
-  <img src="{{ asset('images/burger.png') }}" alt="">
+        <span class="mr-4 d-lg-none d-block text-center" style="height: 20px; width: 30px">
+            <img class="open-sidebar" src="{{ asset('images/burger.png') }}" onclick="openNav()" style="display:block;" alt="">
+            <i class="fas fa-times fa-2x text-white close-sidebar" onclick="closeNav()" style="display:none;"></i>
         </span>
         <a class="navbar-brand d-lg-block d-none" href="{{ url('/home') }}">
             <img class="img-fluid" src="{{ asset('images/logo.png') }}" alt="">
         </a>
-        <a class="w-auto d-lg-none d-block" href="{{ url('/home') }}">
-            <img class="w-75" src="{{ asset('images/logo.png') }}" alt="">
+        <a class="w-25 d-lg-none" href="{{ url('/home') }}">
+            <img class="w-100" src="{{ asset('images/logo.png') }}" alt="">
         </a>
         {{--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">--}}
             {{--<span class="navbar-toggler-icon"></span>--}}
@@ -133,12 +134,12 @@
                     </div>
                 </span>
             @endguest
-                <li class="position-relative mx-1">
+                <li class="position-relative mx-1" style="list-style-type: none;">
                     <a href="{{ route('cart.checkout') }}" class="text-fut-book cart d-flex align-items-center" style="text-decoration: none; color: #444444;">
-                        <div class="text-white cart-total pr-1" style="font-size: 13px; transform: translateY(-10px)"></div>
-                        <div class="badge badge-danger rounded-circle small shadow position-absolute cart-count justify-content-center align-items-center" style="width: 21px; height: 21px;top: -7px; right: -12px;"></div>
+                        <div class="text-white cart-total pr-1" style="font-size: 13px;"></div>
+                        <div class="badge badge-danger rounded-circle small shadow position-absolute cart-count justify-content-center align-items-center" style="width: 15px; height: 15px;top: -7px; right: -12px;"></div>
                         {{--<i style="color: #444;" class="fas carts fa-cart-plus fa-lg icon-flip"></i>--}}
-                        <img class="icon-flip" style="color: white; height:22px; width: 22px; margin-top:-23px;" src="{{ asset('images/cart.svg') }}" alt="">
+                        <img class="icon-flip" style="color: white; height:22px; width: 22px; margin-top:-3px;" src="{{ asset('images/cart.svg') }}" alt="">
                         {{--<div class="bg-danger py-2 px-3 ml-3 text-white cart-count" style="border-radius: 2px 0px 0px 2px;">--}}
 
                         {{--</div>--}}
@@ -148,7 +149,7 @@
                 </li>
 
         <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            {{--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>--}}
                 <ul class="nav nav-tabs picker" id="myTab" role="tablist">
                     <li class="nav-item bg-dark w-50 text-center">
                         <a class="nav-link active py-3 mb-0 point border-0 text-white" id="category-tab" data-toggle="tab" href="#category" role="tab" aria-controls="home" aria-selected="true">КАТЕГОРИИ</a>
@@ -162,10 +163,13 @@
                         <div class="tab-pane fade show active" id="category" role="tabpanel" aria-labelledby="home-tab">
                             @foreach(\App\Category::all() as $category)
                                 {{--@if(count($category->products))--}}
-                                <a href="{{ route('catalog_m',array('pos' => $loop->index, 'type' => 'category')) }}">
-                                    <div class="p-3 my-1" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
-                                        <img class="img-fluid" style="width:70px;" src="{{ asset('storage/'.$category->image) }}" alt=""><span class="pl-4 point">{{ $category->name }}</span>
-                                    </div>
+                                <a style="border-bottom: 1px solid #56595d" href="{{ route('catalog_m',array('pos' => $loop->index, 'type' => 'category')) }}">
+                                    <div class="p-1 my-1 w-100 position-relative" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
+                                        <img class="img-fluid" style="width:100px;" src="{{ asset('storage/'.$category->image) }}" alt=""><span class="pl-4 point">{{ $category->name }}</span>
+                                       <div class="d-flex align-items-center position-absolute" style="top:0%; right:0%; height: 100%;">
+                                           <img class="mx-auto" style="width:15%;" src="{{ asset('images/arrow_m.svg') }}" alt="">
+                                       </div>
+                                       </div>
                                 </a>
                                 {{--@endif--}}
                             @endforeach
@@ -174,8 +178,11 @@
                             @foreach(\App\Type::all() as $type)
 {{--                                @if(count($type->products))--}}
                                 <a href="{{ route('catalog_m',array('pos' => $loop->index, 'type' => 'type')) }}">
-                                    <div class="p-3 my-1" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
-                                        <img class="img-fluid" style="width:70px;" src="{{ asset('storage/'.$type->image) }}" alt=""><span class="pl-4 point">{{ $type->name }}</span>
+                                    <div class="p-1 my-1 w-100 position-relative" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
+                                        <img class="img-fluid" style="width:100px;" src="{{ asset('storage/'.$type->image) }}" alt=""><span class="pl-4 point">{{ $type->name }}</span>
+                                        <div class="d-flex align-items-center position-absolute" style="top:0%; right:0%; height: 100%;">
+                                            <img class="mx-auto" style="width:15%;" src="{{ asset('images/arrow_m.svg') }}" alt="">
+                                        </div>
                                     </div>
                                 </a>
                                 {{--@endif--}}

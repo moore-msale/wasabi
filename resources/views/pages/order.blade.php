@@ -173,7 +173,7 @@
                                                 Доставка при заказе от - 200 сом
                                                     </span>
                                                 @else
-                                                <button class="btn btn-danger text-white float-right" type="submit">
+                                                <button class="btn btn-danger text-white float-right w-100 mx-auto" type="submit">
                                                     Отправить <i class="fas fa-long-arrow-alt-right ml-2"></i>
                                                 </button>
                                             @endif
@@ -278,11 +278,17 @@
                                         </div>
                                         <div class="col-lg-12 px-0 p-2">
                                             <input type="hidden" name="type" value="2">
+                                            @if(!$agent->isPhone())
                                             <div class="d-flex justify-content-end">
                                                 <button class="btn btn-danger text-white" type="submit">
                                                     Отправить <i class="fas fa-long-arrow-alt-right ml-2"></i>
                                                 </button>
                                             </div>
+                                            @else
+                                                    <button class="btn btn-danger text-white w-100 mx-auto" type="submit">
+                                                        Отправить <i class="fas fa-long-arrow-alt-right ml-2"></i>
+                                                    </button>
+                                            @endif
                                         </div>
                                     </div>
                                 </form>

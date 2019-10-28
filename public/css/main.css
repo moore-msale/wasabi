@@ -302,16 +302,16 @@
     width: 380px;
     position: fixed;
     z-index: 100000;
-    top: 0;
+    top: 38.4px;
     left: -380px;
     background-color: #111;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
+    padding-top: 5px;
 }
 
 .sidenav a {
-    padding: 8px 8px 8px 32px;
+    padding: 8px 8px 8px 8px;
     text-decoration: none;
     color:white;
     font-size: 20px;
@@ -371,6 +371,19 @@
 {
     font-size: 16px;
 }
+.cat-frame
+{
+    padding:2px 10px;
+    background-color: #ff3547;
+    border-radius:5px;
+    font-size:14px;
+    position: absolute;
+    top:0%;
+    right:0%;
+    color:white;
+    font-weight: bold;
+
+}
 @media screen and (max-width: 700px) {
     .owl-one .owl-nav .owl-prev
     {
@@ -428,6 +441,14 @@
     .mobile-avatar::after
     {
         display:none;
+    }
+    .close-sidebar
+    {
+        display: none;
+    }
+    .open-sidebar
+    {
+        display:block;
     }
 }
 

@@ -1,5 +1,14 @@
 <div class="collona-product product-card p-lg-4 p-2" style="width:33.3%;" id="collona-product">
     <div class="product-img" style="background-image: url({{ asset('storage/'.str_replace('\\', '/', $product->image)) }})"  data-toggle="modal" data-target="#productModal-{{ $product->id }}">
+        @if($product->hit == 1)
+            <div class="cat-frame">Хит</div>
+        @elseif($product->new == 1)
+            <div class="cat-frame">Новинка</div>
+        @elseif($product->types->contains(1))
+            <div class="cat-frame">Острое</div>
+        @elseif($product->categories->contains(9))
+            <div class="cat-frame">Горячее</div>
+        @endif
     </div>
     <div class="pt-3 pb-3">
         <div class="d-flex">
