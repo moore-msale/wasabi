@@ -23,7 +23,7 @@
                     {{--@dd($category->products)--}}
                     {{--@if(count($category->products))--}}
                     <a href="{{ route('catalog',array('category' => $category->id)) }}">
-                    <div class="p-3 my-1 d-flex" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
+                    <div class="p-3 my-1 d-flex" style="border-bottom: 1px solid #56595d" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
                        <div style="width: 30%;">
                            <img class="img-fluid w-100" src="{{ asset('storage/'.$category->image) }}" alt="">
                        </div>
@@ -39,7 +39,7 @@
                 @foreach(\App\Type::all() as $type)
 {{--                    @if(count($type->products))--}}
                     <a href="{{ route('catalog',array('type' => $type->id)) }}">
-                    <div class="p-3 my-1 d-flex" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
+                    <div class="p-3 my-1 d-flex" style="border-bottom: 1px solid #56595d" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
                         <div style="width: 30%;">
                         <img class="img-fluid w-100" src="{{ asset('storage/'.$type->image) }}" alt="">
                         </div>

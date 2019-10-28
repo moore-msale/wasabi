@@ -157,6 +157,10 @@ class CartController extends Controller
             'token' => $token,
             'total' => $cart->getTotalQuantity(),
             'totalprice' => $cart->getTotal(),
+            'modalhtml' => view('pages.modal_cart', [
+               'cartItems' => $cart->getContent()->sortKeys(),
+               'total' => $cart->getTotal(),
+            ])->render(),
             'html' => view('pages.cart', [
                 'cartItems' => $cart->getContent()->sortKeys(),
                 'total' => $cart->getTotal(),

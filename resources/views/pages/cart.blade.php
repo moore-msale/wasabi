@@ -1,4 +1,9 @@
 {{--@dd($total)--}}
+@push('styles')
+    <style>
+
+    </style>
+@endpush
     <?php
     $agent = New \Jenssegers\Agent\Agent();
     ?>
@@ -100,23 +105,44 @@
         @endif
     </div>
 
+@push('scripts')
 <script>
     $('.close-nav').click( function () {
         document.getElementById("mySidenav").style.left = "-16.6%";
-        $('.close-nav').hide(100);
-        $('.open-nav').show(100);
-        document.getElementById("content-blog").style.width = "98%";
-        $('.collona-product').addClass('full');
-        $('.collona-product').removeClass('short');
+        setTimeout(function () {
+            $('.close-nav').hide(100);
+            $('.open-nav').show(100);
+            document.getElementById("content-blog").style.width = "98%";
+            $('.collona-product').addClass('full');
+            $('.collona-product').removeClass('short');
+        },300);
+        $('#content-blog').addClass('fader');
+            setTimeout(function() {
+
+
+                $('#content-blog').removeClass("fader");
+            }, 600);
+            // $('#content-blog').removeClass('fader');
+
     });
     $('.open-nav').click( function () {
         document.getElementById("mySidenav").style.left = "0%";
         $('.close-nav').show(100);
         $('.open-nav').hide(100);
-        document.getElementById("content-blog").style.width = "82.3%";
-        $('.collona-product').addClass('short');
-        $('.collona-product').removeClass('full');
+        setTimeout(function () {
+            document.getElementById("content-blog").style.width = "82.3%";
+            $('.collona-product').addClass('short');
+            $('.collona-product').removeClass('full');
+        },300);
+        $('#content-blog').addClass('fader');
+        setTimeout(function () {
+
+
+            $('#content-blog').removeClass("fader");
+        },600);
+
 
     });
 
 </script>
+@endpush

@@ -167,14 +167,14 @@
                                             @if($total < 200)
 
                                             <button class="btn btn-danger text-white float-right" disabled type="submit">
-                                                Отправить <i class="fas fa-long-arrow-alt-right ml-2"></i>
+                                                Заказать <i class="fas fa-long-arrow-alt-right ml-2"></i>
                                             </button>
                                                 <span class="float-right text-white mt-3 mr-3">
                                                 Доставка при заказе от - 200 сом
                                                     </span>
                                                 @else
                                                 <button class="btn btn-danger text-white float-right w-100 mx-auto" type="submit">
-                                                    Отправить <i class="fas fa-long-arrow-alt-right ml-2"></i>
+                                                    Заказать <i class="fas fa-long-arrow-alt-right ml-2"></i>
                                                 </button>
                                             @endif
                                         </div>
@@ -281,12 +281,12 @@
                                             @if(!$agent->isPhone())
                                             <div class="d-flex justify-content-end">
                                                 <button class="btn btn-danger text-white" type="submit">
-                                                    Отправить <i class="fas fa-long-arrow-alt-right ml-2"></i>
+                                                    Заказать <i class="fas fa-long-arrow-alt-right ml-2"></i>
                                                 </button>
                                             </div>
                                             @else
                                                     <button class="btn btn-danger text-white w-100 mx-auto" type="submit">
-                                                        Отправить <i class="fas fa-long-arrow-alt-right ml-2"></i>
+                                                        Заказать <i class="fas fa-long-arrow-alt-right ml-2"></i>
                                                     </button>
                                             @endif
                                         </div>

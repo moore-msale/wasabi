@@ -138,7 +138,7 @@
 </script>
 
 <script>
-    $('.close-nav').click( function () {
+    $('.close-nav').on('click', function () {
         document.getElementById("mySidenav").style.left = "-16.6%";
         setTimeout(function () {
             $('.close-nav').hide(100);
@@ -156,7 +156,7 @@
             // $('#content-blog').removeClass('fader');
 
     });
-    $('.open-nav').click( function () {
+    $('.open-nav').on('click', function () {
         document.getElementById("mySidenav").style.left = "0%";
         $('.close-nav').show(100);
         $('.open-nav').hide(100);
@@ -191,16 +191,19 @@
             },
             success: data => {
                 console.log(data);
-                let result = freshCartHtml(data.html, data.total, data.totalprice);
-                result.find('.buy_book').each((index, item) => {
-                    registerCartBuyButtons($(item));
+                let result = freshCartHtml(data.html, data.total, data.totalprice, data.modalhtml);
+                result.forEach( function (element) {
+                    element.find('.buy_book').each((index, item) => {
+                        registerCartBuyButtons($(item));
+                    });
+                    element.find('.remove_book').each((index, item) => {
+                        registerCartRemoveButtons($(item));
+                    });
+                    element.find('.delete_book').each((index, item) => {
+                        registerCartDeleteButtons($(item));
+                    });
                 });
-                result.find('.remove_book').each((index, item) => {
-                    registerCartRemoveButtons($(item));
-                });
-                result.find('.delete_book').each((index, item) => {
-                    registerCartDeleteButtons($(item));
-                });
+
             },
             error: () => {
                 console.log('error');
@@ -321,10 +324,12 @@
         registerCartDeleteButtons($(item));
     });
 
-    function freshCartHtml(html, total, totalprice) {
+    function freshCartHtml(html, total, totalprice, modalhtml) {
         total > 0 ? $('.cart-count').addClass('d-flex').html(total) : $('.cart-count').addClass('d-flex').html(total);
         totalprice > 0 ? $('.cart-total').addClass('d-flex').html(totalprice + ' сом') : $('.cart-total').addClass('d-flex').html(totalprice + ' сом');
-        return $('.modal-body-cart').html(html);
+
+        console.log([$('.modal-body-cart').html(html), $('.modal-cart').html(modalhtml)]);
+        return [$('.modal-body-cart').html(html), $('.modal-cart').html(modalhtml)];
     }
 
     fetchCart();
@@ -374,13 +379,13 @@
 </script>
 <script>
     function openNav() {
-        document.getElementById("mySidenav").style.left = "0px";
+        document.getElementById("mySidenav").style.right = "0px";
         $('.open-sidebar').hide();
         $('.close-sidebar').show();
     }
 
     function closeNav() {
-        document.getElementById("mySidenav").style.left = "-380px";
+        document.getElementById("mySidenav").style.right = "-100%";
         $('.open-sidebar').show();
         $('.close-sidebar').hide();
     }

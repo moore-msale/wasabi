@@ -72,8 +72,8 @@
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item px-3 mr-4 pt-1 position-relative mx-2">
-                    <a href="{{ route('cart.checkout') }}" class="text-fut-book cart d-flex align-items-center" style="text-decoration: none; color: #444444;">
+                <li class="nav-item px-3 mr-4 pt-1 position-relative mx-2 cart-target">
+                    <div class="text-fut-book cart d-flex align-items-center" style="text-decoration: none; color: #444444;">
                         {{--<div class="badge badge-danger rounded-circle small shadow position-absolute cart-count justify-content-center align-items-center" style="width: 21px; height: 21px;top: -7px; right: 5px;"></div>--}}
                         {{--<i style="color: #444;" class="fas carts fa-cart-plus fa-lg icon-flip"></i>--}}
                         <img class="icon-flip" style="color: white; height:28px; width: 28px; margin-top:-5px;" src="{{ asset('images/cart.svg') }}" alt="">
@@ -82,7 +82,10 @@
                         </div>
                         <div class="bg-dark py-2 px-3 text-white cart-total" style="border-radius: 0px 2px 2px 0px;">
                         </div>
-                    </a>
+                    </div>
+                    <div class="modal-cart">
+
+                    </div>
                 </li>
                 <li class="nav-item dropdown d-none mx-2 ">
                     <a class="nav-link text-light align-self-center dropdown-toggle" href="#" id="navbarDropdownMenuLink"
@@ -177,7 +180,7 @@
                         <div class="tab-pane fade" id="ingredient" role="tabpanel" aria-labelledby="profile-tab">
                             @foreach(\App\Type::all() as $type)
 {{--                                @if(count($type->products))--}}
-                                <a href="{{ route('catalog_m',array('pos' => $loop->index, 'type' => 'type')) }}">
+                                <a style="border-bottom: 1px solid #56595d" href="{{ route('catalog_m',array('pos' => $loop->index, 'type' => 'type')) }}">
                                     <div class="p-1 my-1 w-100 position-relative" {{--style="background: linear-gradient(180deg, #242424 0%, #333333 53.12%, #242424 100%);"--}}>
                                         <img class="img-fluid" style="width:100px;" src="{{ asset('storage/'.$type->image) }}" alt=""><span class="pl-4 point">{{ $type->name }}</span>
                                         <div class="d-flex align-items-center position-absolute" style="top:0%; right:0%; height: 100%;">

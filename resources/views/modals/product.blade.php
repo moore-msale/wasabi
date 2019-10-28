@@ -1,4 +1,4 @@
-<div class="modal fade" id="productModal-{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="productModal"
+<div class="modal pt-5 fade" id="productModal-{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="productModal"
      aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <!--Content-->

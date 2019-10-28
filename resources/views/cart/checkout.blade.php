@@ -117,9 +117,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 modal-body-cart">
-                    @foreach($cartItems as $item)
+                    {{--@foreach($cartItems as $item)--}}
                     @include('pages.cart', ['route' => true])
-                    @endforeach
+                    {{--@endforeach--}}
                 </div>
             </div>
         </div>

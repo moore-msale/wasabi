@@ -63,7 +63,7 @@
         <div class="row justify-content-center">
             <div class="accordion w-100" id="accordionExample">
                 <div class="card z-depth-0 bg-transparent">
-                    <div class="card-header w-100 py-3" style="border-bottom:2px solid rgba(248,0,0,0.51);"
+                    <div class="card-header w-100 py-3 mb-1" style="border-bottom:1px solid rgba(248,0,0,0.51); border-top: 1px solid rgba(248,0,0,0.51);"
                          id="headingOne">
                         <h5 class="mb-0 h-100">
                             <p class="collapsed mb-0 text-center text-white" data-toggle="collapse"
@@ -75,7 +75,7 @@
                     </div>
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
                          data-parent="#accordionExample">
-                        <div class="card-body text-white text-center" style="border-bottom:1px solid red;">
+                        <div class="card-body text-white text-center" style="border-bottom:1px solid rgba(248,0,0,0.51);">
                             <a href="/delivery">
                                 <p class="footer-point">
                                     Условия доставки
@@ -95,7 +95,7 @@
                     </div>
                 </div>
                 <div class="card z-depth-0 bg-transparent">
-                    <div class="card-header w-100 py-3" style="border-bottom:2px solid rgba(248,0,0,0.51);"
+                    <div class="card-header w-100 py-3 mb-1" style="border-bottom:1px solid rgba(248,0,0,0.51); border-bottom:1px solid rgba(248,0,0,0.51);"
                          id="headingTwo">
                         <h5 class="mb-0 h-100">
                             <p class="collapsed mb-0 text-white text-center " data-toggle="collapse"
@@ -105,7 +105,7 @@
                         </h5>
                     </div>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                        <div class="card-body text-white text-center" style="border-bottom:1px solid red;">
+                        <div class="card-body text-white text-center" style="border-bottom:1px solid rgba(248,0,0,0.51);">
                             <a href="https://2gis.kg/bishkek/search/wasabi/firm/70000001036850277?floor=0&m=74.615528%2C42.869249%2F17.57">
                                 <p class="footer-point">
                                     Адрес: Московская 51, пересекает Шопокова.
