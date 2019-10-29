@@ -71,14 +71,14 @@
                         <div class="col-12"></div>
                         <a href="{{ route('catalog',array('category' => 1)) }}">
                             <button class="btn btn-danger text-white float-right mt-4">
-                                Перейти в корзину <i class="fas fa-long-arrow-alt-right ml-2"></i>
+                                Перейти в каталог <i class="fas fa-long-arrow-alt-right ml-2"></i>
                             </button>
                         </a>
                     @else
                         <div class="col-12"></div>
                         <a href="{{ route('catalog_m',array('pos' => 0, 'type' => 'category')) }}">
                             <button class="btn btn-danger text-white float-right mt-4">
-                                Перейти в корзину <i class="fas fa-long-arrow-alt-right ml-2"></i>
+                                Перейти в каталог <i class="fas fa-long-arrow-alt-right ml-2"></i>
                             </button>
                         </a>
                     @endif

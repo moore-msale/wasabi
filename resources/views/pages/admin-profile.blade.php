@@ -15,50 +15,52 @@
     <?php
     $agent = New \Jenssegers\Agent\Agent();
     ?>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-12 py-5">
                 <h2 class="text-white text-center">Личный кабинет</h2>
             </div>
-            <div class="col-lg-4 col-12 bg-dark p-4" style="border-right:1px solid red;">
+            <div class="col-lg-6 col-12 bg-dark p-4" style="border-right:1px solid red;">
                 <h4 class="text-white text-center pb-3">
-                    {{ $user->name }}
+                    Зарегистрированные клиенты
                 </h4>
                 {{--@dd($user->role->name == 'admin')--}}
-                <h5 class="text-white text-center">
-                    Актуальное:
-                </h5>
-                @if(\Illuminate\Support\Facades\Auth::user()->stock != 1)
-                <p class="text-white pt-3">
-                    Вам доступна скидка в 20%. Акция "Добро пожаловать": Все пользователи зарегистрированные на нашем сайте получают скидку на первый заказ в размере 20%.
-                </p>
-                @endif
-            </div>
-            <div class="col-lg-8 col-12 bg-dark py-4 px-0">
-                <ul class="nav nav-tabs border-0" id="myTab" role="tablist">
-
-                    <li class="nav-item mr-2 border-0 ml-auto">
-                        <a class="nav-link active text-white" id="favourite-tab" data-toggle="tab" href="#favourite" role="tab" aria-controls="home" aria-selected="true">Избранные</a>
-                    </li>
-                    <li class="nav-item border-0 mr-auto">
-                        <a class="nav-link text-white" id="history-tab" data-toggle="tab" href="#history" role="tab" aria-controls="profile" aria-selected="false">История заказов</a>
-                    </li>
-                </ul>
-                <div class="tab-content pt-4 px-3" id="myTabContent">
-                    <div class="tab-pane fade show active" id="favourite" role="tabpanel" aria-labelledby="home-tab">
-                        <div class="row">
-                        @foreach(\Illuminate\Support\Facades\Auth::user()->products as $product)
-                            @if(!$agent->isPhone())
-                                @include('_partials.product-profile')
-                            @else
-                                @include('_partials.product_card_mobile')
-                            @endif
-                        @endforeach
+                <div class="row p-3">
+                    <div class="col-3 text-white">
+                        Имя
+                    </div>
+                    <div class="col-3 text-white">
+                        Email
+                    </div>
+                    <div class="col-3 text-white">
+                        Номер телефона
+                    </div>
+                    <div class="col-3 text-white">
+                        Кол-во заказов
+                    </div>
+                </div>
+                @foreach(\App\User::all() as $value)
+                    @if($value->role->name != 'admin')
+                    <div class="row p-3 user-point" style="cursor:pointer;" data-toggle="modal" data-target="#usercarts-{{ $value->id }}">
+                        <div class="col-3 text-white">
+                            {{ $value->name }}
+                        </div>
+                        <div class="col-3 text-white">
+                            {{ $value->email }}
+                        </div>
+                        <div class="col-3 text-white">
+                            {{ $value->phone }}
+                        </div>
+                        <div class="col-3 text-white">
+                            {{ count(\App\Cart::where('user_id', $value->id)->get()) }}
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="profile-tab">
+                    @endif
+                @endforeach
+            </div>
+            <div class="col-lg-6 col-12 bg-dark py-4 px-5">
                         <div class="order-content">
-                            @foreach(\App\Cart::where('user_id',\Illuminate\Support\Facades\Auth::id())->get() as $basket)
+                            @foreach($carts as $basket)
                                 <div class="p-4 mt-3" style="background-color:#292929; border: 1px solid #363636; box-sizing: border-box;">
                                     <div class="row border-bottom">
                                         @if($agent->isPhone())
@@ -78,41 +80,85 @@
                                                 <p>
                                                     Комментарий: {{ $basket->comment }}
                                                 </p>
+                                                <p>
+                                                    Дата оформления заказа: {{ $basket->created_at }}
+                                                </p>
+                                                @if(isset($basket->user_id))
+                                                    <p class="font-weight-bold">
+                                                        Зарегистрирован: Да
+                                                    </p>
+                                                @else
+                                                    <p class="font-weight-bold">
+                                                        Зарегистрирован: Нет
+                                                    </p>
+                                                @endif
                                             </div>
                                         @else
                                             <div class="col-4 text-white">
                                                 <p>
                                                     Имя:
                                                 </p>
+                                                @if($basket->email)
                                                 <p>
                                                     Email:
                                                 </p>
+                                                @endif
                                                 <p>
                                                     Номер телефон:
                                                 </p>
                                                 <p>
                                                     Дата доставки:
                                                 </p>
+                                                @if($basket->comment)
                                                 <p>
                                                     Комментарий:
                                                 </p>
+                                                @endif
+                                                <p>
+                                                    Дата оформления заказа:
+                                                </p>
+                                                @if(isset($basket->user_id))
+                                                    <p>
+                                                        Зарегистрирован:
+                                                    </p>
+                                                @else
+                                                    <p>
+                                                        Зарегистрирован:
+                                                    </p>
+                                                @endif
                                             </div>
                                             <div class="col-6 text-white">
                                                 <p>
                                                     {{ $basket->name }}
                                                 </p>
+                                                @if($basket->email)
                                                 <p>
                                                     {{ $basket->email }}
                                                 </p>
+                                                @endif
                                                 <p>
                                                     {{ $basket->phone }}
                                                 </p>
                                                 <p>
                                                     {{ $basket->date }}
                                                 </p>
+                                                @if($basket->comment)
                                                 <p>
                                                     {{ $basket->comment }}
                                                 </p>
+                                                @endif
+                                                <p>
+                                                    {{ $basket->created_at }}
+                                                </p>
+                                                @if(isset($basket->user_id))
+                                                    <p class="font-weight-bold">
+                                                        да
+                                                    </p>
+                                                @else
+                                                    <p class="font-weight-bold">
+                                                        нет
+                                                    </p>
+                                                @endif
                                             </div>
                                         @endif
 
@@ -144,7 +190,7 @@
                                                 </div>
                                                 <div class="col-4">
                                                     <p>
-                                                     {{ $cart['quantity'] }}
+                                                        {{ $cart['quantity'] }}
                                                     </p>
                                                 </div>
                                                 <div class="col-4">
@@ -167,12 +213,12 @@
                                 </div>
                             @endforeach
                         </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
+    </div>
 @endsection
-@foreach(\Illuminate\Support\Facades\Auth::user()->products as $product)
-    @include('modals.product')
+@foreach(\App\User::all() as $value)
+    @if($value->role->name != 'admin')
+        @include('modals.user_orders')
+    @endif
 @endforeach

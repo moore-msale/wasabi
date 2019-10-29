@@ -24,23 +24,23 @@
 
             <ul class="navbar-nav mx-auto">
                 <li class="mx-3">
-                    <a class="point" href="/stock">
+                    <a class="point text-uppercase" href="/stock">
                     Акции
                     </a>
                 </li>
                 <li class="mx-3">
-                    <a class="point" href="{{ route('about_us') }}">
+                    <a class="point text-uppercase" href="{{ route('about_us') }}">
                     О нас
                     </a>
                 </li>
                 <li class="mx-3">
-                    <a class="point" href="/delivery">
+                    <a class="point text-uppercase" href="/delivery">
                     Доставка
                     </a>
                 </li>
                 @guest
                     <li class="mx-3">
-                       <a class="point" href="{{ route('login') }}"> <i class="fas fa-user pr-2"></i>{{ __('ВХОД') }}</a>
+                       <a class="point text-uppercase" href="{{ route('login') }}"> <i class="fas fa-user pr-2"></i>{{ __('ВХОД') }}</a>
                     </li>
                     {{--@if (Route::has('register'))--}}
                         {{--<li class="nav-item">--}}
@@ -49,7 +49,7 @@
                     {{--@endif--}}
                 @else
                     <li class="nav-item dropdown mx-3">
-                        <a id="navbarDropdown" class="point dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="point text-uppercase dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <i class="fas fa-user pr-2"></i>{{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 

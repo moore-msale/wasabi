@@ -109,7 +109,10 @@ class CartController extends Controller
             $newCart->type = 1;
             $newCart->comment = $request->message;
             $newCart->name = $request->name;
+            if($request->email)
+            {
             $newCart->email = $request->email;
+            }
             $newCart->phone = $request->phone;
             $newCart->address = $request->address;
             if ($request->need == 'on') {
@@ -125,7 +128,10 @@ class CartController extends Controller
         }
         else{
             $newCart->name = $request->name;
-            $newCart->email = $request->email;
+            if($request->email)
+            {
+                $newCart->email = $request->email;
+            }
             $newCart->phone = $request->phone;
             $newCart->date = $request->dtime;
         }

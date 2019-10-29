@@ -38,7 +38,7 @@
 {
     font-size: 12px;
     line-height: 15px;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     color: #e1e1e1;
     transition: 0.3s;
 }
@@ -140,6 +140,15 @@
 }
 .product-card:hover
 {
+    border: 1px solid #cccc28;
+}
+.user-point
+{
+    transition: 0.3s;
+}
+.user-point:hover
+{
+    transform: scale(1.05);
     border: 1px solid #cccc28;
 }
 .product-header

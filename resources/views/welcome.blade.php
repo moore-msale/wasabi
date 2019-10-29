@@ -20,12 +20,12 @@
                                              <?php
                                              $i = 1;
                                              ?>
-                                                 @foreach(\App\Stock::all() as $stock)
+                                                 @foreach(\App\Stock::where('end_date','>=', \Illuminate\Support\Carbon::now())->get() as $stock)
                                                          @if($i == 1)
                                                                  <div class="col-lg-4 col-12 p-3">
                                                                          <div class="adder p-4 text-center"
                                                                               style="background-image: url({{asset('images/first-ad.png')}})">
-                                                                                 <p class="font-weight-bold text-white text-uppercase adder-header mb-5">
+                                                                                 <p class="font-weight-bold text-white adder-header mb-5">
                                                                                          {{ $stock->name }}
                                                                                          <img class="w-50 py-3 mx-auto"
                                                                                               src="{{ asset('images/adder.png') }}"
@@ -38,7 +38,7 @@
                                                                  <div class="col-lg-4 col-12 p-3">
                                                                          <div class="adder p-4 my-lg-0"
                                                                               style="background-image: url({{ asset('images/adder2.png') }})">
-                                                                                 <p class="font-weight-bold text-white text-uppercase adder-header">
+                                                                                 <p class="font-weight-bold text-white adder-header">
                                                                                          {{ $stock->name }}
                                                                                  </p>
                                                                                  <p class="adder-text text-white text-about">{{ $stock->description }}</p>
@@ -56,10 +56,30 @@
 
                                                                          </div>
                                                                  </div>
-                                                         @endif
+                                                         @elseif($i == 4)
+                                                         <div class="col-lg-6 col-12 p-1">
+                                                             <div class="adder p-2" style="background-image: url({{ asset('images/adder2.png') }})">
+                                                                 {{--<p class="font-weight-bold text-white text-uppercase adder-header text-right">--}}
+                                                                 {{--Ролл «Яки унаги <br> рору» в подарок--}}
+                                                                 {{--</p>--}}
+                                                                 <p class="text-white font-weight-bold mb-0 pl-3 mt-1" style="font-size:35px;">{{ $stock->name }}</p>
+                                                                 <p class="adder-text text-white col-lg-5 col-12 mb-0">{{ $stock->description }}</p>
+                                                             </div>
+                                                         </div>
+                                                     @elseif($i == 5)
+                                                         <div class="col-lg-6 col-12 p-1">
+                                                             <div class="adder p-2" style="background-image: url({{ asset('images/adder2.png') }})">
+                                                                 {{--<p class="font-weight-bold text-white text-uppercase adder-header text-right">--}}
+                                                                 {{--Ролл «Яки унаги <br> рору» в подарок--}}
+                                                                 {{--</p>--}}
+                                                                 <p class="text-white font-weight-bold mb-0 pl-3 mt-1" style="font-size:35px;">{{ $stock->name }}</p>
+                                                                 <p class="adder-text text-white col-lg-5 col-12 mb-0">{{ $stock->description }}</p>
+                                                             </div>
+                                                         </div>
+                                                     @endif
                                                  <?php
                                                  $i = $i + 1;
-                                                 if($i == 4)
+                                                 if($i == 6)
                                                  {
                                                      $i = 1;
                                                  }
@@ -76,8 +96,9 @@
                                                  <div class="col-lg-4 col-12 p-3">
                                                      <div class="adder p-4 text-center"
                                                           style="background-image: url({{asset('images/first-ad.png')}})">
-                                                         <p class="font-weight-bold text-white text-uppercase adder-header mb-5">
+                                                         <p class="font-weight-bold text-white adder-header mb-5">
                                                              {{ $stock->name }}
+                                                         </p>
                                                              <img class="w-50 py-3 mx-auto"
                                                                   src="{{ asset('images/adder.png') }}"
                                                                   alt="">
@@ -89,7 +110,7 @@
                                                  <div class="col-lg-4 col-12 p-3">
                                                      <div class="adder p-4 my-lg-0"
                                                           style="background-image: url({{ asset('images/adder2.png') }})">
-                                                         <p class="font-weight-bold text-white text-uppercase adder-header">
+                                                         <p class="font-weight-bold text-white adder-header">
                                                              {{ $stock->name }}
                                                          </p>
                                                          <p class="adder-text text-white text-about">{{ $stock->description }}</p>
@@ -107,10 +128,30 @@
 
                                                      </div>
                                                  </div>
-                                             @endif
+                                                 @elseif($i == 4)
+                                                     <div class="col-lg-6 col-12 p-3">
+                                                         <div class="adder p-4" style="background-image: url({{ asset('images/adder4.png') }})">
+                                                             {{--<p class="font-weight-bold text-white text-uppercase adder-header text-right">--}}
+                                                             {{--Ролл «Яки унаги <br> рору» в подарок--}}
+                                                             {{--</p>--}}
+                                                             <p class="text-white font-weight-bold mb-0 pl-3 pt-5 mt-3" style="font-size:35px;">{{ $stock->name }}</p>
+                                                             <p class="adder-text text-white col-lg-5 col-12 mb-0">{{ $stock->description }}</p>
+                                                         </div>
+                                                     </div>
+                                                 @elseif($i == 5)
+                                                     <div class="col-lg-6 col-12 p-3">
+                                                         <div class="adder p-4" style="background-image: url({{ asset('images/adder5.png') }})">
+                                                             {{--<p class="font-weight-bold text-white text-uppercase adder-header text-right">--}}
+                                                             {{--Ролл «Яки унаги <br> рору» в подарок--}}
+                                                             {{--</p>--}}
+                                                             <p class="text-white font-weight-bold mb-0 pl-3 pt-5 mt-3" style="font-size:35px;">{{ $stock->name }}</p>
+                                                             <p class="adder-text text-white col-lg-5 col-12 mb-0">{{ $stock->description }}</p>
+                                                         </div>
+                                                     </div>
+                                                 @endif
                                              <?php
                                              $i = $i + 1;
-                                             if($i == 4)
+                                             if($i == 6)
                                              {
                                                  $i = 1;
                                              }

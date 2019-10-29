@@ -10,8 +10,10 @@
         <br>
         <strong>Имя:</strong> {{ $newCart->name}}<br>
         <strong>Номер телефона:</strong> {{ $newCart->phone}}<br>
+        @if(isset($newCart->email))
         <strong>Email:</strong> {{ $newCart->email}}<br>
-        {{--@dd($newCart)--}}
+        @endif
+            {{--@dd($newCart)--}}
         @if($newCart->type == 1)
         <strong>Адрес:</strong> {{ $newCart->address}}<br>
         <strong>Дата доставки:</strong> {{ $newCart->date}}<br>

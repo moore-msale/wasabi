@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use App\Category;
 use App\Product;
 use App\Stock;
@@ -29,7 +30,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('welcome');
     }
 
     public function welcome()
@@ -46,8 +47,15 @@ class HomeController extends Controller
     {
         $user = Auth::user();
 
-
-        return view('pages.profile',['user' => $user]);
+        if($user->role->name == 'admin')
+        {
+            $carts = Cart::all()->reverse();
+            return view('pages.admin-profile',['user' => $user, 'carts' => $carts]);
+        }
+        else
+        {
+            return view('pages.profile',['user' => $user]);
+        }
     }
 
     public function rule()
