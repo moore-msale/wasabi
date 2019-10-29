@@ -25,6 +25,26 @@
                     Зарегистрированные клиенты
                 </h4>
                 {{--@dd($user->role->name == 'admin')--}}
+                @if($agent->isPhone())
+                    @foreach(\App\User::all() as $value)
+                        @if($value->role->name != 'admin')
+                    <div class="p-2" style="border-bottom: 1px solid #56595d;">
+                        <p class="text-white">
+                            Имя: {{ $value->name }}
+                        </p>
+                        <p class="text-white">
+                            Email: {{ $value->email }}
+                        </p>
+                        <p class="text-white">
+                            Номер телефона: {{ $value->phone }}
+                        </p>
+                        <p class="text-white">
+                            Кол-во заказов: {{ count(\App\Cart::where('user_id', $value->id)->get()) }}
+                        </p>
+                    </div>
+                            @endif
+                    @endforeach
+                    @else
                 <div class="row p-3">
                     <div class="col-3 text-white">
                         Имя
@@ -57,11 +77,15 @@
                     </div>
                     @endif
                 @endforeach
+                    @endif
             </div>
-            <div class="col-lg-6 col-12 bg-dark py-4 px-5">
+            <div class="col-lg-6 col-12 bg-dark py-4 px-lg-5 px-3">
+                <h4 class="text-white text-center pb-3">
+                    Все заказы
+                </h4>
                         <div class="order-content">
                             @foreach($carts as $basket)
-                                <div class="p-4 mt-3" style="background-color:#292929; border: 1px solid #363636; box-sizing: border-box;">
+                                <div class="p-lg-4 p-1 mt-3" style="background-color:#292929; border: 1px solid #363636; box-sizing: border-box;">
                                     <div class="row border-bottom">
                                         @if($agent->isPhone())
                                             <div class="col-12 text-white">

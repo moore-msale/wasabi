@@ -28,7 +28,7 @@
                            <img class="img-fluid w-100" src="{{ asset('storage/'.$category->image) }}" alt="">
                        </div>
                         <div class="pl-4 d-flex align-items-center">
-                            <span class="point {{ request()->query('category') == $category->id ? 'choice' : ''}}">{{ $category->name }}</span>
+                            <span style="font-size: 14px;" class="point {{ request()->query('category') == $category->id ? 'choice' : ''}}">{{ $category->name }}</span>
                         </div>
                     </div>
                     </a>
