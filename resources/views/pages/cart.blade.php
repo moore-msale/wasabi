@@ -1,7 +1,25 @@
 {{--@dd($total)--}}
 @push('styles')
     <style>
-
+        #mySidenav
+        {
+            position: fixed;
+            top:54.4px;
+        }
+        .open-nav
+        {
+            display: none;
+        }
+        .close-nav
+        {
+            display: none;
+        }
+        #menu
+        {
+            position: sticky;
+            top:0%;
+            z-index: 99999;
+        }
     </style>
 @endpush
     <?php

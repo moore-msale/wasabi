@@ -511,6 +511,32 @@
         font-weight: bold;
 
     }
+    .owl-dot
+    {
+        margin-right: 5px;
+        height:6px;
+        width:6px;
+        background-color: rgba(210, 210, 210, 0.38) !important;
+        border-radius: 5px;
+    }
+    .owl-dots .active
+    {
+        background-color: white!important;
+        height:8px;
+        width:8px;
+    }
+    .owl-dots
+    {
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+        justify-content: center;
+    }
+    .owl-dots
+    {
+        padding-top:15px;
+    }
 }
 
 

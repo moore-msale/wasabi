@@ -8,7 +8,7 @@
                     <div class="py-4">
                         <div class="px-0 mb-3">
                             <h2 class="catalog-header text-white font-weight-bold text-uppercase pb-4 px-3">Ваш заказ</h2>
-                            <div class="products-bar">
+                            <div class="products-bar" style="overflow-y: auto; height:40vh;">
                             @foreach($cartItems as $item)
                                 {{--@dd($item->attributes[0])--}}
                                 <div class="col-lg-12 px-lg-4 p-1 bg-dark">
@@ -47,16 +47,16 @@
                         <p class="product-header text-white float-right font-weight-bold mr-4">
                             Итого: <span class="ml-2"> {{ $total }} сом</span>
                         </p>
-                        <div class="mt-5 py-5 pr-3">
+                        <div class="mt-5 pt-5 pl-1">
                             @if(!$agent->isPhone())
                                 <a href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid()]) }}">
-                                    <button class="btn btn-danger text-white float-right">
+                                    <button class="w-100 mx-auto btn btn-danger text-white">
                                         Перейти в корзину <i class="fas fa-long-arrow-alt-right ml-2"></i>
                                     </button>
                                 </a>
                             @else
                                 <a class="w-100" href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid()]) }}">
-                                    <button class="btn btn-danger text-white float-right w-100 mx-auto">
+                                    <button class="w-100 btn btn-danger text-white mx-auto">
                                         Перейти в корзину <i class="fas fa-long-arrow-alt-right ml-2"></i>
                                     </button>
                                 </a>
