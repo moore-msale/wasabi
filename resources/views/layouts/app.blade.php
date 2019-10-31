@@ -8,7 +8,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title></title>
+    <title>Wasabi суши - меню «Wasabi» создается большой командой профессионалов во главе с бренд-шефом</title>
+    <meta name="description" content="Доставка суши и роллов в Бишкеке. Всегда только свежие продукты.">
     <!-- Scripts -->
 
 

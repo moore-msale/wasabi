@@ -11,7 +11,7 @@
                             <div class="products-bar" style="overflow-y: auto; height:40vh;">
                             @foreach($cartItems as $item)
                                 {{--@dd($item->attributes[0])--}}
-                                <div class="col-lg-12 px-lg-4 p-1 bg-dark">
+                                <div class="col-lg-12 px-lg-4 p-1 bg-dark carter">
                                     <div class="row py-1">
 
                                         <div class="col-4 pl-0">
@@ -44,10 +44,10 @@
                             </div>
                         </div>
 
-                        <p class="product-header text-white float-right font-weight-bold mr-4">
+                        <p class="text-white float-left font-weight-bold ml-4 mt-5" style="font-size:18px;">
                             Итого: <span class="ml-2"> {{ $total }} сом</span>
                         </p>
-                        <div class="mt-5 pt-5 pl-1">
+                        <div class="mt-3 pl-1">
                             @if(!$agent->isPhone())
                                 <a href="{{ route('cart.checkout', ['token' => Session::has('token') ? Session::get('token') : uniqid()]) }}">
                                     <button class="w-100 mx-auto btn btn-danger text-white">

@@ -10,7 +10,7 @@
                 </button>
                 <div class="row px-lg-4 px-0 pb-4 w-100 pl-3">
                     <div class="col-lg-6 col-12">
-                    <div class="product-img-modal   " style="background-image: url({{ asset('storage/'.str_replace('\\', '/', $product->image)) }})">
+                    <div class="product-img-modal" style="background-image: url({{ asset('storage/'.str_replace('\\', '/', $product->image)) }})">
                     </div>
 
                     </div>

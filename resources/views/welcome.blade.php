@@ -49,7 +49,7 @@
                                                                  <div class="col-lg-4 col-12 p-3">
                                                                          <div class="adder p-4 my-lg-0 text-center d-flex align-items-center"
                                                                               style="background-image: url({{asset('images/adder3.png')}})">
-                                                                             <p class="font-weight-bold text-white adder-header">
+                                                                             <p class="font-weight-bold text-white w-50 adder-header">
                                                                                  {{ $stock->name }}
                                                                              </p>
                                                                              <p class="text-white text-about adder-text w-50 pl-5">
@@ -124,7 +124,7 @@
                                                  <div class="col-lg-4 col-12 p-3">
                                                      <div class="adder px-4 my-lg-0 text-center d-flex align-items-center"
                                                           style="background-image: url({{asset('images/adder3.png')}})">
-                                                         <p class="font-weight-bold text-white adder-header">
+                                                         <p class="font-weight-bold text-white w-50 adder-header">
                                                              {{ $stock->name }}
                                                          </p>
                                                          <p class="text-white text-about adder-text w-50 pl-5">
@@ -177,7 +177,7 @@
                                                                                 <div class="item grey darken-4 text-center p-4 cat">
                                                                                         <a href="{{ route('catalog',array('category' => $category->id)) }}">
                                                                                                 <p class="point"
-                                                                                                   style="height:20px;">{{ $category->name }}</p>
+                                                                                                   style="height:20px; font-size:14px;">{{ $category->name }}</p>
                                                                                                 <img class="img-fluid"
                                                                                                      src="{{ asset('storage/'.$category->image) }}"
                                                                                                      alt="">
