@@ -47,17 +47,19 @@
                                                                  </div>
                                                          @elseif($i == 3)
                                                                  <div class="col-lg-4 col-12 p-3">
-                                                                         <div class="adder p-4 my-lg-0 text-center d-flex align-items-center"
-                                                                              style="background-image: url({{asset('images/adder3.png')}})">
-                                                                             <p class="font-weight-bold text-white w-50 adder-header">
-                                                                                 {{ $stock->name }}
-                                                                             </p>
-                                                                             <p class="text-white text-about adder-text w-50 pl-5">
+                                                                     <div class="adder my-lg-0 px-4 py-3"
+                                                                          style="background-image: url({{asset('images/adder3.png')}})">
+                                                                         <p class="font-weight-bold text-white adder-header">
+                                                                             {{ $stock->name }}
+                                                                         </p>
+                                                                         <div class="h-100 d-flex align-items-center">
+                                                                             <p class="text-white text-about adder-text w-50 pr-lg-5 pr-0 pl-1 pb-5">
                                                                                  {{ $stock->description }}
                                                                              </p>
-                                                                                 {{--<img class="img-fluid pt-2 pb-3" src="{{ asset('images/adder.png') }}" alt="">--}}
-
                                                                          </div>
+                                                                         {{--<img class="img-fluid pt-2 pb-3" src="{{ asset('images/adder.png') }}" alt="">--}}
+
+                                                                     </div>
                                                                  </div>
                                                          @elseif($i == 4)
                                                          <div class="col-lg-6 col-12 p-1">
@@ -122,14 +124,16 @@
                                                  </div>
                                              @elseif($i == 3)
                                                  <div class="col-lg-4 col-12 p-3">
-                                                     <div class="adder px-4 my-lg-0 text-center d-flex align-items-center"
+                                                     <div class="adder my-lg-0 px-4 py-3"
                                                           style="background-image: url({{asset('images/adder3.png')}})">
-                                                         <p class="font-weight-bold text-white w-50 adder-header">
+                                                         <p class="font-weight-bold text-white adder-header">
                                                              {{ $stock->name }}
                                                          </p>
-                                                         <p class="text-white text-about adder-text w-50 pl-5">
+                                                         <div class="h-100 d-flex align-items-center">
+                                                         <p class="text-white text-about adder-text w-50 pr-5 pl-1 pb-5">
                                                              {{ $stock->description }}
                                                          </p>
+                                                         </div>
                                                          {{--<img class="img-fluid pt-2 pb-3" src="{{ asset('images/adder.png') }}" alt="">--}}
 
                                                      </div>

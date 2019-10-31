@@ -16,14 +16,14 @@
 
                                         <div class="col-4 pl-0">
                                             <div class="d-flex align-items-center h-100">
-                                            <span class="product-header text-white font-weight-bold">
+                                            <span class="product-header text-white">
                                                 {{ $item->name }}
                                             </span>
                                             </div>
                                         </div>
                                         <div class="col-4 px-0">
                                             <div class="d-flex align-items-center h-100">
-                                            <span class="product-price text-center text-white font-weight-bold">
+                                            <span style="font-size:14px;" class="product-price text-center text-white">
                                                 {{ $item->price }} сом
                                             </span>
                                             </div>
