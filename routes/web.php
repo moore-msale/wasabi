@@ -38,7 +38,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@welcome')->name('home');
 Route::get('/profile', 'HomeController@profile')->name('profile');
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'moo'], function () {
     Voyager::routes();
 });
 Route::post('/liked', 'ProductController@liked')->name('liked');
