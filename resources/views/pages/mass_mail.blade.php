@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('content')
+    <div class="container-fluid">
 <div  class="row bg-dark d-flex justify-content-center">
 
-	<div class="col-8">
+	<div class="col-8 my-5">
 		<h2 class="text-white text-center">Рассылка</h2>
 		<form method="POST" action="{{ route('massMailSend') }}">
 			@csrf
@@ -23,6 +24,7 @@
 		</form>
 	</div>
 </div>
+    </div>
 <hr>
 <!-- <div class="container">
     <div class="row text-center">

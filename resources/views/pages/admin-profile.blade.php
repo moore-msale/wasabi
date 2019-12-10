@@ -20,7 +20,7 @@
             <div class="col-12 py-5">
                 <h2 class="text-white text-center">Личный кабинет</h2>
             </div>
-            <div class="col-lg-4 col-12 bg-dark p-4" style="border-right:1px solid red;">
+            <div class="col-lg-6 col-12 bg-dark p-4" style="border-right:1px solid red;">
                 <h4 class="text-white text-center pb-3">
                     Зарегистрированные клиенты
                 </h4>
@@ -79,10 +79,25 @@
                 @endforeach
                     @endif
             </div>
-            <div class="col-lg-4 col-12 bg-dark py-4 px-lg-5 px-3">
-                <h4 class="text-white text-center pb-3">
-                    Заказы зарегистрированных клиентов
-                </h4>
+            <div class="col-lg-6 col-12 bg-dark pb-4 px-lg-5 px-3">
+
+                <h2 class="text-white text-center pb-3 pt-4">
+                    Заказы
+                </h2>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item mr-3">
+                        <a class="nav-link active text-white" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Зарегистированные пользователи</a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link text-white" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Не зарегистрированные пользователи</a>
+                    </li>
+
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h4 class="text-white text-center pb-3 pt-4">
+                            Заказы зарегистрированных клиентов
+                        </h4>
                         <div class="order-content">
                             @foreach($carts as $basket)
                                 @isset($basket->user_id)
@@ -124,9 +139,9 @@
                                                         Имя:
                                                     </p>
                                                     @if($basket->email)
-                                                    <p>
-                                                        Email:
-                                                    </p>
+                                                        <p>
+                                                            Email:
+                                                        </p>
                                                     @endif
                                                     <p>
                                                         Номер телефон:
@@ -135,9 +150,9 @@
                                                         Дата доставки:
                                                     </p>
                                                     @if($basket->comment)
-                                                    <p>
-                                                        Комментарий:
-                                                    </p>
+                                                        <p>
+                                                            Комментарий:
+                                                        </p>
                                                     @endif
                                                     <p>
                                                         Дата оформления заказа:
@@ -157,9 +172,9 @@
                                                         {{ $basket->name }}
                                                     </p>
                                                     @if($basket->email)
-                                                    <p>
-                                                        {{ $basket->email }}
-                                                    </p>
+                                                        <p>
+                                                            {{ $basket->email }}
+                                                        </p>
                                                     @endif
                                                     <p>
                                                         {{ $basket->phone }}
@@ -168,9 +183,9 @@
                                                         {{ $basket->date }}
                                                     </p>
                                                     @if($basket->comment)
-                                                    <p>
-                                                        {{ $basket->comment }}
-                                                    </p>
+                                                        <p>
+                                                            {{ $basket->comment }}
+                                                        </p>
                                                     @endif
                                                     <p>
                                                         {{ $basket->created_at }}
@@ -239,12 +254,11 @@
                                 @endisset
                             @endforeach
                         </div>
-        </div>
-        <!-- New -->
-        <div class="col-lg-4 col-12 bg-dark py-4 px-lg-5 px-3">
-                <h4 class="text-white text-center pb-3">
-                    Заказы не зарегистрированных клиентов
-                </h4>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <h4 class="text-white text-center pb-3 pt-4">
+                            Заказы не зарегистрированных клиентов
+                        </h4>
                         <div class="order-content">
                             @foreach($carts as $basket)
                                 @empty($basket->user_id)
@@ -286,9 +300,9 @@
                                                         Имя:
                                                     </p>
                                                     @if($basket->email)
-                                                    <p>
-                                                        Email:
-                                                    </p>
+                                                        <p>
+                                                            Email:
+                                                        </p>
                                                     @endif
                                                     <p>
                                                         Номер телефон:
@@ -297,9 +311,9 @@
                                                         Дата доставки:
                                                     </p>
                                                     @if($basket->comment)
-                                                    <p>
-                                                        Комментарий:
-                                                    </p>
+                                                        <p>
+                                                            Комментарий:
+                                                        </p>
                                                     @endif
                                                     <p>
                                                         Дата оформления заказа:
@@ -319,9 +333,9 @@
                                                         {{ $basket->name }}
                                                     </p>
                                                     @if($basket->email)
-                                                    <p>
-                                                        {{ $basket->email }}
-                                                    </p>
+                                                        <p>
+                                                            {{ $basket->email }}
+                                                        </p>
                                                     @endif
                                                     <p>
                                                         {{ $basket->phone }}
@@ -330,9 +344,9 @@
                                                         {{ $basket->date }}
                                                     </p>
                                                     @if($basket->comment)
-                                                    <p>
-                                                        {{ $basket->comment }}
-                                                    </p>
+                                                        <p>
+                                                            {{ $basket->comment }}
+                                                        </p>
                                                     @endif
                                                     <p>
                                                         {{ $basket->created_at }}
@@ -401,7 +415,11 @@
                                 @endempty
                             @endforeach
                         </div>
+                    </div>
+                </div>
+
         </div>
+        <!-- New -->
     </div>
     </div>
 @endsection
