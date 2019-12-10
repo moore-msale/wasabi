@@ -52,3 +52,7 @@ Route::post('/cart', 'Api\CartController@store')->name('cart.store');
 Route::get('/cart/add/product', 'Api\CartController@add')->name('cart.add');
 Route::get('/cart/delete/product', 'Api\CartController@delete')->name('cart.delete');
 Route::get('/cart/remove/product', 'Api\CartController@remove')->name('cart.remove');
+
+Route::get('/massmail', 'HomeController@massMail')->name('massmail');
+Route::post('/massmail', 'HomeController@massMailSend')->name('massMailSend');
+

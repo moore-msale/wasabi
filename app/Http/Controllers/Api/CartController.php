@@ -50,7 +50,8 @@ class CartController extends Controller
         $newCart = new Cart();
         $newCart->cart = $cart->getContent();
         if(Auth::user()) {
-            $newCart->user_id = Auth::id();
+            // $newCart->user_id = Auth::id();
+            $newCart->user_id = Auth()->user()->id;
             if (Auth::user()->stock != 1) {
                 $user = Auth::user();
                 $user->stock = 1;

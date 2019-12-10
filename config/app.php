@@ -164,6 +164,7 @@ return [
         Jenssegers\Agent\AgentServiceProvider::class,
         odannyc\Alertify\AlertifyServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
@@ -177,7 +178,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
     ],
 
     /*
@@ -231,6 +233,9 @@ return [
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
         'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
         'Alertify' => odannyc\Alertify\Alertify::class,
+        'Image' => Intervention\Image\Facades\Image::class,
+
+
     ],
 
 ];

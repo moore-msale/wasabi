@@ -20,7 +20,7 @@
             <div class="col-12 py-5">
                 <h2 class="text-white text-center">Личный кабинет</h2>
             </div>
-            <div class="col-lg-6 col-12 bg-dark p-4" style="border-right:1px solid red;">
+            <div class="col-lg-4 col-12 bg-dark p-4" style="border-right:1px solid red;">
                 <h4 class="text-white text-center pb-3">
                     Зарегистрированные клиенты
                 </h4>
@@ -79,162 +79,326 @@
                 @endforeach
                     @endif
             </div>
-            <div class="col-lg-6 col-12 bg-dark py-4 px-lg-5 px-3">
+            <div class="col-lg-4 col-12 bg-dark py-4 px-lg-5 px-3">
                 <h4 class="text-white text-center pb-3">
-                    Все заказы
+                    Заказы зарегистрированных клиентов
                 </h4>
                         <div class="order-content">
                             @foreach($carts as $basket)
-                                <div class="p-lg-4 p-1 mt-3" style="background-color:#292929; border: 1px solid #363636; box-sizing: border-box;">
-                                    <div class="row border-bottom">
-                                        @if($agent->isPhone())
-                                            <div class="col-12 text-white">
-                                                <p>
-                                                    Имя: {{ $basket->name }}
-                                                </p>
-                                                <p>
-                                                    Email: {{ $basket->email }}
-                                                </p>
-                                                <p>
-                                                    Номер телефон: {{ $basket->phone }}
-                                                </p>
-                                                <p>
-                                                    Дата доставки: {{ $basket->date }}
-                                                </p>
-                                                <p>
-                                                    Комментарий: {{ $basket->comment }}
-                                                </p>
-                                                <p>
-                                                    Дата оформления заказа: {{ $basket->created_at }}
-                                                </p>
-                                                @if(isset($basket->user_id))
-                                                    <p class="font-weight-bold">
-                                                        Зарегистрирован: Да
-                                                    </p>
-                                                @else
-                                                    <p class="font-weight-bold">
-                                                        Зарегистрирован: Нет
-                                                    </p>
-                                                @endif
-                                            </div>
-                                        @else
-                                            <div class="col-4 text-white">
-                                                <p>
-                                                    Имя:
-                                                </p>
-                                                @if($basket->email)
-                                                <p>
-                                                    Email:
-                                                </p>
-                                                @endif
-                                                <p>
-                                                    Номер телефон:
-                                                </p>
-                                                <p>
-                                                    Дата доставки:
-                                                </p>
-                                                @if($basket->comment)
-                                                <p>
-                                                    Комментарий:
-                                                </p>
-                                                @endif
-                                                <p>
-                                                    Дата оформления заказа:
-                                                </p>
-                                                @if(isset($basket->user_id))
+                                @isset($basket->user_id)
+                                    <div class="p-lg-4 p-1 mt-3" style="background-color:#292929; border: 1px solid #363636; box-sizing: border-box;">
+                                        <div class="row border-bottom">
+                                            @if($agent->isPhone())
+                                                <div class="col-12 text-white">
                                                     <p>
-                                                        Зарегистрирован:
+                                                        Имя: {{ $basket->name }}
                                                     </p>
-                                                @else
                                                     <p>
-                                                        Зарегистрирован:
+                                                        Email: {{ $basket->email }}
                                                     </p>
-                                                @endif
-                                            </div>
-                                            <div class="col-6 text-white">
-                                                <p>
-                                                    {{ $basket->name }}
-                                                </p>
-                                                @if($basket->email)
-                                                <p>
-                                                    {{ $basket->email }}
-                                                </p>
-                                                @endif
-                                                <p>
-                                                    {{ $basket->phone }}
-                                                </p>
-                                                <p>
-                                                    {{ $basket->date }}
-                                                </p>
-                                                @if($basket->comment)
-                                                <p>
-                                                    {{ $basket->comment }}
-                                                </p>
-                                                @endif
-                                                <p>
-                                                    {{ $basket->created_at }}
-                                                </p>
-                                                @if(isset($basket->user_id))
-                                                    <p class="font-weight-bold">
-                                                        да
+                                                    <p>
+                                                        Номер телефон: {{ $basket->phone }}
                                                     </p>
-                                                @else
-                                                    <p class="font-weight-bold">
-                                                        нет
+                                                    <p>
+                                                        Дата доставки: {{ $basket->date }}
                                                     </p>
-                                                @endif
-                                            </div>
-                                        @endif
+                                                    <p>
+                                                        Комментарий: {{ $basket->comment }}
+                                                    </p>
+                                                    <p>
+                                                        Дата оформления заказа: {{ $basket->created_at }}
+                                                    </p>
+                                                    @if(isset($basket->user_id))
+                                                        <p class="font-weight-bold">
+                                                            Зарегистрирован: Да
+                                                        </p>
+                                                    @else
+                                                        <p class="font-weight-bold">
+                                                            Зарегистрирован: Нет
+                                                        </p>
+                                                    @endif
+                                                </div>
+                                            @else
+                                                <div class="col-4 text-white">
+                                                    <p>
+                                                        Имя:
+                                                    </p>
+                                                    @if($basket->email)
+                                                    <p>
+                                                        Email:
+                                                    </p>
+                                                    @endif
+                                                    <p>
+                                                        Номер телефон:
+                                                    </p>
+                                                    <p>
+                                                        Дата доставки:
+                                                    </p>
+                                                    @if($basket->comment)
+                                                    <p>
+                                                        Комментарий:
+                                                    </p>
+                                                    @endif
+                                                    <p>
+                                                        Дата оформления заказа:
+                                                    </p>
+                                                    @if(isset($basket->user_id))
+                                                        <p>
+                                                            Зарегистрирован:
+                                                        </p>
+                                                    @else
+                                                        <p>
+                                                            Зарегистрирован:
+                                                        </p>
+                                                    @endif
+                                                </div>
+                                                <div class="col-6 text-white">
+                                                    <p>
+                                                        {{ $basket->name }}
+                                                    </p>
+                                                    @if($basket->email)
+                                                    <p>
+                                                        {{ $basket->email }}
+                                                    </p>
+                                                    @endif
+                                                    <p>
+                                                        {{ $basket->phone }}
+                                                    </p>
+                                                    <p>
+                                                        {{ $basket->date }}
+                                                    </p>
+                                                    @if($basket->comment)
+                                                    <p>
+                                                        {{ $basket->comment }}
+                                                    </p>
+                                                    @endif
+                                                    <p>
+                                                        {{ $basket->created_at }}
+                                                    </p>
+                                                    @if(isset($basket->user_id))
+                                                        <p class="font-weight-bold">
+                                                            да
+                                                        </p>
+                                                    @else
+                                                        <p class="font-weight-bold">
+                                                            нет
+                                                        </p>
+                                                    @endif
+                                                </div>
+                                            @endif
 
-                                    </div>
-                                    <div class="basket-content pt-3">
-                                        <div class="row text-white">
-                                            <div class="col-4">
-                                                <p>
-                                                    Название
-                                                </p>
-                                            </div>
-                                            <div class="col-4">
-                                                <p>
-                                                    Кол-во
-                                                </p>
-                                            </div>
-                                            <div class="col-4">
-                                                <p>
-                                                    Цена
-                                                </p>
-                                            </div>
                                         </div>
-                                        @foreach($basket->cart as $cart)
+                                        <div class="basket-content pt-3">
                                             <div class="row text-white">
                                                 <div class="col-4">
                                                     <p>
-                                                        {{ $cart['name'] }}
+                                                        Название
                                                     </p>
                                                 </div>
                                                 <div class="col-4">
                                                     <p>
-                                                        {{ $cart['quantity'] }}
+                                                        Кол-во
                                                     </p>
                                                 </div>
                                                 <div class="col-4">
-                                                    {{ $cart['price'] }} сом
+                                                    <p>
+                                                        Цена
+                                                    </p>
                                                 </div>
                                             </div>
-                                        @endforeach
-                                        @if($basket->promo)
+                                            @foreach($basket->cart as $cart)
+                                                <div class="row text-white">
+                                                    <div class="col-4">
+                                                        <p>
+                                                            {{ $cart['name'] }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <p>
+                                                            {{ $cart['quantity'] }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        {{ $cart['price'] }} сом
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                            @if($basket->promo)
 
-                                            <p class="font-weight-bold text-white">
-                                                Промокод: {{ $basket->promo }}  - Скидка: {{ $basket->discount }}%
-                                            </p>
-                                        @endif
-                                        <div class="total">
-                                            <p class="font-weight-bold text-white">
-                                                Итого: {{ $basket->total }} сом
-                                            </p>
+                                                <p class="font-weight-bold text-white">
+                                                    Промокод: {{ $basket->promo }}  - Скидка: {{ $basket->discount }}%
+                                                </p>
+                                            @endif
+                                            <div class="total">
+                                                <p class="font-weight-bold text-white">
+                                                    Итого: {{ $basket->total }} сом
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endisset
+                            @endforeach
+                        </div>
+        </div>
+        <!-- New -->
+        <div class="col-lg-4 col-12 bg-dark py-4 px-lg-5 px-3">
+                <h4 class="text-white text-center pb-3">
+                    Заказы не зарегистрированных клиентов
+                </h4>
+                        <div class="order-content">
+                            @foreach($carts as $basket)
+                                @empty($basket->user_id)
+                                    <div class="p-lg-4 p-1 mt-3" style="background-color:#292929; border: 1px solid #363636; box-sizing: border-box;">
+                                        <div class="row border-bottom">
+                                            @if($agent->isPhone())
+                                                <div class="col-12 text-white">
+                                                    <p>
+                                                        Имя: {{ $basket->name }}
+                                                    </p>
+                                                    <p>
+                                                        Email: {{ $basket->email }}
+                                                    </p>
+                                                    <p>
+                                                        Номер телефон: {{ $basket->phone }}
+                                                    </p>
+                                                    <p>
+                                                        Дата доставки: {{ $basket->date }}
+                                                    </p>
+                                                    <p>
+                                                        Комментарий: {{ $basket->comment }}
+                                                    </p>
+                                                    <p>
+                                                        Дата оформления заказа: {{ $basket->created_at }}
+                                                    </p>
+                                                    @if(isset($basket->user_id))
+                                                        <p class="font-weight-bold">
+                                                            Зарегистрирован: Да
+                                                        </p>
+                                                    @else
+                                                        <p class="font-weight-bold">
+                                                            Зарегистрирован: Нет
+                                                        </p>
+                                                    @endif
+                                                </div>
+                                            @else
+                                                <div class="col-4 text-white">
+                                                    <p>
+                                                        Имя:
+                                                    </p>
+                                                    @if($basket->email)
+                                                    <p>
+                                                        Email:
+                                                    </p>
+                                                    @endif
+                                                    <p>
+                                                        Номер телефон:
+                                                    </p>
+                                                    <p>
+                                                        Дата доставки:
+                                                    </p>
+                                                    @if($basket->comment)
+                                                    <p>
+                                                        Комментарий:
+                                                    </p>
+                                                    @endif
+                                                    <p>
+                                                        Дата оформления заказа:
+                                                    </p>
+                                                    @if(isset($basket->user_id))
+                                                        <p>
+                                                            Зарегистрирован:
+                                                        </p>
+                                                    @else
+                                                        <p>
+                                                            Зарегистрирован:
+                                                        </p>
+                                                    @endif
+                                                </div>
+                                                <div class="col-6 text-white">
+                                                    <p>
+                                                        {{ $basket->name }}
+                                                    </p>
+                                                    @if($basket->email)
+                                                    <p>
+                                                        {{ $basket->email }}
+                                                    </p>
+                                                    @endif
+                                                    <p>
+                                                        {{ $basket->phone }}
+                                                    </p>
+                                                    <p>
+                                                        {{ $basket->date }}
+                                                    </p>
+                                                    @if($basket->comment)
+                                                    <p>
+                                                        {{ $basket->comment }}
+                                                    </p>
+                                                    @endif
+                                                    <p>
+                                                        {{ $basket->created_at }}
+                                                    </p>
+                                                    @if(isset($basket->user_id))
+                                                        <p class="font-weight-bold">
+                                                            да
+                                                        </p>
+                                                    @else
+                                                        <p class="font-weight-bold">
+                                                            нет
+                                                        </p>
+                                                    @endif
+                                                </div>
+                                            @endif
+
+                                        </div>
+                                        <div class="basket-content pt-3">
+                                            <div class="row text-white">
+                                                <div class="col-4">
+                                                    <p>
+                                                        Название
+                                                    </p>
+                                                </div>
+                                                <div class="col-4">
+                                                    <p>
+                                                        Кол-во
+                                                    </p>
+                                                </div>
+                                                <div class="col-4">
+                                                    <p>
+                                                        Цена
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            @foreach($basket->cart as $cart)
+                                                <div class="row text-white">
+                                                    <div class="col-4">
+                                                        <p>
+                                                            {{ $cart['name'] }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <p>
+                                                            {{ $cart['quantity'] }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        {{ $cart['price'] }} сом
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                            @if($basket->promo)
+
+                                                <p class="font-weight-bold text-white">
+                                                    Промокод: {{ $basket->promo }}  - Скидка: {{ $basket->discount }}%
+                                                </p>
+                                            @endif
+                                            <div class="total">
+                                                <p class="font-weight-bold text-white">
+                                                    Итого: {{ $basket->total }} сом
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endempty
                             @endforeach
                         </div>
         </div>

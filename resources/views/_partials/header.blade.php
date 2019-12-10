@@ -57,6 +57,11 @@
                             <a class="dropdown-item" href="{{ route('profile') }}">
                                 {{ __('Личный кабинет') }}
                             </a>
+                            @if (Auth::user()->role->name == 'admin')                       
+                                <a class="dropdown-item" href="{{ route('massmail') }}">
+                                    {{ __('Рассылка') }}
+                                </a>
+                            @endif
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
