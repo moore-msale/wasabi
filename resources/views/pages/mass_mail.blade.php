@@ -1,31 +1,32 @@
 @extends('layouts.app')
 @section('content')
     <div class="container-fluid">
-<div  class="row bg-dark d-flex justify-content-center">
+        <div class="row bg-dark d-flex justify-content-center">
 
-	<div class="col-8 my-5">
-		<h2 class="text-white text-center">Рассылка</h2>
-		<form method="POST" action="{{ route('massMailSend') }}">
-			@csrf
-		  <div class="form-group">
-			    <!-- <label for="title">Название</label> -->
-			    <div class="md-form">
-			    	<input type="text" name="title" class="form-control text-white" id="title"  placeholder="Тема">
-				</div>
-			  <div class="form-group">
-			    <!-- <label for="Textarea1">Содержимое</label> -->
-			    <div class="md-form">
-			    	<textarea name="content" class="form-control md-textarea text-white" id="mail_content" rows="20" placeholder="Содержание"></textarea>
-				</div>
-			  </div>
-		  </div>
+            <div class="col-8 my-5">
+                <h2 class="text-white text-center">Рассылка</h2>
+                <form method="POST" action="{{ route('massMailSend') }}">
+                    @csrf
+                    <div class="form-group">
+                        <!-- <label for="title">Название</label> -->
+                        <div class="md-form">
+                            <input type="text" name="title" class="form-control text-white" id="title"
+                                   placeholder="Тема">
+                        </div>
+                        <div class="form-group">
+                            <!-- <label for="Textarea1">Содержимое</label> -->
+                            <div class="md-form">
+                                <textarea name="content" class="form-control md-textarea text-white" id="mail_content"
+                                          rows="20" placeholder="Содержание"></textarea>
+                            </div>
+                        </div>
+                    </div>
 
-		  <button type="submit" class="btn btn-danger text-white">Отравить</button>
-		</form>
-	</div>
-</div>
+                    <button type="submit" class="btn btn-danger text-white">Отравить</button>
+                </form>
+            </div>
+        </div>
     </div>
-<hr>
 <!-- <div class="container">
     <div class="row text-center">
         <div class="col-12">
