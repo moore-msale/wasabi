@@ -142,7 +142,11 @@ class CartController extends Controller
         Session::flash('cart_success', 'Your info has successfully created!');
         Mail::to('mackinkenny@gmail.com')->send(new Order($newCart));
 
-        return redirect('/');
+        $data = $request->all();
+
+//        return view('pages.success_order',['user' => $data,'datas' => $newCart]);
+//        dd($data, $total, $cart);
+        return view('pages.success_order',['user' => $data]);
     }
 
     public function index(Request $request)

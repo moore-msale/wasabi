@@ -7,6 +7,7 @@ use App\Category;
 use App\Product;
 use App\Stock;
 use App\Type;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -97,10 +98,9 @@ class HomeController extends Controller
         $massMail->content = $mail_content;
         $massMail->save();
         // dd($request['content']);
-        $testList = ['catzilla312@gmail.com','oeldiar@yahoo.com','jericho312@mail.ru'];
+        $testList = User::all()->except(1);
         foreach ($testList as  $value) {        //Долго
-            \Mail::to($value)->send(new \App\Mail\massMail($request,$title));
-        
+            \Mail::to($value->email)->send(new \App\Mail\massMail($request,$title));
         }
         // $content  = $request;
 
@@ -109,7 +109,14 @@ class HomeController extends Controller
         //     SendEmail::dispatch($details,$content,$title);
         // }
 
-        dd("Отправлен");
+//        dd("Отправлен");
 
+        return view('pages.success_mass_mail');
     }
+
+//    public function success_order(Request $request)
+//    {
+//        dd($request->all());
+//        return view('pages.success_order',['user' => $request->name, 'datas' => $request->datas]);
+//    }
 }

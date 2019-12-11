@@ -86,18 +86,18 @@
                 </h2>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item mr-3">
-                        <a class="nav-link active text-white" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Зарегистированные пользователи</a>
+                        <a class="nav-link active text-white" style="font-size:13px;" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Пользователи сайта</a>
                     </li>
                     <li class="nav-item mr-3">
-                        <a class="nav-link text-white" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Не зарегистрированные пользователи</a>
+                        <a class="nav-link text-white" id="profile-tab" style="font-size: 13px;" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Не зарегистрированные пользователи</a>
                     </li>
 
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <h4 class="text-white text-center pb-3 pt-4">
+                        <h5 class="text-white text-center pb-3 pt-4">
                             Заказы зарегистрированных клиентов
-                        </h4>
+                        </h5>
                         <div class="order-content">
                             @foreach($carts as $basket)
                                 @isset($basket->user_id)
@@ -256,9 +256,9 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <h4 class="text-white text-center pb-3 pt-4">
+                        <h5 class="text-white text-center pb-3 pt-4">
                             Заказы не зарегистрированных клиентов
-                        </h4>
+                        </h5>
                         <div class="order-content">
                             @foreach($carts as $basket)
                                 @empty($basket->user_id)

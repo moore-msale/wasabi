@@ -22,7 +22,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-danger text-white">Отравить</button>
+                    <button type="submit" class="btn btn-danger text-white">Отправить</button>
                 </form>
             </div>
         </div>

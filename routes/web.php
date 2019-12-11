@@ -56,3 +56,5 @@ Route::get('/cart/remove/product', 'Api\CartController@remove')->name('cart.remo
 Route::get('/massmail', 'HomeController@massMail')->name('massmail');
 Route::post('/massmail', 'HomeController@massMailSend')->name('massMailSend');
 
+Route::get('/success_order','HomeController@success_order')->name('success_order');
+
