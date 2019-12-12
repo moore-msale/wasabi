@@ -58,3 +58,4 @@ Route::post('/massmail', 'HomeController@massMailSend')->name('massMailSend');
 
 Route::get('/success_order','HomeController@success_order')->name('success_order');
 
+Route::get('/reminder_notification', 'NotificationController@notification')->name('reminder_notification');
