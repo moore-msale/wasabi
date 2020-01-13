@@ -20,7 +20,7 @@
                                              <?php
                                              $i = 1;
                                              ?>
-                                                 @foreach(\App\Stock::where('end_date','>=', \Illuminate\Support\Carbon::now())->get() as $stock)
+                                                 @foreach(\App\Stock::all() as $stock)
                                                          @if($i == 1)
                                                                  <div class="col-lg-4 col-12 p-3">
                                                                          <div class="adder p-4 text-center"
