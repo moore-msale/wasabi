@@ -71,7 +71,8 @@ class HomeController extends Controller
     }
     public function stock()
     {
-        $stocks = Stock::where('end_date','>=', Carbon::now())->get();
+//        $stocks = Stock::where('end_date','>=', Carbon::now())->get();
+        $stocks = Stock::all();
         return view('pages.stock',['stocks' => $stocks]);
     }
 
