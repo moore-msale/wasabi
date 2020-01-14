@@ -369,7 +369,7 @@
         margin: 10,
         loop: true,
         autoplay:true,
-        autoplayTimeout:5000,
+        autoplayTimeout:10000,
         // autoplaySpeed: 1500,
         // autoplayHoverPause:true,
         responsive: {
