@@ -305,6 +305,11 @@
                                                             Зарегистрирован: Нет
                                                         </p>
                                                     @endif
+                                                    @if(isset($basket->discount))
+                                                        <p>
+                                                            Скидка: {{ $basket->discount }}
+                                                        </p>
+                                                    @endif
                                                 </div>
                                             @else
                                                 <div class="col-4 text-white">
@@ -341,6 +346,10 @@
                                                         <p>
                                                             Зарегистрирован:
                                                         </p>
+                                                    @endif@if(isset($basket->discount))
+                                                        <p>
+                                                            Скидка:
+                                                        </p>
                                                     @endif
                                                 </div>
                                                 <div class="col-6 text-white">
@@ -376,6 +385,11 @@
                                                     @else
                                                         <p class="font-weight-bold">
                                                             нет
+                                                        </p>
+                                                    @endif
+                                                    @if(isset($basket->discount))
+                                                        <p>
+                                                            {{ $basket->discount }}
                                                         </p>
                                                     @endif
                                                 </div>
