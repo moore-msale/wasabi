@@ -270,7 +270,7 @@
                         </h5>
                         <div class="order-content">
                             @foreach($carts as $basket)
-                                @empty($basket->user_id)
+                                @if(!isset($basket->user_id))
                                     <div class="p-lg-4 p-1 mt-3" style="background-color:#292929; border: 1px solid #363636; box-sizing: border-box;">
                                         <div class="row border-bottom">
                                             @if($agent->isPhone())
@@ -346,7 +346,8 @@
                                                         <p>
                                                             Зарегистрирован:
                                                         </p>
-                                                    @endif@if(isset($basket->discount))
+                                                    @endif
+                                                    @if(isset($basket->discount))
                                                         <p>
                                                             Скидка:
                                                         </p>
@@ -432,7 +433,6 @@
                                                 </div>
                                             @endforeach
                                             @if($basket->promo)
-
                                                 <p class="font-weight-bold text-white">
                                                     Промокод: {{ $basket->promo }}  - Скидка: {{ $basket->discount }}%
                                                 </p>
@@ -444,7 +444,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                @endempty
+                                @endif
                             @endforeach
                         </div>
                     </div>
