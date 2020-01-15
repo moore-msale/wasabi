@@ -135,6 +135,11 @@
                                                             Зарегистрирован: Нет
                                                         </p>
                                                     @endif
+                                                    @if(isset($basket->discount))
+                                                    <p>
+                                                        Скидка: {{ $basket->discount }}%
+                                                    </p>
+                                                    @endif
                                                 </div>
                                             @else
                                                 <div class="col-4 text-white">
@@ -172,6 +177,12 @@
                                                             Зарегистрирован:
                                                         </p>
                                                     @endif
+                                                    @if(isset($basket->discount))
+
+                                                    <p>
+                                                        Скидка:
+                                                    </p>
+                                                    @endif
                                                 </div>
                                                 <div class="col-6 text-white">
                                                     <p>
@@ -207,6 +218,9 @@
                                                         <p class="font-weight-bold">
                                                             нет
                                                         </p>
+                                                    @endif
+                                                    @if(isset($basket->discount))
+                                                        {{ $basket->discount }}%
                                                     @endif
                                                 </div>
                                             @endif
@@ -305,9 +319,9 @@
                                                             Зарегистрирован: Нет
                                                         </p>
                                                     @endif
-                                                    @if(isset($basket->discount))
+                                                    @if($basket->discount)
                                                         <p>
-                                                            Скидка: {{ $basket->discount }}
+                                                            Скидка: {{ $basket->discount }}%
                                                         </p>
                                                     @endif
                                                 </div>
@@ -388,9 +402,9 @@
                                                             нет
                                                         </p>
                                                     @endif
-                                                    @if(isset($basket->discount))
+                                                    @if($basket->discount)
                                                         <p>
-                                                            {{ $basket->discount }}
+                                                            {{ $basket->discount }}%
                                                         </p>
                                                     @endif
                                                 </div>
