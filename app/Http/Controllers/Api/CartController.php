@@ -49,12 +49,14 @@ class CartController extends Controller
         $cart = CartFacade::session($token);
         $newCart = new Cart();
         $newCart->cart = $cart->getContent();
+        $check = 0;
         if(Auth::user()) {
             // $newCart->user_id = Auth::id();
             $newCart->user_id = Auth()->user()->id;
             if (Auth::user()->stock != 1) {
                 $user = Auth::user();
                 $user->stock = 1;
+                $check = 1;
                 $user->save();
                 $newCart->discount = 20;
                 if($cart->getTotal() > 200 && $cart->getTotal() < 700)
@@ -67,7 +69,7 @@ class CartController extends Controller
                 }
             }
         }
-        if (isset($request->promo)) {
+        if (isset($request->promo) && $check == 0) {
                 $promos = Code::all();
                 foreach ($promos as $promo) {
                     if ($request->promo == $promo->name) {
@@ -96,7 +98,7 @@ class CartController extends Controller
                     }
 
                 }
-            } else {
+            } elseif($check == 0) {
             if($cart->getTotal() > 200 && $cart->getTotal() < 700 && $request->type == 1)
             {
                 $newCart->total = $cart->getTotal() + 50;

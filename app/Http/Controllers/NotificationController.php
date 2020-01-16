@@ -14,6 +14,7 @@ class NotificationController extends Controller
 {
     public function notification(){
         $users = User::select('email','id')->get();
+//        $users = User::where('id',2)->get();
         foreach ($users as $user){
              $cart = Cart::where('email',$user->email)->latest('created_at')->first();
              if(isset($cart['created_at']) and $cart['reminded'] != 1) {

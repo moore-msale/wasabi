@@ -18,7 +18,7 @@ class reminderMail extends Mailable
      */
     public function __construct()
     {
-        //
+
     }
 
     /**
@@ -28,6 +28,6 @@ class reminderMail extends Mailable
      */
     public function build()
     {
-        return $this->from('da@to-moore.com')->subject('Не забывайте о нас')->markdown('mail.reminder');
+        return $this->subject('Васаби - суши')->markdown('mail.reminder');
     }
 }
