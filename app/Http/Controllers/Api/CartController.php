@@ -59,7 +59,7 @@ class CartController extends Controller
                 $check = 1;
                 $user->save();
                 $newCart->discount = 20;
-                if($cart->getTotal() > 200 && $cart->getTotal() < 700)
+                if($cart->getTotal() > 200 && $cart->getTotal() < 700 && $request->type == 1)
                 {
                 $newCart->total = ($cart->getTotal() + 50) - (($cart->getTotal() / 100) * 20);
                 }
@@ -74,7 +74,7 @@ class CartController extends Controller
                 foreach ($promos as $promo) {
                     if ($request->promo == $promo->name) {
                         $newCart->promo = $request->promo;
-                        if($cart->getTotal() > 200 && $cart->getTotal() < 700)
+                        if($cart->getTotal() > 200 && $cart->getTotal() < 700 && $request->type == 1)
                         {
                             $newCart->total = ($cart->getTotal() + 50) - (($cart->getTotal() / 100) * $promo->discount);
                         }
@@ -88,7 +88,7 @@ class CartController extends Controller
                 }
                 if (!$newCart->promo)
                 {
-                    if($cart->getTotal() > 200 && $cart->getTotal() < 700)
+                    if($cart->getTotal() > 200 && $cart->getTotal() < 700 && $request->type == 1)
                     {
                         $newCart->total = $cart->getTotal() + 50;
                     }
