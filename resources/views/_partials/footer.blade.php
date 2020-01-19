@@ -59,6 +59,12 @@
                 </a>
             </div>
         </div>
+            <div class="moore row justify-content-center align-items-center text-light pt-lg-3 pt-4 pb-lg-3" style="border-top: 1px solid rgba(0,0,0,0.48);">
+                <a href="https://to-moore.com/" style="padding-right: 1%;">
+                    <img src="https://to-moore.com/whitemoore.png" width="100" height="auto" alt="Moore studio" style="padding-right: 1%;" >
+                </a>
+                <div class="mooretext"><a href="https://to-moore.com/" style="color:white!important; font-size:0.8rem">Разработано и поддерживается<br/> компанией MOORE STUDIO</a></div>
+            </div>
     @else
         <div class="row justify-content-center">
             <div class="accordion w-100" id="accordionExample">
@@ -169,5 +175,11 @@
                 </div>
             </div>
         </div>
+            <div class="moore row justify-content-center align-items-center text-light pt-lg-3 pt-4 pb-4" style="border-top: 1px solid rgba(0,0,0,0.48);">
+                <a href="https://to-moore.com/" style="padding-right: 1%;">
+                    <img src="https://to-moore.com/whitemoore.png" width="100" height="auto" alt="Moore studio" style="padding-right: 1%;" >
+                </a>
+                <div class="mooretext"><a href="https://to-moore.com/" style="color:white!important; font-size:0.8rem">Разработано и поддерживается<br/> компанией MOORE STUDIO</a></div>
+            </div>
     @endif
 </div>

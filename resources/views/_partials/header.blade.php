@@ -18,7 +18,7 @@
             <!-- Left Side Of Navbar -->
             <div class="navbar-nav mr-auto d-lg-block d-none">
                 <a href="tel:996 0505 41 07 07">
-                <img class="img-fluid mr-2 ml-5" src="{{ asset('images/phone.svg') }}" alt=""><span class="menu-phone">+996 (0505) 410 707</span>
+                <img class="img-fluid mr-2 ml-5" src="{{ asset('images/phone.svg') }}" alt=""><span class="menu-phone">+996 (505) 410 707</span>
                 </a>
             </div>
 

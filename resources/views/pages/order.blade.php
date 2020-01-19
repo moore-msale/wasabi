@@ -201,6 +201,11 @@
                                         </div>
                                         <div class="col-lg-6 p-2">
                                             <div class="md-form">
+                                                <input placeholder="Промокод" type="text" name="promo" id="promo" class="form-control text-white">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 p-2">
+                                            <div class="md-form">
                                                 <input placeholder="Заказ на время*" type="text" name="dtime" id="dtime" class="form-control date-format text-white d-block" required>
                                             </div>
                                         </div>
