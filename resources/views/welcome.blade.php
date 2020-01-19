@@ -182,7 +182,7 @@
                                                                                         <a href="{{ route('catalog',array('category' => $category->id)) }}">
                                                                                                 <p class="point"
                                                                                                    style="height:20px; font-size:14px;">{{ $category->name }}</p>
-                                                                                                <img class="img-fluid"
+                                                                                                <img class="img-fluid" style="max-height: 60px; "
                                                                                                      src="{{ asset('storage/'.$category->image) }}"
                                                                                                      alt="">
                                                                                         </a>
