@@ -53,13 +53,13 @@ class CartController extends Controller
         if(Auth::user()) {
             // $newCart->user_id = Auth::id();
             $newCart->user_id = Auth()->user()->id;
-            if (Auth::user()->stock != 1) {
+            if (Auth()->user()->stock != 1) {
                 $user = Auth::user();
                 $user->stock = 1;
                 $check = 1;
                 $user->save();
                 $newCart->discount = 20;
-                if($cart->getTotal() > 200 && $cart->getTotal() < 700 && $request->type == 1)
+                if($cart->getTotal() >= 200 && $cart->getTotal() <= 700 && $request->type == 1)
                 {
                 $newCart->total = ($cart->getTotal() + 50) - (($cart->getTotal() / 100) * 20);
                 }
@@ -71,10 +71,11 @@ class CartController extends Controller
         }
         if (isset($request->promo) && $check == 0) {
                 $promos = Code::all();
+
                 foreach ($promos as $promo) {
                     if ($request->promo == $promo->name) {
                         $newCart->promo = $request->promo;
-                        if($cart->getTotal() > 200 && $cart->getTotal() < 700 && $request->type == 1)
+                        if($cart->getTotal() >= 200 && $cart->getTotal() <= 700 && $request->type == 1)
                         {
                             $newCart->total = ($cart->getTotal() + 50) - (($cart->getTotal() / 100) * $promo->discount);
                         }
@@ -88,7 +89,7 @@ class CartController extends Controller
                 }
                 if (!$newCart->promo)
                 {
-                    if($cart->getTotal() > 200 && $cart->getTotal() < 700 && $request->type == 1)
+                    if($cart->getTotal() >= 200 && $cart->getTotal() <= 700 && $request->type == 1)
                     {
                         $newCart->total = $cart->getTotal() + 50;
                     }
@@ -96,10 +97,10 @@ class CartController extends Controller
                     {
                         $newCart->total = $cart->getTotal();
                     }
-
                 }
+
             } elseif($check == 0) {
-            if($cart->getTotal() > 200 && $cart->getTotal() < 700 && $request->type == 1)
+            if($cart->getTotal() >= 200 && $cart->getTotal() <= 700 && $request->type == 1)
             {
                 $newCart->total = $cart->getTotal() + 50;
             }
@@ -112,6 +113,14 @@ class CartController extends Controller
             $newCart->type = 1;
             $newCart->comment = $request->message;
             $newCart->name = $request->name;
+            if(isset($request->cash))
+            {
+                $newCart->pay = 'cash';
+            }
+            else
+            {
+                $newCart->pay = 'online';
+            }
             if($request->email)
             {
             $newCart->email = $request->email;
@@ -142,7 +151,7 @@ class CartController extends Controller
 
         Session::forget(['cart', 'token']);
         Session::flash('cart_success', 'Your info has successfully created!');
-        Mail::to('wasabi.kgz@gmail.com')->send(new Order($newCart));
+        Mail::to('mackinkenny@gmail.com')->send(new Order($newCart));
 
         $data = $request->all();
 

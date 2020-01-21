@@ -134,6 +134,20 @@
 
 </script>
 <script>
+    $('.pay').on('click', function (e) {
+        let btn = $(e.currentTarget);
+        $('.pay').prop("checked",false);
+        btn.prop("checked",true);
+        if(btn.attr('id') == 'online')
+        {
+            $('.pay-info').show(100);
+        }
+        else {
+            $('.pay-info').hide(100);
+        }
+    })
+</script>
+<script>
     $(document).ready(function() {
         $('.date-format').bootstrapMaterialDatePicker({minDate : new Date(), format : 'dddd DD MMMM YYYY - HH:mm' });
     });

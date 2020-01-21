@@ -18,12 +18,17 @@
         <strong>Адрес:</strong> {{ $newCart->address}}<br>
         <strong>Дата доставки:</strong> {{ $newCart->date}}<br>
         <strong>Как можно быстрее?:</strong> {{ $newCart->need}}<br>
+        @if($newCart->pay == 'cash')
+        <strong>Тип оплаты:</strong> Наличными<br>
+        @elseif($newCart->pay == 'online')
+        <strong>Тип оплаты:</strong> Банковской картой<br>
+        @endif
         @if(isset($newCart->comment))
-            <strong>Комментарий:</strong> {{ $newCart->comment}}<br>
+        <strong>Комментарий:</strong> {{ $newCart->comment}}<br>
         @endif
         @else
-            <strong>Тип заказа: Самовывоз</strong><br>
-            <strong>Заказ на время:</strong> {{ $newCart->date}}<br>
+        <strong>Тип заказа: Самовывоз</strong><br>
+        <strong>Заказ на время:</strong> {{ $newCart->date}}<br>
         @endif
         <br><br>
         <h3>Заказ</h3>
