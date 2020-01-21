@@ -12,7 +12,6 @@
     <?php
     $agent = New \Jenssegers\Agent\Agent();
     ?>
-
     <div class="container-fluid">
         <div class="row justify-content-center">
             {{--@if(!$agent->isPhone())--}}
@@ -164,7 +163,7 @@
                                                         @endforeach
                                                     </div>
                                                     <div class="col-12 px-0 mt-3">
-                                                        @if(auth())
+                                                        @if(auth()->user())
                                                             @if(\Illuminate\Support\Facades\Auth::user()->stock !=1)
                                                                 @if($total >= 200 && $total <= 700)
                                                                     <p class="product-header delivery text-white float-right font-weight-bold mt-3 p-3" style="display:block;">
@@ -322,7 +321,7 @@
                                                             </div>
                                                         @endforeach
                                                     </div>
-                                                    @if(auth())
+                                                    @if(auth()->user())
                                                         @if(\Illuminate\Support\Facades\Auth::user()->stock !=1)
                                                             @if($total >= 200 && $total <= 700)
                                                                 <p class="product-header delivery text-white float-right font-weight-bold mt-3 p-3" style="display:block;">
@@ -435,7 +434,8 @@
                             </div>
                             @endforeach
                         </div>
-                        @if(auth())
+
+                        @if(auth()->user())
                             @if(\Illuminate\Support\Facades\Auth::user()->stock !=1)
                         @if($total >= 200 && $total <= 700)
                         <p class="product-header delivery text-white float-right font-weight-bold mt-3 p-3" style="display:block;">
