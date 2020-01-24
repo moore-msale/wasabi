@@ -46,7 +46,7 @@
                                         </div>
                                         <div class="col-lg-6 p-2">
                                             <div class="md-form">
-                                                <input placeholder="Email*" type="text" name="email" id="email" class="form-control text-white">
+                                                <input placeholder="Email*" type="text" name="email" id="email" class="form-control text-white" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 p-2">
@@ -252,7 +252,7 @@
                                         </div>
                                         <div class="col-lg-6 p-2">
                                             <div class="md-form">
-                                                <input placeholder="Email*" type="text" name="email" id="email" class="form-control text-white">
+                                                <input placeholder="Email*" type="text" name="email" id="email" class="form-control text-white" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 p-2">
