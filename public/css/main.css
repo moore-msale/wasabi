@@ -453,6 +453,11 @@
 {
     background-color: #ce1f34!important;
 }
+.btn-disabled
+{
+    background:greenyellow!important;
+    pointer-events: none;
+}
 @media screen and (max-width: 700px) {
     .owl-one .owl-nav .owl-prev
     {

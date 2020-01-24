@@ -514,5 +514,16 @@
             $('.delivery-self').hide();
         });
     </script>
+    <script>
+        function activator() {
+           $('.send-btn').removeClass('btn-disabled');
+        }
+    </script>
+    <script>
+        $('.send-btn').on('click', function () {
+            $('.send-btn').addClass('btn-disabled');
+            setTimeout(activator, 4000);
+        })
+    </script>
 
 @endpush
