@@ -151,7 +151,7 @@ class CartController extends Controller
 
         Session::forget(['cart', 'token']);
         Session::flash('cart_success', 'Your info has successfully created!');
-        Mail::to('mackinkenny@gmail.com ')->send(new Order($newCart));
+        Mail::to('mackinkenny@gmail.com')->send(new Order($newCart));
 
         $data = $request->all();
 
