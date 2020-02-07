@@ -73,7 +73,7 @@
                                                     Номер телефон: {{ $basket->phone }}
                                                 </p>
                                                 <p>
-                                                    Адрес доставки: {{ $baket->address }}
+                                                    Адрес доставки: {{ $basket->address }}
                                                 </p>
                                                 <p>
                                                     Дата доставки: {{ $basket->date }}
@@ -114,7 +114,7 @@
                                                     {{ $basket->phone }}
                                                 </p>
                                                 <p>
-                                                    Адрес доставки: {{ $baket->address }}
+                                                    Адрес доставки: {{ $basket->address }}
                                                 </p>
                                                 <p>
                                                     {{ $basket->date }}
