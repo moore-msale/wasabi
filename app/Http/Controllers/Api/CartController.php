@@ -104,11 +104,16 @@ class CartController extends Controller
                     {
                         $newCart->total = $cart->getTotal() + 50;
                     }
-                    else
+                    elseif($request->type == 2)
                     {
                         $newCart->discount = 10;
                         $newCart->total = $cart->getTotal() - (($cart->getTotal() / 100) * 10);
                     }
+                    else
+                    {
+                        $newCart->total = $cart->getTotal();
+                    }
+
                 }
 
             }
@@ -117,13 +122,17 @@ class CartController extends Controller
             {
                 $newCart->total = $cart->getTotal() + 50;
             }
-            else
+            elseif($request->type == 2)
             {
                 if (!$newCart->discount || $newCart->discount > 10)
                 {
                     $newCart->discount = 10;
                 }
                 $newCart->total = $cart->getTotal() - (($cart->getTotal() / 100) * $newCart->discount);
+            }
+            else
+            {
+                $newCart->total = $cart->getTotal();
             }
             }
         if($request->type == 1) {
