@@ -75,16 +75,27 @@ class CartController extends Controller
                 foreach ($promos as $promo) {
                     if ($request->promo == $promo->name) {
                         $newCart->promo = $request->promo;
+                        $newCart->discount = $promo->discount;
                         if($cart->getTotal() >= 200 && $cart->getTotal() <= 700 && $request->type == 1)
                         {
                             $newCart->total = ($cart->getTotal() + 50) - (($cart->getTotal() / 100) * $promo->discount);
+                            $newCart->discount = $promo->discount;
                         }
                         else
                         {
-                            $newCart->total = $cart->getTotal() - (($cart->getTotal() / 100) * $promo->discount);
-                        }
+                            if ($newCart->discount >= 10)
+                            {
+                                $newCart->total = $cart->getTotal() - (($cart->getTotal() / 100) * $promo->discount);
+                                $newCart->discount = $promo->discount;
+                            }
+                            else
+                            {
+                                $newCart->total = $cart->getTotal() - (($cart->getTotal() / 100) * 10);
+                                $newCart->discount = 10;
+                            }
+                         }
 
-                        $newCart->discount = $promo->discount;
+
                     }
                 }
                 if (!$newCart->promo)
@@ -95,18 +106,24 @@ class CartController extends Controller
                     }
                     else
                     {
-                        $newCart->total = $cart->getTotal();
+                        $newCart->discount = 10;
+                        $newCart->total = $cart->getTotal() - (($cart->getTotal() / 100) * 10);
                     }
                 }
 
-            } elseif($check == 0) {
+            }
+            elseif($check == 0) {
             if($cart->getTotal() >= 200 && $cart->getTotal() <= 700 && $request->type == 1)
             {
                 $newCart->total = $cart->getTotal() + 50;
             }
             else
             {
-                $newCart->total = $cart->getTotal();
+                if (!$newCart->discount || $newCart->discount > 10)
+                {
+                    $newCart->discount = 10;
+                }
+                $newCart->total = $cart->getTotal() - (($cart->getTotal() / 100) * $newCart->discount);
             }
             }
         if($request->type == 1) {
@@ -139,6 +156,7 @@ class CartController extends Controller
             }
         }
         else{
+            $newCart->type = 2;
             $newCart->name = $request->name;
             if($request->email)
             {
@@ -151,7 +169,7 @@ class CartController extends Controller
 
         Session::forget(['cart', 'token']);
         Session::flash('cart_success', 'Your info has successfully created!');
-        Mail::to('wasabi.kgz@gmail.com')->send(new Order($newCart));
+        Mail::to('mackinkenny@gmail.com')->send(new Order($newCart));
 
         $data = $request->all();
 

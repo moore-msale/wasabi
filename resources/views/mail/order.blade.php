@@ -47,9 +47,11 @@
             </div>
             @endforeach
         <br><br>
-        @if($newCart->promo)
+        @if($newCart->promo && $newCart->discount == \App\Code::where('name',$newCart->promo)->first()->discount)
             <h3>Промокод: {{ $newCart->promo }} - Скидки: {{ $newCart->discount }}%</h3>
-            @elseif(!$newCart->promo && $newCart->discount)
+            @elseif($newCart->promo && $newCart->discount && $newCart->discount == 20)
+            <h3>Первый заказ с сайта - Скидки: {{ $newCart->discount }}%</h3>
+            @elseif(!$newCart->promo && $newCart->discount && $newCart->discount == 20)
             <h3>Первый заказ с сайта - Скидки: {{ $newCart->discount }}%</h3>
             @elseif($newCart->type == 2)
             <h3>Скидка за самовывоз - {{ $newCart->discount }}%</h3>

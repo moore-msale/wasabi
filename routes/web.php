@@ -36,7 +36,7 @@ Route::get('/test', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@welcome')->name('home');
-Route::get('/profile', 'HomeController@profile')->name('profile');
+Route::get('/profile', 'HomeController@profile')->name('profile')->middleware('auth');
 
 Route::group(['prefix' => 'moo'], function () {
     Voyager::routes();
