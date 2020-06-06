@@ -29,7 +29,7 @@ class Order extends Mailable
      */
     public function build()
     {
-        return $this->from('da@to-moore.com')->subject('Новый заказ с сайта Wasabi"
+        return $this->from('wasabi@wasabi.kg')->subject('Новый заказ с сайта Wasabi"
 ')->markdown('mail.order');
     }
 }
