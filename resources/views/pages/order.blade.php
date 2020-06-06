@@ -119,12 +119,6 @@
                                                 Минимальный заказ – 200 сом. О доставке в отдаленные районы уточняйте у оператора.
                                             </span>
                                             </div>
-                                            <div class="pt-3">
-                                                <img class="mr-3" style="width:30px; height:30px;" src="{{ asset('images/sushi.svg') }}" alt="">
-                                            <span class="text-white">
-                                                При первой покупке после регистрации на сайте скидка 20%, скидка не складывается со скидкой от промокода или других акций.
-                                            </span>
-                                            </div>
                                         </div>
                                         <div class="col-12 px-0 d-lg-none d-block">
                                             <div class="py-4 px-lg-5 px-0">

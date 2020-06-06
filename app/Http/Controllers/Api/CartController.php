@@ -58,14 +58,14 @@ class CartController extends Controller
                 $user->stock = 1;
                 $check = 1;
                 $user->save();
-                $newCart->discount = 20;
+                $newCart->discount = 0;
                 if($cart->getTotal() >= 200 && $cart->getTotal() <= 700 && $request->type == 1)
                 {
-                $newCart->total = ($cart->getTotal() + 50) - (($cart->getTotal() / 100) * 20);
+                $newCart->total = ($cart->getTotal() + 50) - (($cart->getTotal() / 100) * 0);
                 }
                 else
                 {
-                    $newCart->total = $cart->getTotal() - (($cart->getTotal() / 100) * 20);
+                    $newCart->total = $cart->getTotal() - (($cart->getTotal() / 100) * 0);
                 }
             }
         }
