@@ -158,42 +158,19 @@
                                                     </div>
                                                     <div class="col-12 px-0 mt-3">
                                                         @if(auth()->user())
-                                                            @if(\Illuminate\Support\Facades\Auth::user()->stock !=1)
-                                                                @if($total >= 200 && $total <= 700)
-                                                                    <p class="product-header delivery text-white float-right font-weight-bold mt-3 p-3" style="display:block;">
-                                                                        <span class="text-white mr-4">Доставка: 50 сом</span>
-                                                                        Итого: <span class="ml-2"> {{ $total - ($total / 100 * 20) + 50 }} сом</span>
-                                                                        <br><br>
-                                                                        <span class="mt-3 float-right">Скидка: 20%</span>
-                                                                    </p>
-                                                                    <p class="product-header delivery-self text-white float-right font-weight-bold mt-3 p-3" style="display:none;">
-                                                                        Итого: <span class="ml-2"> {{ $total - ($total / 100 * 20)}} сом</span>
-                                                                        <br><br>
-                                                                        <span class="mt-3 float-right">Скидка: 20%</span>
-                                                                    </p>
-
-                                                                @else
-                                                                    <p class="product-header text-white float-right font-weight-bold mt-3 p-3">
-                                                                        Итого: <span class="ml-2"> {{ $total - ($total / 100 * 20)}} сом</span>
-                                                                        <br><br>
-                                                                        <span class="mt-3 float-right">Скидка: 20%</span>
-                                                                    </p>
-                                                                @endif
-                                                            @else
-                                                                @if($total >= 200 && $total <= 700)
-                                                                    <p class="product-header delivery text-white float-right font-weight-bold mt-3 p-3" style="display:block;">
-                                                                        <span class="text-white mr-4">Доставка: 50 сом</span>
-                                                                        Итого: <span class="ml-2"> {{ $total + 50 }} сом</span>
-                                                                    </p>
-                                                                    <p class="product-header delivery-self text-white float-right font-weight-bold mt-3 p-3" style="display:none;">
-                                                                        Итого: <span class="ml-2"> {{ $total }} сом</span>
-                                                                    </p>
-                                                                @else
-                                                                    <p class="product-header text-white float-right font-weight-bold mt-3 p-3">
-                                                                        Итого: <span class="ml-2"> {{ $total }} сом</span>
-                                                                    </p>
-                                                                @endif
-                                                            @endif
+                                                              @if($total >= 200 && $total <= 700)
+                                                                  <p class="product-header delivery text-white float-right font-weight-bold mt-3 p-3" style="display:block;">
+                                                                      <span class="text-white mr-4">Доставка: 50 сом</span>
+                                                                      Итого: <span class="ml-2"> {{ $total + 50 }} сом</span>
+                                                                  </p>
+                                                                  <p class="product-header delivery-self text-white float-right font-weight-bold mt-3 p-3" style="display:none;">
+                                                                      Итого: <span class="ml-2"> {{ $total }} сом</span>
+                                                                  </p>
+                                                              @else
+                                                                  <p class="product-header text-white float-right font-weight-bold mt-3 p-3">
+                                                                      Итого: <span class="ml-2"> {{ $total }} сом</span>
+                                                                  </p>
+                                                              @endif
                                                         @else
                                                             @if($total >= 200 && $total <= 700)
                                                                 <p class="product-header delivery text-white float-right font-weight-bold mt-3 p-3" style="display:block;">
@@ -265,18 +242,11 @@
                                                 Акция:
                                             </p>
                                             <div>
-                                            <img class="mr-3" style="width:30px; height:30px;" src="{{ asset('images/take-away.svg') }}" alt="">
-                                            <span class="text-white">
-                                                Забери свой заказ сам и получи 10% (действует до 31-декабря)
-                                            </span>
+                                              <img class="mr-3" style="width:30px; height:30px;" src="{{ asset('images/take-away.svg') }}" alt="">
+                                              <span class="text-white">
+                                                  Забери свой заказ сам и получи 10% (действует до 31-декабря)
+                                              </span>
                                             </div>
-                                            <div class="pt-2">
-                                                <img class="mr-3" style="width:30px; height:30px;" src="{{ asset('images/sushi.svg') }}" alt="">
-                                            <span class="text-white">
-                                                При первой покупке после регистрации на сайте скидка 20%, скидка не складывается со скидкой от промокода или других акций.
-                                            </span>
-                                            </div>
-
                                         </div>
 
                                         <div class="col-12 px-0 d-lg-none d-block">
@@ -316,42 +286,19 @@
                                                         @endforeach
                                                     </div>
                                                     @if(auth()->user())
-                                                        @if(\Illuminate\Support\Facades\Auth::user()->stock !=1)
-                                                            @if($total >= 200 && $total <= 700)
-                                                                <p class="product-header delivery text-white float-right font-weight-bold mt-3 p-3" style="display:block;">
-                                                                    <span class="text-white mr-4">Доставка: 50 сом</span>
-                                                                    Итого: <span class="ml-2"> {{ $total - ($total / 100 * 20) + 50 }} сом</span>
-                                                                    <br><br>
-                                                                    <span class="mt-3 float-right">Скидка: 20%</span>
-                                                                </p>
-                                                                <p class="product-header delivery-self text-white float-right font-weight-bold mt-3 p-3" style="display:none;">
-                                                                    Итого: <span class="ml-2"> {{ $total - ($total / 100 * 20)}} сом</span>
-                                                                    <br><br>
-                                                                    <span class="mt-3 float-right">Скидка: 20%</span>
-                                                                </p>
-
-                                                            @else
-                                                                <p class="product-header text-white float-right font-weight-bold mt-3 p-3">
-                                                                    Итого: <span class="ml-2"> {{ $total - ($total / 100 * 20)}} сом</span>
-                                                                    <br><br>
-                                                                    <span class="mt-3 float-right">Скидка: 20%</span>
-                                                                </p>
-                                                            @endif
-                                                        @else
-                                                            @if($total >= 200 && $total <= 700)
-                                                                <p class="product-header delivery text-white float-right font-weight-bold mt-3 p-3" style="display:block;">
-                                                                    <span class="text-white mr-4">Доставка: 50 сом</span>
-                                                                    Итого: <span class="ml-2"> {{ $total + 50 }} сом</span>
-                                                                </p>
-                                                                <p class="product-header delivery-self text-white float-right font-weight-bold mt-3 p-3" style="display:none;">
-                                                                    Итого: <span class="ml-2"> {{ $total }} сом</span>
-                                                                </p>
-                                                            @else
-                                                                <p class="product-header text-white float-right font-weight-bold mt-3 p-3">
-                                                                    Итого: <span class="ml-2"> {{ $total }} сом</span>
-                                                                </p>
-                                                            @endif
-                                                        @endif
+                                                          @if($total >= 200 && $total <= 700)
+                                                              <p class="product-header delivery text-white float-right font-weight-bold mt-3 p-3" style="display:block;">
+                                                                  <span class="text-white mr-4">Доставка: 50 сом</span>
+                                                                  Итого: <span class="ml-2"> {{ $total + 50 }} сом</span>
+                                                              </p>
+                                                              <p class="product-header delivery-self text-white float-right font-weight-bold mt-3 p-3" style="display:none;">
+                                                                  Итого: <span class="ml-2"> {{ $total }} сом</span>
+                                                              </p>
+                                                          @else
+                                                              <p class="product-header text-white float-right font-weight-bold mt-3 p-3">
+                                                                  Итого: <span class="ml-2"> {{ $total }} сом</span>
+                                                              </p>
+                                                          @endif
                                                     @else
                                                         @if($total >= 200 && $total <= 700)
                                                             <p class="product-header delivery text-white float-right font-weight-bold mt-3 p-3" style="display:block;">
@@ -430,41 +377,18 @@
                         </div>
 
                         @if(auth()->user())
-                            @if(\Illuminate\Support\Facades\Auth::user()->stock !=1)
-                        @if($total >= 200 && $total <= 700)
-                        <p class="product-header delivery text-white float-right font-weight-bold mt-3 p-3" style="display:block;">
-                                <span class="text-white mr-4">Доставка: 50 сом</span>
-                            Итого: <span class="ml-2"> {{ $total - ($total / 100 * 20) + 50 }} сом</span>
-                            <br><br>
-                            <span class="mt-3 float-right">Скидка: 20%</span>
-                        </p>
-                            <p class="product-header delivery-self text-white float-right font-weight-bold mt-3 p-3" style="display:none;">
-                                Итого: <span class="ml-2"> {{ $total - ($total / 100 * 20)}} сом</span>
-                                <br><br>
-                                <span class="mt-3 float-right">Скидка: 20%</span>
-                            </p>
-
+                            @if($total >= 200 && $total <= 700)
+                                <p class="product-header delivery text-white float-right font-weight-bold mt-3 p-3" style="display:block;">
+                                    <span class="text-white mr-4">Доставка: 50 сом</span>
+                                    Итого: <span class="ml-2"> {{ $total + 50 }} сом</span>
+                                </p>
+                                <p class="product-header delivery-self text-white float-right font-weight-bold mt-3 p-3" style="display:none;">
+                                    Итого: <span class="ml-2"> {{ $total }} сом</span>
+                                </p>
                             @else
-                            <p class="product-header text-white float-right font-weight-bold mt-3 p-3">
-                                Итого: <span class="ml-2"> {{ $total - ($total / 100 * 20)}} сом</span>
-                                <br><br>
-                                <span class="mt-3 float-right">Скидка: 20%</span>
-                            </p>
-                            @endif
-                            @else
-                                        @if($total >= 200 && $total <= 700)
-                                            <p class="product-header delivery text-white float-right font-weight-bold mt-3 p-3" style="display:block;">
-                                                <span class="text-white mr-4">Доставка: 50 сом</span>
-                                                Итого: <span class="ml-2"> {{ $total + 50 }} сом</span>
-                                            </p>
-                                            <p class="product-header delivery-self text-white float-right font-weight-bold mt-3 p-3" style="display:none;">
-                                                Итого: <span class="ml-2"> {{ $total }} сом</span>
-                                            </p>
-                                        @else
-                                            <p class="product-header text-white float-right font-weight-bold mt-3 p-3">
-                                                Итого: <span class="ml-2"> {{ $total }} сом</span>
-                                            </p>
-                                        @endif
+                                <p class="product-header text-white float-right font-weight-bold mt-3 p-3">
+                                    Итого: <span class="ml-2"> {{ $total }} сом</span>
+                                </p>
                             @endif
                         @else
                             @if($total >= 200 && $total <= 700)
